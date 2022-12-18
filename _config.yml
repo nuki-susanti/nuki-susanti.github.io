@@ -149,7 +149,7 @@ header_pages:
 # - categories.html
 # - index.html 
   - archives.html
-  - tags.html
+  - contact.html
 
 
 # Page default value
