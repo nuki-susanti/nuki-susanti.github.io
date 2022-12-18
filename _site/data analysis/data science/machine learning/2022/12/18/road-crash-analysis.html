@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How Safe Are We On The Road? - Road Crash Analysis | Home</title>
+<meta name="generator" content="Jekyll v4.3.1">
+<meta property="og:title" content="How Safe Are We On The Road? - Road Crash Analysis">
+<meta name="author" content="Nuki Susanti">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Source: pixabay">
+<meta property="og:description" content="Source: pixabay">
+<link rel="canonical" href="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2022/12/18/road-crash-analysis.html">
+<meta property="og:url" content="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2022/12/18/road-crash-analysis.html">
+<meta property="og:site_name" content="Home">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-12-18T00:00:00+07:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="How Safe Are We On The Road? - Road Crash Analysis">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nuki Susanti"},"dateModified":"2022-12-18T00:00:00+07:00","datePublished":"2022-12-18T00:00:00+07:00","description":"Source: pixabay","headline":"How Safe Are We On The Road? - Road Crash Analysis","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/data%20analysis/data%20science/machine%20learning/2022/12/18/road-crash-analysis.html"},"url":"http://localhost:4000/data%20analysis/data%20science/machine%20learning/2022/12/18/road-crash-analysis.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Home">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="Home" src="" onerror="this.style.display='none'">
+  Home
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">POSTS</a><a class="page-link" href="/tags.html">TAGS</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p align="center">
+  <img src="/assets/images/banners/car_accident.jpg" width="500">
+  <em>Source: pixabay</em>
+</p>
+
+<h3 id="overview---business-problem"><strong>Overview - Business problem</strong></h3>
+<p>According to WHO, approximately 1.3 million people die each year as a result of road traffic crashes. Between 20 and 50 million more people suffer non-fatal injuries, with many incurring a disability as a result of their injury. In addition, road traffic crashes cost most countries 3% of their gross domestic product. This worldwide-phenomenon has been quite alarming as private transportation ownership increases, resulting in volume rise of vehicles on the road as well as traffic accidents. It is therefore critical to analyze and derive insights on what factors that could potentially influence the road accident events. These insights could be used for road accidents prevention measures.</p>
+
+<p style="margin-bottom:-30px"></p>
+
+<h3 id="goal"><strong>Goal</strong></h3>
+<p>The objective of this road safety analysis to help analyze the influential factors causing traffic accidents, locate accident hot-spots and perform classification supervised machine learning to predict accident severity. Python and Tableau are used for data visualization and analysis presentation. Personally, as a professional in HSE area (Health Safety Environment), I selected this analysis subject intentionally to add values and insights to my current knowledge.</p>
+
+<p style="margin-bottom:-30px"></p>
+
+<h3 id="data"><strong>Data</strong></h3>
+<ul>
+  <li>Open source road crash and casualties data from 2021 in South Australia collected by Department for Infrastructure and Transport. Merged and cleaned data results in 21,242 cases of traffic accidents. It can be found <a href="https://data.sa.gov.au/data/dataset/road-crash-data/resource/1057e9ae-4672-4123-9c1d-1877483da401?inner_span=True">here</a>.</li>
+  <li><a href="https://data.sa.gov.au/data/dataset/road-crash-data/resource/02fb14f9-8dcb-4a59-863c-5f7cc3ae1832">Data information and dictionary</a></li>
+  <li><a href="https://data.sa.gov.au/data/dataset/suburb-boundaries">Geojson of South Australian suburb boundaries</a></li>
+</ul>
+
+<p style="margin-bottom:-30px"></p>
+
+<h3 id="process"><strong>Process</strong></h3>
+<p>This analysis, therefore, could be divided into two parts:</p>
+<ol style="margin-top:-20px;">
+  <li>Part 1: Data mining</li>
+  <li>Part 2: Model building</li>
+</ol>
+
+<p>Data mining methodology called CRISP-DM(Cross Industry Standard Process for Data Mining, without deployment) is used to during this analysis process.</p>
+<p align="center">
+  <img src="/assets/images/banners/data_mining_steps.png">
+  <em>CRISP-DM Methodology</em>
+</p>
+
+<ol>
+  <li>Business understanding</li>
+  <li>Data understanding</li>
+  There are 3 datasets for this analysis: ‘crash’, ‘unit’ and ‘casualty’. I started this process by reading the data dictionary provided and comparing with the content of the datasets. Data quality and integrity check were then performed for each dataset. Each step is documented as it necessary for the data cleaning.
+  <li>Data preparation</li>
+  Based on the previous checks, data cleaning was performed which include removing duplicates, handling missing values, error typing of records and outliers. Finally, datasets were merged. Documentation of performed steps were included in the Jupyter notebook, such as below:
+  <p>
+  
+  </p>
+  <p align="center">
+    <img src="/assets/images/banners/data_cleaning.PNG" width="700">
+    <em>Sample of data preparation documentation</em>
+  </p>
+  <li>Mining the data</li>
+  <dt>Here the data exploratory began, divided into several categories:</dt>
+  <dd>- General accident distribution</dd>
+  <dd>- Time-based analysis: hourly, daily and monthly</dd>
+  <dd>- People-based analysis: sex, age, alcohol and drugs involvement</dd>
+  <dd>- Weather-based analysis</dd>
+  <dd>- Spatial analysis</dd>
+</ol>
+
+<h3 id="part-1-data-mining">Part 1: Data mining</h3>
+
+<p style="margin-bottom:-30px"></p>
+
+<h4 id="accident-distribution---how-severe-are-accidents-are-on-the-road">Accident distribution - How severe are accidents are on the road?</h4>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_dist_by_severity.png" width="300">
+  <em>Accident distribution by accident severity</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/avg_cas_by_severity.png" width="300">
+  <em>Average total casualty by accident severity</em>
+</p>
+
+<p>Pie chart shows property damage with no casualty (PDO) as the lightest level of accident severity accounts for 65.7% of the reported cases. The rest of the cases (34.4%) were divided into three higher severity levels; minor injury, serious injury and death (fatality). It can be seen that death or fatality accounts only for 0.6% of the reported accident cases.  However, compared to serious and minor injury groups, it takes the highest of number casualty in average.</p>
+
+<h4 id="time-based-analysis-when-do-most-accident-happens-in-hourly-basis">Time-based analysis: When do most accident happens, in hourly basis?</h4>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_dist_by_hour.png" width="500">
+  <em>Accident distribution by hour</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_number_by_hour.png" width="800" height="300">
+  <em>Percentage of number of accidents by hour</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/avg_cas_by_hour.png" width="800" height="200">
+  <em>Average total casualty by hour</em>
+</p>
+
+<p>In general, accidents occurrence starts to rise in the morning rush-hour, at 08:00 and reaches its peak during afternoon rush-hour, from 15:00 to 17:00. It is the decreasing afterwards. However, a little bit different patterns is shown by fatality category. Fatality cases are shown to be high since midnight at 02:00 and steadily increases during morning rush-hour until reaches its peaks in the mid-day at 12:00 and in the afternoon rush-hour. While it decreases after afternoon rush-hour, it climbs again at 21:00. From this pattern, fatality cases mostly happen in these two time frames: least crowded time and crowded time. In terms of average casualty of fatality accidents, there seems to be an hourly pattern that shows peak at 5, 12, 18 and 22.</p>
+
+<h4 id="time-based-analysis-when-do-most-accident-happens-in-daily-basis">Time-based analysis: When do most accident happens, in daily basis?</h4>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_dist_by_day.png" width="500">
+  <em>Accident distribution by day</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_number_by_day.png" width="800" height="300">
+  <em>Percentage of number of accidents by day</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/avg_cas_by_day.png" width="800" height="200">
+  <em>Average total casualty by day</em>
+</p>
+
+<p>Based on its characteristics, accident occurences of PDO and minor injury group steadily increase from Monday and reach peak on Thursday and decreases afterwards, even during weekend. Accident occurences on serious injury generally remain steady during the whole week. While, fatatality cases rises steadily from Monday and peak on Thursday and increases during weekend.</p>
+
+<p>Generally, average casualty on fatality and serious injury remains stable during weekeday and slightly rise during weekend. Conversely, average casualty on minor injury remains stabil during weekday, but decreases during weekend. From this pattern, there seems to be general behavior occurs during the week: Thursday becomes the day of high number of accidents and high casualty, weekend generally shows lower vehicle volumes but increase fatality cases and fatality casualty.</p>
+
+<h4 id="time-based-analysis-when-do-most-accident-happens-in-monthly-basis">Time-based analysis: When do most accident happens, in monthly basis?</h4>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_dist_by_month.png" width="500">
+  <em>Accident distribution by month</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_number_by_month.png" width="800" height="300">
+  <em>Percentage of number of accidents by month</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/avg_cas_by_month.png" width="800" height="200">
+  <em>Average total casualty by month</em>
+</p>
+
+<p>Generally, accident events of property damage and minor injury remains stable during the whole year.However, there seems to be seasonality on serious injury and fatality acidents. Serious injury accidents peak in Q1 (February), decrease afterwards, climb in summer (Q2, June) and reach its highest peak  of the year in September (Q3). It decreases steadily during winter (Q4. While, fatality accidents reach its peak of the year in Q1 (March) and then decreases during summer time (Q2). In Q3 (September), it is at its lowest point and  rises steadily during winter (Q4).</p>
+
+<p>In terms of average casualty, interestingly, only fatality has seasonality. It increases steadily during Q1 and reach the first peak in April (Q2). The second and third peaks occur in July (Q2) and October (Q3), respectively. This pattern reflects three holidays, Easter, summer and winter holidays.</p>
+
+<h4 id="people-based-analysis-who-are-at-risk---sex-alcohol-and-drugs-involvement">People-based analysis: Who are at risk? - Sex, alcohol and drugs involvement</h4>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_dist_by_sex.png" width="300">
+  <em>Accident distribution by sex</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/avg_cas_by_sex.png" width="300" height="450">
+  <em>Average total casualty by sex</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/drugs_alcohol_by_sex.png" width="800" height="300">
+  <em>Accident distribution by drugs and alcohol involvement</em>
+</p>
+
+<p>Ca. 60% of the accidents happens to be male and 40% is female. However, in average, death or fatality in female (2.24) is higher compared to that in male (1.83). Surprisingly, in South Australia, involvement of alcohol and drugs play little role in the number of accidents. It might be related to the measures taken by local authority or law enforcement in controlling alcohol and drugs circulation.</p>
+
+<h4 id="people-based-analysis-who-are-at-risk---age">People-based analysis: Who are at risk? - Age</h4>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_dist_by_age.png" width="500">
+  <em>Accident distribution by age</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_number_by_age.png" width="800" height="300">
+  <em>Percentage of number of accidents by age</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/avg_cas_by_age.png" width="800" height="200">
+  <em>Average total casualty by age</em>
+</p>
+
+<p>The highest number of accident happens with people 20-25 years of age. The number of accidents decreases linearly as a person gets older. This might be related to the awareness towards safety as people obtain maturity in driving experience. However, fatality cases are lower for younger people, below 45. The highest fatality happens at age of 55 to 60 years of age and decreases at older age. This might be related to less older people driving or generally being on the road. Interestingly, the victim of minor injury in average is quite high in baby and toddler (0-5 years old).</p>
+
+<p>The highest casualty on fatality accidents in average still happen with people 20-25 years of age and it decreases slightly with increasing age. However, it generally raises again when people reach 70 years of age. In conclusion, children and very old people are the most vulnarable groups when it comes to injury and fatality, respectively.</p>
+
+<h4 id="weather-based-analysis---how-does-weather-affect-accident-occurences">Weather-based analysis - How does weather affect accident occurences?</h4>
+
+<p align="center">
+  <img src="/assets/images/banners/raining_vs_not_raining.png" width="200">
+  <em>Weather condition: Raining or not raining?</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/wet_vs_dry.png" width="200">
+  <em>Road moisture: wet or dry?</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/night_vs_day.png" width="200">
+  <em>Day or Night?</em>
+</p>
+
+<p>All those weather-related features are conditions collected at the crash locations. It is interesting that most accidents happen in the clear weather condtions, opposite to what usually people assume. In othe words, weather play little influence to accident events.</p>
+
+<h4 id="spatial-analysis---is-there-any-accident-hot-spot">Spatial analysis - Is there any accident ‘hot-spot’?</h4>
+
+<p align="center">
+  <img src="/assets/images/banners/crash_map.png" width="600">
+  <em>Crash map (circle marker map)</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/cluster_map2.png" width="600">
+  <em>Crash map (cluster map)</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/cluster_map.png" width="600">
+  <em>Crash map (cluster map - zoomed out)</em>
+</p>
+
+<p>There is indeed accident ‘hotspot’ where most accidents happen, which is clustered around Adelaide city center. The hypothesis could be formulated: <strong>The more complicated the road system is (meaning many junctions, divided roads, etc.) which represents downtown area, the higher the number of accidents will be.</strong></p>
+
+<p>By plotting each accident spots based on its longitude and latitude using folium, it can be shown where accidents cluster and its number. The accident scenes can be zoomed out until street level to so see at what kind of road system the accident happens.</p>
+
+<p style="margin-top:30px"><b>Feature engineering for hypothesis testing - Distance to city center</b></p>
+
+<p>Latitude and longitude of city center Adelaide city were used to calculate the distance from city center to the accident scene.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_number_by_distance.png" width="800">
+  <em>Number of accidents by the distance to Adelaide city center</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/distance_by_severity.png" width="800">
+  <em>Crash distance distribution by severity</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/linear_regression.png" width="600">
+  <em>Linear regression: Distance to city center vs. Number of accidents</em>
+</p>
+
+<p>The hypothesis is only partially proved to be true. Most accidents cluster within 100 km from Adelaide city center. As the distance gets futher, less accident events occur. There is indeed negative correlation between distance to city center and number of accidents, however, their relationship is not linear. The linear regression model is not suitable for the data as it results in MSE: 30.5 and R2: 9.36%.</p>
+
+<p>Interestingly, most fatalities incidents happened to be in close to the city center area. In other other words, not only does the complex road system corresponds postively to the number of accidents, but also to the accident severity.</p>
+
+<h3 id="part-2-model-building---severity-prediction-using-supervised-machine-learning">Part 2: Model building - Severity prediction using supervised machine learning</h3>
+
+<p>All previously analyzed factors (time, age, sex, road system and distance to city center) seem to be influential to the accident severity. However, it is not clear  to what extent those factors would impact severity. In other words, the order of importance is analyzed using classification model.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_hist_by_casualty.png" width="600">
+  <em>Severity classes as target (dependent) variable</em>
+</p>
+
+<p>Bar chart above shows that we deal with highly imbalanced dataset that would deliver poor predictive performance, specifically for the minority class. This is a problem because typically, the minority class is more important and therefore the problem is more sensitive to classification errors for the minority class than the majority class.</p>
+
+<p>There are of course techniques to handle the imbalance dataset problem in classification. I would link good articles for that <a href="https://towardsdatascience.com/guide-to-classification-on-imbalanced-datasets-d6653aa5fa23">here</a> and <a href="https://www.analyticsvidhya.com/blog/2017/03/imbalanced-data-classification/">here</a>. However, for the sake of simplicity, binary classification was choosen consiting of injury/death group (sum of fatality, serious and minor injury) and PDO.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/accident_hist_by_casualty2.png" width="600">
+  <em>Severity classes as target (dependent) variable - Binary classification</em>
+</p>
+
+<p>Classification models of logistic regression, decision tree and random forest were used and the results were compared. The best result was given by random forest classifier, giving accuracy of 74.3% compared to the logistics regression (66.8%) and decision tree (61.8%).</p>
+
+<p align="center">
+  <img src="/assets/images/banners/conf_mat.png" width="600">
+  <em>Confusion matrix - Random forest</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/feature_importance.png" width="700" height="350">
+  <em>Feature importance - Random forest</em>
+</p>
+
+<p>Among top 20 important fetaures, distance to city center become to be the most influential factor, followed by age, vehicle year, time, location or area, drugs usage and sex. Other than that, crash location at T-Junction listed as an important factor strengthens the previous hyphothesis about complex road system of typical city center.</p>
+
+<p style="margin-top:-30px"></p>
+
+<h3 id="limitations"><strong>Limitations</strong></h3>
+
+<ol>
+  <li>The severity is indeed result of people not using safety equipment, such as helmet or safey belt. Dataset has this feature in it, however, it could not be used for this analysis as 90% of the data is missing.</li>
+  <li>Accidents occur at a very remote areas of South Australia might be not recorded or captured as many as accidents that occur in developed areas.</li>
+  <li>Based on the analysis results, it can be inferred that traffic volume play a role in the traffic accidents. However, this traffic volume feature at the time the accident occurs was not present in the dataset.</li>
+  <li>The imbalance dataset limits the prediction only to binary classification.</li>
+</ol>
+
+<p style="margin-top:-30px"></p>
+
+<h3 id="further-analysis"><strong>Further Analysis</strong></h3>
+
+<p>The effect of safety equipment used by the victims or people involved on the traffic accidents should be analyzed and included in the model prediction.</p>
+
+<p style="margin-top:-30px"></p>
+
+<h3 id="final-notes"><strong>Final Notes</strong></h3>
+
+<p>There are undeniably many factors that could cause or influence traffic accident occurrence, other than what was being analyzed in this analysis. However, providing insights from this data could certainly help involved parties such as local authority and community in taking measures preventing traffic accidents.<br>
+For instance:</p>
+<ul style="margin-top:-20px;">
+  <li>Designing less complex traffic system</li>
+  <li>Conducting traffic control during rush-hour</li>
+  <li>Taking into account of people's driving behavior when developing traffic system</li>
+  <li>Raising people awareness when driving or being on the road, etc.</li>
+</ul>
+
+<p>Finally, those insights could help creating safer environment and less financial loss due to property damage.</p>
+
+<p>Find the code for this analysis <a href="https://github.com/nuki-susanti/Road-Crash-Analysis">Github</a><br>
+Find tableau presentation <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysis_16687247255900/RoadCrashAnalysis">Tableau</a><br>
+Connect with me! <a href="https://www.linkedin.com/in/nuki-susanti-915594151/">Linkedin</a></p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<span></span><span></span>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/data%20analysis/data%20science/machine%20learning/2022/12/18/road-crash-analysis.html" title="">How Safe Are We On The Road? - Road Crash Analysis</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>
+<span class="copyleft">©</span> 2022 Nuki Susanti</div>
+      <div>This page is powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

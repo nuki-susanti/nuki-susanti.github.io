@@ -146,8 +146,8 @@ translate_langs: false
 # this and add the path to the pages in order as they should show up
 header_pages:
   - about.html
-  - categories.html
-# - index.html
+# - categories.html
+# - index.html 
   - archives.html
   - tags.html
 
