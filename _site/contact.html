@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
           </label>
 
           <div class="trigger">
-<a class="page-link" href="/about.html">ABOUT ME</a><a class="page-link" href="/archives.html">POSTS</a><a class="page-link" href="/contact.html">CONTACT</a>
+<a class="page-link" href="/about.html">ABOUT ME</a><a class="page-link" href="/resume.html">RESUME</a><a class="page-link" href="/archives.html">POSTS</a><a class="page-link" href="/contact.html">CONTACT</a>
 
 
 
@@ -889,11 +889,15 @@ textarea::placeholder {
     padding: 0;
   }
 }
+.credit {
+  margin-left: 15px;
+  font-size: 10px;
+}
 
 </style>
 
 
-<form action="https://getform.io/f/74dab681-ae50-48c7-aa84-6ccb5995f5aa" method="POST">
+<form action="https://formspree.io/f/mpzeapzj" method="POST">
     <div class="background">
         <div class="container">
           <div class="screen">
@@ -927,13 +931,13 @@ textarea::placeholder {
               <div class="screen-body-item">
                 <div class="app-form">
                   <div class="app-form-group">
-                    <input class="app-form-control" placeholder="NAME">
+                    <input class="app-form-control" name="name" placeholder="NAME" required>
                   </div>
                   <div class="app-form-group">
-                    <input class="app-form-control" placeholder="EMAIL">
+                    <input class="app-form-control" name="email" placeholder="EMAIL" required>
                   </div>
                   <div class="app-form-group message">
-                    <textarea cols="30" rows="10" placeholder="MESSAGE" required></textarea>
+                    <textarea cols="30" rows="10" name="message" placeholder="MESSAGE" required></textarea>
                   </div>
                   <div class="app-form-group buttons">
                     <button class="app-form-button"><a href="https://nuki-susanti.github.io/">CANCEL</a></button>
@@ -945,7 +949,7 @@ textarea::placeholder {
           </div>
 
 
-<div>Credit contact form <a href="https://codepen.io/krisantuswanandi/pen/KxrgeZ">UI Challenge</a>
+<div class="credit">Credit contact form <a href="https://codepen.io/krisantuswanandi/pen/KxrgeZ">UI Challenge</a>
 </div>
 
   

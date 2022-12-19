@@ -20,6 +20,9 @@
 <loc>http://localhost:4000/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/resume.html</loc>
+</url>
+<url>
 <loc>http://localhost:4000/tags.html</loc>
 </url>
 </urlset>
