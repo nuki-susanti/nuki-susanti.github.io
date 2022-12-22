@@ -641,324 +641,87 @@ document.addEventListener('DOMContentLoaded', function(event) {
         <div class="framework">
   <section class="main">
 
-     <style>
-    *, *:before, *:after {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  background: #fff;
-  font-size: 12px;
-}
-
-body, button, input {
-  font-family: Helvetica, Arial, Oswald, sans-serif;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-}
-
-.background {
-  display: flex;
-  min-height: 10vh;
-}
-
-.container {
-  flex: 0 1 700px;
-  margin: auto;
-  padding: 10px;
-}
-
-.screen {
-  position: relative;
-  background: #ffffff;
-  border-radius: 15px;
-  display: block;
-  height: 500px;
-  width: 900px;
-}
-
-.screen:after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 20px;
-  right: 20px;
-  bottom: 0;
-  border-radius: 15px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
-  z-index: -1;
-}
-
-.screen-header {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  background: #4d4d4f;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
-
-.screen-header-left {
-  margin-right: auto;
-}
-
-.screen-header-button {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 3px;
-  border-radius: 8px;
-  background: white;
-}
-
-.screen-header-button.close {
-  background: #ed1c6f;
-}
-
-.screen-header-button.maximize {
-  background: #e8e925;
-}
-
-.screen-header-button.minimize {
-  background: #74c54f;
-}
-
-.screen-header-right {
-  display: flex;
-}
-
-.screen-header-ellipsis {
-  width: 3px;
-  height: 3px;
-  margin-left: 2px;
-  border-radius: 8px;
-  background: #999;
-}
-
-.screen-body {
-  display: flex;
-}
-
-.screen-body-item {
-  flex: 1;
-  padding: 50px;
-}
-
-.screen-body-item.left {
-  display: flex;
-  flex-direction: column;
-}
-
-.app-title {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  color: #333;
-  font-size: 22px;
-}
-
-.app-title:after {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 25px;
-  height: 4px;
-  background: #ea1d6f;
-}
-
-.app-contact {
-  margin-top: 30px;
-  font-size: 10px;
-  color: #888;
-}
-
-.app-form-group {
-  margin-bottom: 15px;
-  margin-left: -80px;
-}
-
-.app-form-group.message {
-  margin-top: 40px;
-}
-
-.app-form-group.buttons {
-  margin-bottom: 0;
-  text-align: right;
-}
-
-.app-form-control {
-  width: 100%;
-  padding: 10px 0;
-  background: none;
-  border: none;
-  border-bottom: 1px solid #666;
-  color: #333;
-  font-size: 14px;
-  outline: none;
-  transition: border-color .2s;
-}
-
-textarea {
-  width: 100%;
-  padding: 10px 0;
-  background: none;
-  border: none;
-  border-bottom: 1px solid #666;
-  color: #333;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-  outline: none;
-  transition: border-color .2s;
-  resize: none;
-}
-
-textarea::placeholder {
-  color: #666;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-}
+     
 
 
-.app-form-control::placeholder {
-  color: #666;
-}
 
-.app-form-control:focus {
-  border-bottom-color: #ddd;
-}
-
-.app-form-button {
-  background: none;
-  border: none;
-  color: #ea1d6f;
-  font-size: 14px;
-  cursor: pointer;
-  outline: none;
-}
-
-.app-form-button:hover {
-  color: #b9134f;
-}
-
-.credits {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  color: #ffa4bd;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 16px;
-  font-weight: normal;
-}
-
-@media screen and (max-width: 520px) {
-  .screen-body {
-    flex-direction: column;
-  }
-
-  .screen-body-item.left {
-    margin-bottom: 30px;
-  }
-
-  .app-title {
-    flex-direction: row;
-  }
-
-  .app-title span {
-    margin-right: 12px;
-  }
-
-  .app-title:after {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .screen-body {
-    padding: 40px;
-  }
-
-  .screen-body-item {
-    padding: 0;
-  }
-}
-.credit {
-  margin-left: 15px;
-  font-size: 10px;
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="/assets/css/style_contact.css">
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 
 
-<form action="https://formspree.io/f/mpzeapzj" method="POST">
-    <div class="background">
-        <div class="container">
-          <div class="screen">
-            <div class="screen-header">
-              <div class="screen-header-left">
-                <div class="screen-header-button close"></div>
-                <div class="screen-header-button maximize"></div>
-                <div class="screen-header-button minimize"></div>
-              </div>
-              <div class="screen-header-right">
-                <div class="screen-header-ellipsis"></div>
-                <div class="screen-header-ellipsis"></div>
-                <div class="screen-header-ellipsis"></div>
-              </div>
-            </div>
-            <div class="screen-body">
-              <div class="screen-body-item left">
-                <div class="app-title">
-                  <span>Let's get in touch!</span>
-                </div>
-                <div class="app-contact">
-                  <h1>CONTACT INFO</h1>
-                  <h3>Email me <a href="mailto:%20nukisusanti@gmail.com">nukisusanti@gmail.com</a>
-</h3>
-                  <h3>Connect with me <a href="https://www.linkedin.com/in/nuki-susanti-915594151/">Linkedin</a>
-</h3>
-                  <h3>Visit my repo <a href="https://github.com/nuki-susanti/">Github</a>
-</h3>
-                </div>
-              </div>
-              <div class="screen-body-item">
-                <div class="app-form">
-                  <div class="app-form-group">
-                    <input class="app-form-control" name="name" placeholder="NAME" required>
-                  </div>
-                  <div class="app-form-group">
-                    <input class="app-form-control" name="email" placeholder="EMAIL" required>
-                  </div>
-                  <div class="app-form-group message">
-                    <textarea cols="30" rows="10" name="message" placeholder="MESSAGE" required></textarea>
-                  </div>
-                  <div class="app-form-group buttons">
-                    <button class="app-form-button"><a href="https://nuki-susanti.github.io/">CANCEL</a></button>
-                    <button class="app-form-button" type="submit">SEND</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+  <div>
+    <div class="form">
+      <div class="contact-info">
+        <h1 class="title">Let's get in touch!</h1>
+        <h3 class="contact-info-title">
+          CONTACT INFO
+        </h3>
+
+        <div class="info">
+          <div class="information">
+            <i class="fa fa-envelope icon"></i>
+            <a href="mailto:%20nukisusanti@gmail.com">nukisusanti@gmail.com</a><br>
           </div>
+          <div class="information">
+            <i class="fa fa-linkedin icon"></i>
+            <a class="linkgit" href="https://www.linkedin.com/in/nuki-susanti-915594151/">Linkedin</a><br>
+          </div>
+          <div class="information">
+            <i class="fa fa-github icon"></i>
+            <a href="https://www.linkedin.com/in/nuki-susanti-915594151/">Github</a><br>
+          </div>
+        </div>
+
+        <div class="social-media">
+          <p></p>
+          <div class="social-icons">
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <span></span>
+        <span></span>
+
+        <form action="https://formspree.io/f/mpzeapzj" method="POST">
+          <h3 class="title">Send me a message!</h3>
+          <div class="input-container">
+            <input type="text" name="name" class="input" required>
+            <label for="">Username</label>
+            <span>Username</span>
+          </div>
+          <div class="input-container">
+            <input type="email" name="email" class="input" required>
+            <label for="">Email</label>
+            <span>Email</span>
+          </div>
+          <div class="input-container textarea">
+            <textarea name="message" class="input" required></textarea>
+            <label for="">Message</label>
+            <span>Message</span>
+          </div>
+          <button class="btn" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/js/contact_js.js"></script>
 
 
-<div class="credit">Credit contact form <a href="https://codepen.io/krisantuswanandi/pen/KxrgeZ">UI Challenge</a>
-</div>
 
-  
+
+  </section>
   <section class="sidebar" style="margin-left: 15px;">
     <!-- Get sidebar items --></section>
 </div>
 
       </div>
-    <footer class="site-footer h-card">
+    </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
 
   <div class="wrapper">
@@ -972,8 +735,5 @@ textarea::placeholder {
     </div>
   </div>
 </footer>
-</form></section>
-</div>
-</div></main>
 </body>
 </html>
