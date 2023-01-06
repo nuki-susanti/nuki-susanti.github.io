@@ -531,420 +531,195 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </script>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style>
-*{
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	box-sizing: border-box;
-}
-
-body{
-	background: #c4c4c4;
-	font-size: 14px;
-	line-height: 20px;
-}
-
-.resume_wrapper{
-	display: flex;
-	width: 1000px;
-	margin: -10px -50px;
-	background: #fff;
-	padding: 10px;
-}
-
-.resume_wrapper .resume_left{
-	width: 35%;
-	background: #344D67;
-}
-
-.resume_wrapper .resume_left .resume_image{
-	width: 100%;
-}
-
-.resume_wrapper .resume_left .resume_image img{
-	width: 100%;
-	display: block;
-}
-
-.resume_wrapper .resume_title{
-	color: #fff;
-	text-transform: uppercase;
-	font-weight: 700;
-	font-size: 16px;
-	margin-bottom: 10px;
-	letter-spacing: 4px;
-}
-
-.resume_wrapper .resume_left .resume_info{
-	color: #C4D7E0;
-}
-
-.resume_wrapper .resume_left .resume_bottom{
-	padding: 20px 30px;
-}
-
-.resume_wrapper .resume_item{
-	padding: 20px 0;
-	border-bottom: 1px solid #0175b2;
-}
-
-.resume_wrapper  .resume_item:last-child{
-	border-bottom: 0;
-}
-
-.resume_wrapper .resume_left .resume_namerole{
-	display: none;
-}
-
-.resume_wrapper .resume_namerole .name{
-	font-size: 20px;
-	color: #fff;
-	text-transform: uppercase;
-	font-weight: 700;
-	margin-bottom: 5px;
-	letter-spacing: 4px;
-}
-
-.resume_wrapper .resume_left .resume_namerole .role{
-	color: #84838b;
-}
-
-.resume_wrapper .resume_left .resume_contact .resume_info:last-child{
-	 margin-top: 10px;
-}
-
-.resume_wrapper .resume_left .resume_contact .resume_subtitle{
-	color: #fff;
-	margin-bottom: 2px;
-}
-
-.resume_wrapper .resume_left .resume_skills .skills_list{
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 5px;
-}
-
-.resume_wrapper .resume_left .resume_skills .skills_list .skills_bar p{
-	position: relative;
-	width: 125px;
-    height: 20px;
-    background: #fff;
-}
-
-.resume_wrapper .resume_left .resume_skills .skills_list .skills_bar p span{	
-	position: absolute;
-	top: 0;
-	left: 0;
-	background: #0175b2;
-	width: 100%;
-	height: 100%;
-}
-
-.resume_wrapper .resume_right{
-	width: 65%;
-	padding: 20px 40px;
-	color: #26252d;
-}
-
-.resume_wrapper .resume_right .resume_namerole .name{
-	color: #26252d;
-	font-size: 32px;
-}
-
-.resume_wrapper .resume_right .resume_namerole .role{
-	font-size: 14px;
-	text-transform: uppercase;
-}
-
-.resume_wrapper .resume_right .resume_item .resume_title{
-	color: #26252d;
-}
-
-.resume_wrapper .resume_right .resume_data{
-	display: flex;
-}
-
-.resume_wrapper .resume_right .resume_data .year{
-	padding-right: 35px;
-	width: 115px;
-	position: relative;
-}
-
-.resume_wrapper .resume_right .resume_data .content{
-	padding-left: 35px;
-	margin-bottom: 20px;
-	width: calc(100% - 115px);
-}
-
-.resume_wrapper .resume_right .resume_data .year:before{
-	content: "";
-	position: absolute;
-	top: 5px;
-	right: 0;
-	width: 10px;
-	height: 10px;
-	background: #fff;
-	border: 1px solid #26252d;
-	border-radius: 50%;
-}
-
-.resume_wrapper .resume_right .resume_data .year:after{
-	content: "";
-    position: absolute;
-    top: 17px;
-    right: 4px;
-    width: 3px;
-    height: 90%;
-    background: #0175b2;
-}
-
-.resume_wrapper .resume_right .resume_data:last-child .year:after{
-	display: none;
-}
-
-.resume_wrapper .resume_right .resmue_interests .resume_info{
-	display: flex;
-	justify-content: space-between;
-	text-align: center;
-}
-
-.resume_wrapper .resume_right .resmue_interests .interests .int_icon{
-	font-size: 38px;
-	color: #0175b2;
-	margin-bottom: 10px;
-}
-
-
-@media screen and (max-width: 800px){
-	.resume_wrapper .resume_right .resume_namerole{
-		display: none;
-	}
-	.resume_wrapper .resume_left .resume_namerole{
-		display: block;
-	}
-	.resume_wrapper{
-		width: 95%;
-		margin: 10px auto;
-		flex-direction: column;
-	}
-	.resume_wrapper .resume_left,
-	.resume_wrapper .resume_right{
-		width: 100%;
-	}
-}
-
-@media screen and (max-width: 424px){
-	.resume_wrapper .resume_right{
-		padding: 20px 30px;
-	}
-	.resume_wrapper .resume_right .resume_data{
-		flex-direction: column;
-	}
-	.resume_wrapper .resume_right .resume_data .year{
-		padding: 0;
-		margin-bottom: 5px;
-		width: 100%;
-		color: #0175b2;
-	}
-	.resume_wrapper .resume_right .resume_data .year:before,
-	.resume_wrapper .resume_right .resume_data .year:after{
-		display: none;
-	}
-	.resume_wrapper .resume_right .resume_data .content{
-		width: 100%;
-		padding: 0;
-	}
-	.resume_wrapper .resume_right .resume_interests .interests .int_icon{
-		font-size: 24px;
-	}
-}
-
-.fa {
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-.credit {
-  margin-left: 5px;
-  margin-top: 10px;
-  font-size: 12px;
-}
-
-.profpict {
-  border-radius: 50%;
-}
-</style>
-
+        
 
 
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/assets/css/style_resume.css">
 
 
 
-<div class="resume_wrapper">
-	<div class="resume_left">
-		<div class="resume_image">
-			<img src="/assets/images/banners/profile_pict.jpg" alt="profpict" class="profpict">
+
+	<div class="resume_wrapper">
+		<div class="resume_left">
+			<div class="resume_image">
+				<img src="/assets/images/banners/profile_pict.jpg" alt="profpict" class="profpict">
+			</div>
+			<div class="resume_bottom">
+				<div class="resume_item resume_namerole">
+					<div class="name">Nuki Susanti</div>
+					<div class="role">Data Analyst</div>
+				</div>
+				<div class="resume_item resume_profile">
+					<div class="resume_title">Profile</div>
+					<div class="resume_info">Data analyst with an interdisciplinary background in safety and
+						environmental engineering. Experience in helping clients translate conceptual problems into more
+						practical solutions. Fast learner and a clear communicator capable of working with a variety of
+						team members.</div>
+				</div>
+				<div class="resume_item resume_address">
+					<div class="resume_title">Contact</div>
+					<div class="resume_info">
+						<i class="fa fa-envelope icon"></i><a href="mailto:%20nukisusanti@gmail.com">nukisusanti@gmail.com</a><br>
+						<i class="fa fa-linkedin"></i><a href="https://www.linkedin.com/in/nuki-susanti-915594151/">linkedin.com/in/nukisusanti</a><br>
+						<i class="fa fa-map-marker"></i>Frankfurt, Germany<br>
+						<i class="fa fa-info"></i>Open to relocating within Germany or world-wide remote working<br>
+					</div>
+				</div>
+				<div class="resume_item resume_skills">
+					<div class="resume_title">TECHNICAL SKILLS</div>
+					<div class="resume_info">
+						<div class="skills_list">
+							<div class="skills_left">Data sourcing, cleaning and preparation</div>
+							<div class="skills_bar">
+							</div>
+						</div>
+						<div class="skills_list">
+							<div class="skills_left">Data analysis, exploration and visualization</div>
+							<div class="skills_bar">
+							</div>
+						</div>
+						<div class="skills_list">
+							<div class="skills_left">Machine learning</div>
+							<div class="skills_bar">
+							</div>
+						</div>
+						<div class="skills_list">
+							<div class="skills_left">Python</div>
+							<div class="skills_bar">
+							</div>
+						</div>
+						<div class="skills_list">
+							<div class="skills_left">SQL</div>
+							<div class="skills_bar">
+							</div>
+						</div>
+						<div class="skills_list">
+							<div class="skills_left">Excel</div>
+							<div class="skills_bar">
+							</div>
+						</div>
+						<div class="skills_list">
+							<div class="skills_left">Tableau</div>
+							<div class="skills_bar">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="resume_item resume_contact">
+					<div class="resume_title">LANGUAGE</div>
+					<div class="resume_info">
+						<div class="resume_subtitle">English</div>
+						<p class="resume_subinfo">Fluent</p>
+					</div>
+					<div class="resume_info">
+						<div class="resume_subtitle">German</div>
+						<p class="resume_subinfo">Professional Working Proficiency</p>
+					</div>
+					<div class="resume_info">
+						<div class="resume_subtitle">Indonesian</div>
+						<p class="resume_subinfo">Native</p>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="resume_bottom">
+		<div class="resume_right">
 			<div class="resume_item resume_namerole">
 				<div class="name">Nuki Susanti</div>
 				<div class="role">Data Analyst</div>
 			</div>
-			<div class="resume_item resume_profile">
-				<div class="resume_title">Profile</div>
-				<div class="resume_info">Data analyst with an interdisciplinary background in safety and environmental engineering. Experience in helping clients translate conceptual problems into more practical solutions. Fast learner and a clear communicator capable of working with a variety of team members.</div>
+			<div class="resume_item resume_education">
+				<div class="resume_title">Projects</div>
+				<div>
+					<h4>Road Crash Analysis (<a href="https://github.com/nuki-susanti/Road-Crash-Analysis">Github</a>
+						&amp; <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysis_16687247255900/RoadCrashAnalysis">
+							Tableau</a>)</h4>
+					<p>A python-based project to help analyse the influential factors causing traffic accidents, locate
+						accident hot-spots and perform classification supervised machine learning to predict accident
+						severity. Analysis results are presented using Tableau.</p>
+				</div>
+				<div>
+					<h4>Online Grocery Store (Instacart) Analysis (<a href="https://github.com/nuki-susanti/Instacart-Analysis">Github</a>)</h4>
+					<p>A python-based project to perform an initial data and exploratory analysis in order to derive
+						insights and suggest strategies for better segmentation based on the provided criteria.</p>
+				</div>
+				<div>
+					<h4>Rockbuster Movie Rental Analysis (<a href="https://github.com/nuki-susanti/Rockbuster-Analysis">Github</a> &amp; <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RockbusterStealthDataAnalysis_16618096649900/RockbusterAnalysis?publish=yes">
+							Tableau</a>)</h4>
+					<p>SQL-based project using PostgreSQL database to analyse and essentially to answer business
+						questions of a movie rental company. Analysis results are presented using Tableau.</p>
+				</div>
 			</div>
-			<div class="resume_item resume_address">
-				<div class="resume_title">Contact</div>
+			<div class="resume_item resume_education">
+				<div class="resume_title">PROFESSIONAL EXPERIENCE</div>
 				<div class="resume_info">
-          <i class="fa fa-envelope icon"></i><a href="mailto:%20nukisusanti@gmail.com">nukisusanti@gmail.com</a><br>
-          <i class="fa fa-linkedin"></i><a href="https://www.linkedin.com/in/nuki-susanti-915594151/">linkedin.com/in/nukisusanti</a><br>
-          <i class="fa fa-map-marker"></i>Frankfurt, Germany<br>
-          <i class="fa fa-info"></i>Open to relocating within Germany or world-wide remote working<br>
+					<div class="resume_data">
+						<div class="year">2021 – Present</div>
+						<div class="content">
+							<h4>EHS (Environmental Health Safety) Consultant - ERM</h4>
+							<p>• Performed on-site assessment and desktop study of safety and environmental compliance
+								at logistics center, data center and constructions site under German regulations</p>
+							<p>• Performed operational audit of retail stores across central Europe (Germany, Czech
+								Republic and Austria)</p>
+							<p>• Achieved Global Recognition Award 2022 for ‘Client Focus Delivery’</p>
+						</div>
+					</div>
+					<div class="resume_data">
+						<div class="year">2021 – 2019</div>
+						<div class="content">
+							<h4>Research Assistant - Physikalisch-Technische Bundesanstalt (PTB)</h4>
+							<p>• Performed an experimental investigation of particle deposition and particle
+								electrification as potential ignition source in powder and grain industry</p>
+							<p>• Published the results as scientific publication. Available <a href="https://www.sciencedirect.com/science/article/abs/pii/S0921883120303411#section-cited-by">here</a>
+							</p>
+						</div>
+					</div>
+					<div class="resume_data">
+						<div class="year">2013 – 2016</div>
+						<div class="content">
+							<h4>Drilling Field Engineer - Halliburton</h4>
+							<p>• Performed measurement and logging while drilling, data quality control for onshore and
+								offshore wells</p>
+							<p>• Handled radioactive source and lithium battery</p>
+						</div>
+					</div>
 				</div>
 			</div>
-      <div class="resume_item resume_skills">
-				<div class="resume_title">TECHNICAL SKILLS</div>
+			<div class="resume_item resume_experience">
+				<div class="resume_title">Education</div>
 				<div class="resume_info">
-					<div class="skills_list">
-						<div class="skills_left">Data sourcing, cleaning and preparation</div>
-						<div class="skills_bar">
+					<div class="resume_data">
+						<div class="year">2022 - 2023</div>
+						<div class="content">
+							<h4>Data Analytics Program</h4>
+							<p>Careerfoundry, Online Learning and Mentoring</p>
 						</div>
 					</div>
-					<div class="skills_list">
-						<div class="skills_left">Data analysis, exploration and visualization</div>
-						<div class="skills_bar">
+					<div class="resume_data">
+						<div class="year">2017 - 2020</div>
+						<div class="content">
+							<h4>MSc, Process Safety and Environmental Engineering</h4>
+							<p>Magdeburg University – Germany</p>
 						</div>
 					</div>
-					<div class="skills_list">
-						<div class="skills_left">Machine learning</div>
-						<div class="skills_bar">
+					<div class="resume_data">
+						<div class="year">2007 - 2011</div>
+						<div class="content">
+							<h4>B.Eng, Chemical Engineering</h4>
+							<p>Diponegoro University – Indonesia</p>
 						</div>
-					</div>
-					<div class="skills_list">
-						<div class="skills_left">Python</div>
-						<div class="skills_bar">
-						</div>
-					</div>
-          <div class="skills_list">
-						<div class="skills_left">SQL</div>
-						<div class="skills_bar">
-						</div>
-					</div>
-          <div class="skills_list">
-						<div class="skills_left">Excel</div>
-						<div class="skills_bar">
-						</div>
-					</div>
-          <div class="skills_list">
-						<div class="skills_left">Tableau</div>
-						<div class="skills_bar">
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="resume_item resume_contact">
-				<div class="resume_title">LANGUAGE</div>
-				<div class="resume_info">
-					<div class="resume_subtitle">English</div>
-          <p class="resume_subinfo">Fluent</p>
-				</div>
-				<div class="resume_info">
-					<div class="resume_subtitle">German</div>
-					<p class="resume_subinfo">Professional Working Proficiency</p>
-				</div>
-        <div class="resume_info">
-					<div class="resume_subtitle">Indonesian</div>
-					<p class="resume_subinfo">Native</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="resume_right">
-		<div class="resume_item resume_namerole">
-			<div class="name">Nuki Susanti</div>
-			<div class="role">Data Analyst</div>
-		</div>
-    <div class="resume_item resume_education">
-      <div class="resume_title">Projects</div>
-      <div>
-        <h4>Road Crash Analysis (<a href="https://github.com/nuki-susanti/Road-Crash-Analysis">Github</a> &amp; <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysis_16687247255900/RoadCrashAnalysis"> Tableau</a>)</h4>
-        <p>A python-based project to help analyse the influential factors causing traffic accidents, locate accident hot-spots and perform classification supervised machine learning to predict accident severity. Analysis results are presented using Tableau.</p>
-      </div>
-      <div>
-        <h4>Online Grocery Store (Instacart) Analysis (<a href="https://github.com/nuki-susanti/Instacart-Analysis">Github</a>)</h4>
-        <p>A python-based project to perform an initial data and exploratory analysis in order to derive insights and suggest strategies for better segmentation based on the provided criteria.</p>
-      </div>
-      <div>
-        <h4>Rockbuster Movie Rental Analysis (<a href="https://github.com/nuki-susanti/Rockbuster-Analysis">Github</a> &amp; <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RockbusterStealthDataAnalysis_16618096649900/RockbusterAnalysis?publish=yes"> Tableau</a>)</h4>
-        <p>SQL-based project using PostgreSQL database to analyse and essentially to answer business questions of a movie rental company. Analysis results are presented using Tableau.</p>
-      </div>
-    </div>
-		<div class="resume_item resume_education">
-			<div class="resume_title">PROFESSIONAL EXPERIENCE</div>
-			<div class="resume_info">
-				<div class="resume_data">
-					<div class="year">2021 – Present</div>
-					<div class="content">
-						<h4>EHS (Environmental Health Safety) Consultant - ERM</h4>
-            <p>• Performed on-site assessment and desktop study of safety and environmental compliance at logistics center, data center and constructions site under German regulations</p>
-            <p>• Performed operational audit of retail stores across central Europe (Germany, Czech Republic and Austria)</p>
-            <p>• Achieved Global Recognition Award 2022 for ‘Client Focus Delivery’</p> 
-					</div>
-				</div>
-				<div class="resume_data">
-					<div class="year">2021 – 2019</div>
-					<div class="content">
-						<h4>Research Assistant - Physikalisch-Technische Bundesanstalt (PTB)</h4>
-            <p>• Performed an experimental investigation of particle deposition and particle electrification as potential ignition source in powder and grain industry</p>
-            <p>• Published the results as scientific publication. Available <a href="https://www.sciencedirect.com/science/article/abs/pii/S0921883120303411#section-cited-by">here</a></p> 
-					</div>
-				</div>
-				<div class="resume_data">
-					<div class="year">2013 – 2016</div>
-					<div class="content">
-						<h4>Drilling Field Engineer - Halliburton</h4>
-            <p>• Performed measurement and logging while drilling, data quality control for onshore and offshore wells</p>
-            <p>• Handled radioactive source and lithium battery</p> 
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="resume_item resume_experience">
-			<div class="resume_title">Education</div>
-			<div class="resume_info">
-				<div class="resume_data">
-					<div class="year">2022 - 2023</div>
-					<div class="content">
-						<h4>Data Analytics Program</h4>
-            <p>Careerfoundry, Online Learning and Mentoring</p>
-					</div>
-				</div>
-				<div class="resume_data">
-					<div class="year">2017 - 2020</div>
-					<div class="content">
-						<h4>MSc, Process Safety and Environmental Engineering</h4>
-            <p>Magdeburg University – Germany</p>
-					</div>
-				</div>
-				<div class="resume_data">
-					<div class="year">2007 - 2011</div>
-					<div class="content">
-						<h4>B.Eng, Chemical Engineering</h4>
-            <p>Diponegoro University – Indonesia</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+<div class="credit">Credit resume template by<a href="https://github.com/codingmarket07/Responsive-Resume-UI-Design">
+		codingmarket07</a>
 </div>
 
-<div class="credit">Credit resume template by<a href="https://github.com/codingmarket07/Responsive-Resume-UI-Design"> codingmarket07</a>
-</div>
 
       </div>
     </main><footer class="site-footer h-card">

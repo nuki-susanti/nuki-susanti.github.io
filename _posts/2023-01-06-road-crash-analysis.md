@@ -7,7 +7,7 @@ tags: [data mining, classification, supervised machine learning]
 ---
 
 <p align="center">
-  <img src="/assets/images/banners/car_accident.jpg" width="500">
+  <img src="/assets/images/banners/road_crash/car_accident.jpg" width="500">
   <em>Source: pixabay</em>
 </p>
 
@@ -38,7 +38,7 @@ This analysis, therefore, could be divided into two parts:
 
 Data mining methodology called CRISP-DM(Cross Industry Standard Process for Data Mining, without deployment) is used to during this analysis process.
 <p align="center">
-  <img src="/assets/images/banners/data_mining_steps.png">
+  <img src="/assets/images/banners/road_crash/data_mining_steps.png">
   <em>CRISP-DM Methodology</em>
 </p>
 
@@ -52,7 +52,7 @@ Data mining methodology called CRISP-DM(Cross Industry Standard Process for Data
   
   </p>
   <p align="center">
-    <img src="/assets/images/banners/data_cleaning.PNG" width="700">
+    <img src="/assets/images/banners/road_crash/data_cleaning.PNG" width="700">
     <em>Sample of data preparation documentation</em>
   </p>
   <li>Mining the data</li>
@@ -71,12 +71,12 @@ Data mining methodology called CRISP-DM(Cross Industry Standard Process for Data
 #### Accident distribution - How severe are accidents are on the road?
 
 <p align="center">
-  <img src="/assets/images/banners/accident_dist_by_severity.png" width="300">
+  <img src="/assets/images/banners/road_crash/accident_dist_by_severity.png" width="300">
   <em>Accident distribution by accident severity</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/avg_cas_by_severity.png" width="300">
+  <img src="/assets/images/banners/road_crash/avg_cas_by_severity.png" width="300">
   <em>Average total casualty by accident severity</em>
 </p>
 
@@ -85,17 +85,17 @@ Pie chart shows property damage with no casualty (PDO) as the lightest level of 
 #### Time-based analysis: When do most accident happens, in hourly basis?
 
 <p align="center">
-  <img src="/assets/images/banners/accident_dist_by_hour.png" width="500">
+  <img src="/assets/images/banners/road_crash/accident_dist_by_hour.png" width="500">
   <em>Accident distribution by hour</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/accident_number_by_hour.png" width="800" height="300">
+  <img src="/assets/images/banners/road_crash/accident_number_by_hour.png" width="800" height="300">
   <em>Percentage of number of accidents by hour</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/avg_cas_by_hour.png" width="800" height="200">
+  <img src="/assets/images/banners/road_crash/avg_cas_by_hour.png" width="800" height="200">
   <em>Average total casualty by hour</em>
 </p>
 
@@ -104,17 +104,17 @@ In general, accidents occurrence starts to rise in the morning rush-hour, at 08:
 #### Time-based analysis: When do most accident happens, in daily basis?
 
 <p align="center">
-  <img src="/assets/images/banners/accident_dist_by_day.png" width="500">
+  <img src="/assets/images/banners/road_crash/accident_dist_by_day.png" width="500">
   <em>Accident distribution by day</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/accident_number_by_day.png" width="800" height="300">
+  <img src="/assets/images/banners/road_crash/accident_number_by_day.png" width="800" height="300">
   <em>Percentage of number of accidents by day</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/avg_cas_by_day.png" width="800" height="200">
+  <img src="/assets/images/banners/road_crash/avg_cas_by_day.png" width="800" height="200">
   <em>Average total casualty by day</em>
 </p>
 
@@ -125,17 +125,17 @@ Generally, average casualty on fatality and serious injury remains stable during
 #### Time-based analysis: When do most accident happens, in monthly basis?
 
 <p align="center">
-  <img src="/assets/images/banners/accident_dist_by_month.png" width="500">
+  <img src="/assets/images/banners/road_crash/accident_dist_by_month.png" width="500">
   <em>Accident distribution by month</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/accident_number_by_month.png" width="800" height="300">
+  <img src="/assets/images/banners/road_crash/accident_number_by_month.png" width="800" height="300">
   <em>Percentage of number of accidents by month</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/avg_cas_by_month.png" width="800" height="200">
+  <img src="/assets/images/banners/road_crash/avg_cas_by_month.png" width="800" height="200">
   <em>Average total casualty by month</em>
 </p>
 
@@ -146,17 +146,17 @@ In terms of average casualty, interestingly, only fatality has seasonality. It i
 #### People-based analysis: Who are at risk? - Sex, alcohol and drugs involvement
 
 <p align="center">
-  <img src="/assets/images/banners/accident_dist_by_sex.png" width="300">
+  <img src="/assets/images/banners/road_crash/accident_dist_by_sex.png" width="300">
   <em>Accident distribution by sex</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/avg_cas_by_sex.png" width="300" height="450">
+  <img src="/assets/images/banners/road_crash/avg_cas_by_sex.png" width="300" height="450">
   <em>Average total casualty by sex</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/drugs_alcohol_by_sex.png" width="800" height="300">
+  <img src="/assets/images/banners/road_crash/drugs_alcohol_by_sex.png" width="800" height="300">
   <em>Accident distribution by drugs and alcohol involvement</em>
 </p>
 
@@ -165,17 +165,17 @@ Ca. 60% of the accidents happens to be male and 40% is female. However, in avera
 #### People-based analysis: Who are at risk? - Age
 
 <p align="center">
-  <img src="/assets/images/banners/accident_dist_by_age.png" width="500">
+  <img src="/assets/images/banners/road_crash/accident_dist_by_age.png" width="500">
   <em>Accident distribution by age</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/accident_number_by_age.png" width="800" height="300">
+  <img src="/assets/images/banners/road_crash/accident_number_by_age.png" width="800" height="300">
   <em>Percentage of number of accidents by age</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/avg_cas_by_age.png" width="800" height="200">
+  <img src="/assets/images/banners/road_crash/avg_cas_by_age.png" width="800" height="200">
   <em>Average total casualty by age</em>
 </p>
 
@@ -186,17 +186,17 @@ The highest casualty on fatality accidents in average still happen with people 2
 #### Weather-based analysis - How does weather affect accident occurences?
 
 <p align="center">
-  <img src="/assets/images/banners/raining_vs_not_raining.png" width="200">
+  <img src="/assets/images/banners/road_crash/raining_vs_not_raining.png" width="200">
   <em>Weather condition: Raining or not raining?</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/wet_vs_dry.png" width="200">
+  <img src="/assets/images/banners/road_crash/wet_vs_dry.png" width="200">
   <em>Road moisture: wet or dry?</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/night_vs_day.png" width="200">
+  <img src="/assets/images/banners/road_crash/night_vs_day.png" width="200">
   <em>Day or Night?</em>
 </p>
 
@@ -205,17 +205,17 @@ All those weather-related features are conditions collected at the crash locatio
 #### Spatial analysis - Is there any accident 'hot-spot'?
 
 <p align="center">
-  <img src="/assets/images/banners/crash_map.png" width="600">
+  <img src="/assets/images/banners/road_crash/crash_map.png" width="600">
   <em>Crash map (circle marker map)</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/cluster_map2.png" width="600">
+  <img src="/assets/images/banners/road_crash/cluster_map2.png" width="600">
   <em>Crash map (cluster map)</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/cluster_map.png" width="600">
+  <img src="/assets/images/banners/road_crash/cluster_map.png" width="600">
   <em>Crash map (cluster map - zoomed out)</em>
 </p>
 
@@ -228,17 +228,17 @@ By plotting each accident spots based on its longitude and latitude using folium
 Latitude and longitude of city center Adelaide city were used to calculate the distance from city center to the accident scene.
 
 <p align="center">
-  <img src="/assets/images/banners/accident_number_by_distance.png" width="800">
+  <img src="/assets/images/banners/road_crash/accident_number_by_distance.png" width="800">
   <em>Number of accidents by the distance to Adelaide city center</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/distance_by_severity.png" width="800">
+  <img src="/assets/images/banners/road_crash/distance_by_severity.png" width="800">
   <em>Crash distance distribution by severity</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/linear_regression.png" width="600">
+  <img src="/assets/images/banners/road_crash/linear_regression.png" width="600">
   <em>Linear regression: Distance to city center vs. Number of accidents</em>
 </p>
 
@@ -251,7 +251,7 @@ Interestingly, most fatalities incidents happened to be in close to the city cen
 All previously analyzed factors (time, age, sex, road system and distance to city center) seem to be influential to the accident severity. However, it is not clear  to what extent those factors would impact severity. In other words, the order of importance is analyzed using classification model.
 
 <p align="center">
-  <img src="/assets/images/banners/accident_hist_by_casualty.png" width="600">
+  <img src="/assets/images/banners/road_crash/accident_hist_by_casualty.png" width="600">
   <em>Severity classes as target (dependent) variable</em>
 </p>
 
@@ -260,19 +260,19 @@ Bar chart above shows that we deal with highly imbalanced dataset that would del
 There are of course techniques to handle the imbalance dataset problem in classification. I would link good articles for that [here](https://towardsdatascience.com/guide-to-classification-on-imbalanced-datasets-d6653aa5fa23) and [here](https://www.analyticsvidhya.com/blog/2017/03/imbalanced-data-classification/). However, for the sake of simplicity, binary classification was choosen consiting of injury/death group (sum of fatality, serious and minor injury) and PDO.
 
 <p align="center">
-  <img src="/assets/images/banners/accident_hist_by_casualty2.png" width="600">
+  <img src="/assets/images/banners/road_crash/accident_hist_by_casualty2.png" width="600">
   <em>Severity classes as target (dependent) variable - Binary classification</em>
 </p>
 
 Classification models of logistic regression, decision tree and random forest were used and the results were compared. The best result was given by random forest classifier, giving accuracy of 74.3% compared to the logistics regression (66.8%) and decision tree (61.8%).
 
 <p align="center">
-  <img src="/assets/images/banners/conf_mat.png" width="600">
+  <img src="/assets/images/banners/road_crash/conf_mat.png" width="600">
   <em>Confusion matrix - Random forest</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/feature_importance.png" width="700" height="350">
+  <img src="/assets/images/banners/road_crash/feature_importance.png" width="700" height="350">
   <em>Feature importance - Random forest</em>
 </p>
 
