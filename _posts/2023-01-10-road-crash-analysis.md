@@ -52,7 +52,7 @@ Data mining methodology called CRISP-DM(Cross Industry Standard Process for Data
   
   </p>
   <p align="center">
-    <img src="/assets/images/banners/road_crash/data_cleaning.PNG" width="700">
+    <img src="/assets/images/banners/road_crash/data_cleaning.png" width="700">
     <em>Sample of data preparation documentation</em>
   </p>
   <li>Mining the data</li>

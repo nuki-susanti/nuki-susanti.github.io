@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-12T09:49:50+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun of data learning journey</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">How Safe Are We On The Road? - Road Crash Analysis</title><link href="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" rel="alternate" type="text/html" title="How Safe Are We On The Road? - Road Crash Analysis" /><published>2023-01-10T00:00:00+07:00</published><updated>2023-01-10T00:00:00+07:00</updated><id>http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html"><![CDATA[<p align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-12T12:11:43+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun of data learning journey</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">How Safe Are We On The Road? - Road Crash Analysis</title><link href="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" rel="alternate" type="text/html" title="How Safe Are We On The Road? - Road Crash Analysis" /><published>2023-01-10T00:00:00+07:00</published><updated>2023-01-10T00:00:00+07:00</updated><id>http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html"><![CDATA[<p align="center">
   <img src="/assets/images/banners/road_crash/car_accident.jpg" width="500" />
   <em>Source: pixabay</em>
 </p>
@@ -45,7 +45,7 @@
   
   </p>
   <p align="center">
-    <img src="/assets/images/banners/road_crash/data_cleaning.PNG" width="700" />
+    <img src="/assets/images/banners/road_crash/data_cleaning.png" width="700" />
     <em>Sample of data preparation documentation</em>
   </p>
   <li>Mining the data</li>
