@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-12T09:31:39+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun of data learning journey</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">How Safe Are We On The Road? - Road Crash Analysis</title><link href="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" rel="alternate" type="text/html" title="How Safe Are We On The Road? - Road Crash Analysis" /><published>2023-01-10T00:00:00+07:00</published><updated>2023-01-10T00:00:00+07:00</updated><id>http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html"><![CDATA[<p align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-12T09:49:50+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun of data learning journey</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">How Safe Are We On The Road? - Road Crash Analysis</title><link href="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" rel="alternate" type="text/html" title="How Safe Are We On The Road? - Road Crash Analysis" /><published>2023-01-10T00:00:00+07:00</published><updated>2023-01-10T00:00:00+07:00</updated><id>http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html"><![CDATA[<p align="center">
   <img src="/assets/images/banners/road_crash/car_accident.jpg" width="500" />
   <em>Source: pixabay</em>
 </p>
@@ -422,13 +422,13 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part7b.png" width="600" />
 </p>
 
-<h3 id="8-detecting-collision-with-its-own-body">8. Detecting collision with its own body</h3>
+<h4 id="8-detecting-collision-with-its-own-body">8. Detecting collision with its own body</h4>
 
 <p align="center">
   <img src="/assets/images/banners/snake_game/part8.png" width="600" />
 </p>
 
-<h3 id="9-adding-difficulty-levels">9. Adding difficulty levels</h3>
+<h4 id="9-adding-difficulty-levels">9. Adding difficulty levels</h4>
 
 <p>This is an additional feature I added at the beginning of the game, but the last step I took. It can be achieved by changing time.sleep after importing time library. Easy was set to be 1s, medium 0.5s and hard was 0.1s.</p>
 

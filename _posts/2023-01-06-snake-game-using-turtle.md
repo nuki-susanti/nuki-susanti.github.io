@@ -124,13 +124,13 @@ I also made ‘food.py’. file to write food class. I played a bit with shape a
   <img src="/assets/images/banners/snake_game/part7b.png" width="600">
 </p>
 
-### 8. Detecting collision with its own body
+#### 8. Detecting collision with its own body
 
 <p align="center">
   <img src="/assets/images/banners/snake_game/part8.png" width="600">
 </p>
 
-### 9. Adding difficulty levels
+#### 9. Adding difficulty levels
 
 This is an additional feature I added at the beginning of the game, but the last step I took. It can be achieved by changing time.sleep after importing time library. Easy was set to be 1s, medium 0.5s and hard was 0.1s.
 
