@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-06T14:37:18+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun of data learning journey</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">How Safe Are We On The Road? - Road Crash Analysis</title><link href="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/06/road-crash-analysis.html" rel="alternate" type="text/html" title="How Safe Are We On The Road? - Road Crash Analysis" /><published>2023-01-06T00:00:00+07:00</published><updated>2023-01-06T00:00:00+07:00</updated><id>http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/06/road-crash-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/06/road-crash-analysis.html"><![CDATA[<p align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-12T09:31:39+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun of data learning journey</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">How Safe Are We On The Road? - Road Crash Analysis</title><link href="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" rel="alternate" type="text/html" title="How Safe Are We On The Road? - Road Crash Analysis" /><published>2023-01-10T00:00:00+07:00</published><updated>2023-01-10T00:00:00+07:00</updated><id>http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html"><![CDATA[<p align="center">
   <img src="/assets/images/banners/road_crash/car_accident.jpg" width="500" />
   <em>Source: pixabay</em>
 </p>
@@ -305,7 +305,155 @@ For instance:</p>
 
 <p>Find the code for this analysis <a href="https://github.com/nuki-susanti/Road-Crash-Analysis">Github</a><br />
 Find tableau presentation <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysis_16687247255900/RoadCrashAnalysis">Tableau</a><br />
-Connect with me! <a href="https://www.linkedin.com/in/nuki-susanti-915594151/">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="data analysis" /><category term="data science" /><category term="machine learning" /><category term="data mining" /><category term="classification" /><category term="supervised machine learning" /><summary type="html"><![CDATA[Source: pixabay]]></summary></entry><entry><title type="html">Rockbuster - Movie Rental Analysis</title><link href="http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html" rel="alternate" type="text/html" title="Rockbuster - Movie Rental Analysis" /><published>2022-12-19T00:00:00+07:00</published><updated>2022-12-19T00:00:00+07:00</updated><id>http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis</id><content type="html" xml:base="http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html"><![CDATA[<p align="center">
+Connect with me! <a href="https://www.linkedin.com/in/nuki-susanti-915594151/">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="data analysis" /><category term="data science" /><category term="machine learning" /><category term="data mining" /><category term="classification" /><category term="supervised machine learning" /><summary type="html"><![CDATA[Source: pixabay]]></summary></entry><entry><title type="html">Building Snake Game Using Python Turtle</title><link href="http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html" rel="alternate" type="text/html" title="Building Snake Game Using Python Turtle" /><published>2023-01-06T00:00:00+07:00</published><updated>2023-01-06T00:00:00+07:00</updated><id>http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle</id><content type="html" xml:base="http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html"><![CDATA[<p align="center">
+ <img src="/assets/images/banners/snake_game/cover_game.jpg" width="600" />
+ Source: <a href="https://www.emulatorpc.com/snake-game//">emulatorpc.com</a>
+</p>
+
+<h3 id="overview"><strong>Overview</strong></h3>
+<p>Being non-developer, but always dealing with code here and there, I have been feeling, my coding skill is lacking. So, this week, I wanted to refresh my programming skill and revisit a programming concept I have learned in the past, namely OOP (Object-Oriented Programming). I did some quick research on the small project I could take as exercise and come across old game I used to play on my old 3350 Nokia. Yes, snake game.</p>
+
+<p>I use python as the main programming language and found that it comes with pre-installed library, turtle, thus it doesn’t need to be installed externally. Turtle is a pre-installed Python library that enables users to create pictures and shapes by providing them with a virtual canvas. As this game is very simple and we all might be familiar with the rules, I decided to re-create this game using python and turtle. 
+Turtle documentation can be found <a href="https://docs.python.org/3/library/turtle.html">here</a>.</p>
+
+<p style="margin-bottom:-30px"></p>
+
+<h3 id="object-oriented-programming"><strong>Object-Oriented Programming</strong></h3>
+<p>As opposed to procedural, object-oriented programming uses concept of class and object. I always imagine that class is like building blocks when playing or building Lego. It is reusable piece of ‘tools’ that allows me to re-create an object without having to build everything from the scratch, which is why it is called ‘blueprint’. I really liked this concept when it was introduced to me at the first time because it requires less line of code to achieve the same goal. In addition, my code appears to be tidy and neat because OOP hides the ‘main machine’ on the back. From developer POV, OOP creates more maintainable code.</p>
+
+<p>Class has attributes and methods. Attributes are everything that an object has, such as manufacturing year, color, shape, etc., while methods represent the abilities of an object; can it fly, talk or cook? It is built using method called constructor ‘<strong>init</strong>’. When this method is called, it allows the class to initialize the attributes of the class.</p>
+
+<p>Class also allows us to be very flexible because it could inherit other’s class attributes and methods or called parent class. For example, the scoreboard, food and speed classes as subclasses (scoreboard.py, food.py, speed.py) inherits all attributes and methods from Turtle class as their parent class. This means, we could use all functionalities from Turtle class without repeating code and custom it as we wish. In python, this concept is called ‘inheritance’. What we need to do is only importing the class we want to inherit and calling the ‘<strong>super()</strong>’ method. Please note that I only use single inheritance here.</p>
+
+<p style="margin-bottom:-30px"></p>
+
+<h3 id="building-snake-game"><strong>Building Snake Game</strong></h3>
+<p>For this game, I broke down the steps into smaller ones to identify what I should do first, second, third and so on. In addition, I divided the files into several files that it won’t clutter the main file (‘app.py’). At the end, I happened to have five separate python files.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/python_files.png" width="200" />
+</p>
+
+<p>Beforehand, turtle library (also time) needs to be imported.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/library.png" width="200" />
+</p>
+
+<p style="margin-bottom:-30px"></p>
+
+<h4 id="1-setting-up-the-screen">1.	Setting up the screen</h4>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part1a.png" width="600" />
+</p>
+
+<p>To prevent the screen from flashing away immediately, ‘exitonclick’ needs to be added at the bottom of the app.py file.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part1b.png" width="600" />
+</p>
+
+<h4 id="2-creating-snake-body">2.	Creating snake body</h4>
+
+<p>I made the initial snake or seed of snake using only 2 blocks of square by initializing turtle object from turtle class. The default size of each block is 20 x 20. The starting position of initial snake is supposed to be at the center of the screen (default is (0,0)). Here tuple is used to define the starting point.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part2a.png" width="600" />
+</p>
+
+<p>Here I initialized the snake object from the snake class that I previously built.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part2b.png" width="600" />
+</p>
+
+<h4 id="3-moving-the-snake">3.	Moving the snake</h4>
+
+<p>Still coming from the same snake class but using different method. This method aims for the body of the snake to follow its head. Remember that snake is made of two different parts of turtle blocks and each of block could move independently.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part3.png" width="600" />
+</p>
+
+<h4 id="4-controlling-the-snake-using-keypress">4.	Controlling the snake using keypress</h4>
+
+<p>This step serves for controlling purpose using keyboard up, down, left and right.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part4a.png" width="600" />
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part4b.png" width="600" />
+</p>
+
+<h4 id="5-tracking-the-score">5.	Tracking the score</h4>
+
+<p>I made separate a file to note and track the score (‘scoreboard.py’).</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part5.png" width="600" />
+</p>
+
+<h4 id="6-feeding-on-the-food">6.	Feeding on the food</h4>
+
+<p>I also made ‘food.py’. file to write food class. I played a bit with shape and color of the food. It has turtle shape (I believe a real snake will have hard time when it tries to feed on turtle :)) and its color varies following the list of color specified at the top of the food.py file.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part6a.png" width="600" />
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part6b.png" width="600" />
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part6c.png" width="600" />
+</p>
+
+<h4 id="7-detecting-collision-with-the-wall">7.	Detecting collision with the wall</h4>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part7a.png" width="600" />
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part7b.png" width="600" />
+</p>
+
+<h3 id="8-detecting-collision-with-its-own-body">8. Detecting collision with its own body</h3>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part8.png" width="600" />
+</p>
+
+<h3 id="9-adding-difficulty-levels">9. Adding difficulty levels</h3>
+
+<p>This is an additional feature I added at the beginning of the game, but the last step I took. It can be achieved by changing time.sleep after importing time library. Easy was set to be 1s, medium 0.5s and hard was 0.1s.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part9a.png" width="600" />
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/part9b.png" width="600" />
+</p>
+
+<h3 id="playing-the-game"><strong>Playing the game</strong></h3>
+
+<p>Here is the final look of the game. I have fun experimenting and trying it myself! :)</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/game_a.png" width="600" />
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/snake_game/game_b.png" width="600" />
+</p>
+
+<p>Find the code in <a href="https://github.com/nuki-susanti/Snake-Game">Github</a><br />
+Connect with me! <a href="https://www.linkedin.com/in/nuki-susanti-915594151/">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="coding" /><category term="game" /><category term="coding" /><category term="object-oriented programming" /><category term="oop" /><category term="game" /><summary type="html"><![CDATA[Source: emulatorpc.com]]></summary></entry><entry><title type="html">Rockbuster - Movie Rental Analysis</title><link href="http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html" rel="alternate" type="text/html" title="Rockbuster - Movie Rental Analysis" /><published>2022-12-19T00:00:00+07:00</published><updated>2022-12-19T00:00:00+07:00</updated><id>http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis</id><content type="html" xml:base="http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html"><![CDATA[<p align="center">
  <img src="/assets/images/banners/rockbuster/rockbuster.png" width="500" />
 </p>
 
