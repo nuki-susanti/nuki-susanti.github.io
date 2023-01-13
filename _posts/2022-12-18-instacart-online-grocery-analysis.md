@@ -221,7 +221,7 @@ This analysis aims to discover if there is a connection between age and family s
   <img src="/assets/images/banners/instacart/bar_income_per_famstats.png" width="700" height="400">
 </p>
 
- The majority of customers is from the age of 25-74 with rather equal proportion. The average income of the customers lays around \\$100,000. In general, income rises with age as shown by scatter plot of age vs income. Additionally, the majority age group of 20-40 years has a income range up to \\$200,000 and small portion of this group manage to earn up to \\$400,000. At the age of 41 onwards, the income of majority of this group rises up to \\$300,000. Small portion of thise group, however, earns higher up to \\$600,000.
+ The majority of customers is from the age of 25-74 with rather equal proportion. The average income of the customers lays around $100,000. In general, income rises with age as shown by scatter plot of age vs income. Additionally, the majority age group of 20-40 years has a income range up to $200,000 and small portion of this group manage to earn up to $400,000. At the age of 41 onwards, the income of majority of this group rises up to $300,000. Small portion of thise group, however, earns higher up to $600,000.
 
  <p align="center">
   <img src="/assets/images/banners/instacart/hist_orders_per_famstats.png" width="700" height="400">
@@ -231,10 +231,10 @@ This analysis aims to discover if there is a connection between age and family s
   <img src="/assets/images/banners/instacart/scat_income_order.png" width="500">
 </p>
 
-Bar chart above shows that family status does not influence the average number of orders (\\$17.8 - \\$18) that customer placed which could mean that Instacart products reach all family models. Scatter plot shows that there is no relationship between number of orders that customer placed and their corresponding income. It is however revealed, that most orders are placed by customers who earn less than \\$200,000. It is also linked to our previous finding that the majority of our customers have family status of married with average income of \\$100,000.
+Bar chart above shows that family status does not influence the average number of orders ($17.8 - $18) that customer placed which could mean that Instacart products reach all family models. Scatter plot shows that there is no relationship between number of orders that customer placed and their corresponding income. It is however revealed, that most orders are placed by customers who earn less than $200,000. It is also linked to our previous finding that the majority of our customers have family status of married with average income of $100,000.
 
 **Recommendations**:<br/>
-As there is no connection between family status and income in terms of ordering habit, so ads should be targetted to each of this group individually containing their corresponding products. Ads for low and mid-range products will attracts more order traffic as most orders are placed by customers who earn less than \\$200,000.
+As there is no connection between family status and income in terms of ordering habit, so ads should be targetted to each of this group individually containing their corresponding products. Ads for low and mid-range products will attracts more order traffic as most orders are placed by customers who earn less than $200,000.
 
 ####  Customer demographic classifications
 
@@ -246,9 +246,9 @@ As there is no connection between family status and income in terms of ordering 
   <img src="/assets/images/banners/instacart/bar_spender_flag.png" width="500">
 </p>
 
-> Spender flag is calculated for each 'user_id' based on the average price across all their orders.
-> Customer who makes order less than \\$10 is labbelled 'Low spender'.
-> Customer who makes order equal to or more than \\$10 is labbelled 'High spender'.
+> Spender flag is calculated for each 'user_id' based on the average price across all their orders.<br/>
+> - Customer who makes order less than $10 is labbelled 'Low spender'.<br/>
+> - Customer who makes order equal to or more than $10 is labbelled 'High spender'.
 
 As depicted by above bar charts, we could clearly see that both high spender and low spender customers are located in the South region followed by West, Midwest and Northeast. However, as region is a group based on location, the number of states in each group may not be equal. For this purpose, let's see how many states in each regions.
 
