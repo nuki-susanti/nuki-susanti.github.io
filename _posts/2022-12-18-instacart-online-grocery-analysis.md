@@ -100,7 +100,7 @@ Ads of high range products should be started at 10 AM until around 6 PM.
 </p>
 
 >* If a product costs less than or equal to $5, it will be labeled 'Low-range product'.
->* If a product costs more than \\$5 but less than \\$15, it will be labeled 'Mid-range product'.
+>* If a product costs more than $5 but less than $15, it will be labeled 'Mid-range product'.
 >* If a product costs more than or equal to $15, it will be labeled 'High-range product'.
 
 The histogram above shows the range of product prices. The lowest, highest and average price are $1, $25 and $7.4, respectively. The majority of instacart products is concentrated in the low to mid-range group and only 1.3% of all products is high-range product. From the order pie chart (second pie chart), it can be seen that the products availability for each group corresponds to the number of order.

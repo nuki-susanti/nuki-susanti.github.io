@@ -23,7 +23,7 @@ The objective of this road safety analysis to help analyze the influential facto
 <p style="margin-bottom:-30px"></p>
 
 ### **Data**
-* Open source road crash and casualties data from 2021 in South Australia collected by Department for Infrastructure and Transport. Merged and cleaned data results in 21,242 cases of traffic accidents. It can be found [here](https://data.sa.gov.au/data/dataset/road-crash-data/resource/1057e9ae-4672-4123-9c1d-1877483da401?inner_span=True).
+* Open source road crash and casualties data from 2021 in South Australia collected by Department for Infrastructure and Transport. Cleaned and merged data results in 21,242 cases of traffic accidents. It can be found [here](https://data.sa.gov.au/data/dataset/road-crash-data/resource/1057e9ae-4672-4123-9c1d-1877483da401?inner_span=True).
 * [Data information and dictionary](https://data.sa.gov.au/data/dataset/road-crash-data/resource/02fb14f9-8dcb-4a59-863c-5f7cc3ae1832)
 * [Geojson of South Australian suburb boundaries](https://data.sa.gov.au/data/dataset/suburb-boundaries)
 
@@ -39,7 +39,7 @@ This analysis, therefore, could be divided into two parts:
 Data mining methodology called CRISP-DM(Cross Industry Standard Process for Data Mining, without deployment) is used to during this analysis process.
 <p align="center">
   <img src="/assets/images/banners/road_crash/data_mining_steps.png">
-  <em>CRISP-DM Methodology</em>
+  <em>CRISP-DM Methodology. Source by author.</em>
 </p>
 
 <ol>
@@ -200,7 +200,7 @@ The highest casualty on fatality accidents in average still happen with people 2
   <em>Day or Night?</em>
 </p>
 
-All those weather-related features are conditions collected at the crash locations. It is interesting that most accidents happen in the clear weather condtions, opposite to what usually people assume. In othe words, weather play little influence to accident events.
+All those weather-related features are conditions collected at the crash locations. It is interesting that most accidents happen in the clear weather condtions, unlike what people normally assume. In other words, weather play little influence to accident events.
 
 #### Spatial analysis - Is there any accident 'hot-spot'?
 
@@ -219,7 +219,7 @@ All those weather-related features are conditions collected at the crash locatio
   <em>Crash map (cluster map - zoomed out)</em>
 </p>
 
-There is indeed accident 'hotspot' where most accidents happen, which is clustered around Adelaide city center. The hypothesis could be formulated: **The more complicated the road system is (meaning many junctions, divided roads, etc.) which represents downtown area, the higher the number of accidents will be.**
+There is indeed accident 'hotspot' where most accidents happen, which is clustered around Adelaide city center. From this point, a hypothesis could be then formulated: **The more complicated the road system (meaning many junctions, divided roads, etc. which represents downtown area), the higher the number of accidents will be.**
 
 By plotting each accident spots based on its longitude and latitude using folium, it can be shown where accidents cluster and its number. The accident scenes can be zoomed out until street level to so see at what kind of road system the accident happens.
 

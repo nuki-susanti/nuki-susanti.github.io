@@ -37,6 +37,16 @@ Rockbuster company and data being used are all fictious. The dataset containing 
 ### **Process**
 This is SQL-based project using PostgreSQL database to analyse and essentially to answer business questions of a movie rental company. I began by drafting data dictionary that can be found [here](https://github.com/nuki-susanti/Rockbuster-Analysis/blob/main/Data_Dictionary.pdf).
 
+<p align="center">
+  <img src="/assets/images/banners/rockbuster/erd.png" width="900">
+  <em>Entity Relationship Diagram (ERD)</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/rockbuster/data_dictionary.png">
+  <em>Sample of data dictionary</em>
+</p>
+
 ### Exploratory Data Analysis (EDA)
 
 <p style="margin-bottom:-30px"></p>
