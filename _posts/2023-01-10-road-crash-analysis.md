@@ -310,4 +310,4 @@ Finally, those insights could help creating safer environment and less financial
 
 Find the code for this analysis [Github](https://github.com/nuki-susanti/Road-Crash-Analysis)\
 Find tableau presentation [Tableau](https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysis_16687247255900/RoadCrashAnalysis)\
-Connect with me! [Linkedin](https://www.linkedin.com/in/nuki-susanti-915594151/)
+Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/)

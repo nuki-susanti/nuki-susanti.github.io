@@ -155,4 +155,4 @@ Here is the final look of the game. I have fun experimenting and trying it mysel
 </p>
 
 Find the code in [Github](https://github.com/nuki-susanti/Snake-Game)\
-Connect with me! [Linkedin](https://www.linkedin.com/in/nuki-susanti-915594151/)
+Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/)

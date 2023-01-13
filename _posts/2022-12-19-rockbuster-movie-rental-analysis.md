@@ -184,4 +184,4 @@ Rockbuster and dataset used are fictious, therefore, this project is customized 
 
 Find the code for this analysis [Github](https://github.com/nuki-susanti/Rockbuster-Analysis)\
 Find visualization in [Tableau](https://public.tableau.com/app/profile/nuki.susanti/viz/RockbusterStealthDataAnalysis_16618096649900/RockbusterAnalysis?publish=yes)\
-Connect with me! [Linkedin](https://www.linkedin.com/in/nuki-susanti-915594151/)
+Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/)
