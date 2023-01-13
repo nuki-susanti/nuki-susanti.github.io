@@ -43,7 +43,7 @@ current year: {currentYear}
 copyright: "(cleft) {currentYear} {author}"
 
 description: >- # this means to ignore newlines until "baseurl:"
-  A fun of data learning journey
+  A fun learning journeys of data
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. https://example.com
@@ -172,8 +172,8 @@ banner:
 #   background: "rgba(0, 0, 0, 0.8)"  # Banner background (Could be a image)
 #   height: "640px"         # Banner default height
 #   min_height: null        # Banner minimum height
-    heading_style: "color: #333"          # Custom heading style (e.g. "font-weight: bold; text-decoration: underline")
-    subheading_style: "color: #282A3A"  # Custom subheading style (e.g. color: gold)
+    heading_style: "color: #333; font-size: 48px"          # Custom heading style (e.g. "font-weight: bold; text-decoration: underline")
+    subheading_style: "color: #282A3A; font-size: 26px"  # Custom subheading style (e.g. color: gold)
 
 # Excerpt size setting
 # excerpt_size: 350
