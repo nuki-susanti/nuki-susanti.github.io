@@ -11,12 +11,12 @@ tags: [database, PostgreSQL, SQL, exploratory data analysis, EDA, visualization]
 </p>
 
 
-### **Overview - Business problem** 
+## **Overview - Business problem** 
 Rockbuster Stealth LLC is a movie rental company that used to have stores around the world. Facing stiff competition from streaming services such as Netflix and Amazon Prime, the Rockbuster Stealth management team is planning to use its existing movie licenses to launch an online video rental service in order to stay competitive.
 
 <p style="margin-bottom:-30px"></p>
 
-### **Goal**
+## **Goal**
 This analysis is intended to answer a series of business key questions and derive data-driven answers for company strategy in 2020.
 <ol style="margin-top:-20px;">
 <li>Which movies contributed the most/least to revenue gain?</li>
@@ -29,12 +29,12 @@ Essentially, this project aims to learn relational database management systems (
 
 <p style="margin-bottom:-30px"></p>
 
-### **Data**
+## **Data**
 Rockbuster company and data being used are all fictious. The dataset containing information about Rockbuster’s film inventory, customers, and payments, among other things is provided by Careerfoundry and can be found [here](https://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip).
 
 <p style="margin-bottom:-30px"></p>
 
-### **Process**
+## **Process**
 This is SQL-based project using PostgreSQL database to analyse and essentially to answer business questions of a movie rental company. I began by drafting data dictionary that can be found [here](https://github.com/nuki-susanti/Rockbuster-Analysis/blob/main/Data_Dictionary.pdf).
 
 <p align="center">
@@ -47,11 +47,11 @@ This is SQL-based project using PostgreSQL database to analyse and essentially t
   <em>Sample of data dictionary</em>
 </p>
 
-### Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis (EDA)
 
 <p style="margin-bottom:-30px"></p>
 
-#### Rockbuster overview
+### Rockbuster overview
 
 <p align="center">
   <img src="/assets/images/banners/rockbuster/overview_1.png">
@@ -75,7 +75,7 @@ This is SQL-based project using PostgreSQL database to analyse and essentially t
   <img src="/assets/images/banners/rockbuster/overview.png" width="400">
 </p>
 
-#### Movies and Revenue by rating and genre 
+### Movies and Revenue by rating and genre 
 
 <p align="center">
   <img src="/assets/images/banners/rockbuster/movies_revenue_by_rating.png">
@@ -104,7 +104,7 @@ This is SQL-based project using PostgreSQL database to analyse and essentially t
 >> R - Restricted, Children Under 17 Require Accompanying Parent or Adult Guardian. <br/>
 >> G - General Audiences, All Ages Admitted. <br/>
 
-#### Most/least profitable movies
+### Most/least profitable movies
 
 <p align="center">
   <img src="/assets/images/banners/rockbuster/revenue_by_title.png">
@@ -120,11 +120,11 @@ The extracted data from above query is presented below.
   <img src="/assets/images/banners/rockbuster/least_profitable_movie.png" width="300">
 </p>
 
-#### Average rental duration
+### Average rental duration
 
 As discovered previously, the average rental duration obtained from SQL query is 4.985 days or 5 days.
 
-#### Revenue by country
+### Revenue by country
 
 <p align="center">
   <img src="/assets/images/banners/rockbuster/revenue_by_country.png">
@@ -138,7 +138,7 @@ As discovered previously, the average rental duration obtained from SQL query is
   <img src="/assets/images/banners/rockbuster/sales_figure.png" width="600">
 </p>
 
-#### Top customers
+### Top customers
 
 <p align="center">
   <img src="/assets/images/banners/rockbuster/top_customer_sql.png">
@@ -148,7 +148,7 @@ As discovered previously, the average rental duration obtained from SQL query is
   <img src="/assets/images/banners/rockbuster/top_customer.png" width="800">
 </p>
 
-### Conclusion
+## Conclusion
 
 <ul>
   <li style="font-weight: bold">Popularity</li>
@@ -167,7 +167,7 @@ As discovered previously, the average rental duration obtained from SQL query is
     </ul>
 </ul>
 
-### Recommendations
+## Recommendations
 
 <ul>
   <li>Top 5 movies by genre having revenue above $4,000: Sports, Sci-Fi, Animation, Drama and Comedy. Rockbuster should indeed invest more in those genres. However, these genres don‘t seem to relate to each other, thus, market (customer rental preference) by age groups shall be captured to specifically fulfill each group preferences.</li>
@@ -178,7 +178,7 @@ As discovered previously, the average rental duration obtained from SQL query is
   <li>Large population is indeed beneficial. However, repeated order from the same customer should be taken into account such as the case with Philippines, regardless its less population, it has the highest rental order / customer compared to others. For this purpose, such loyalty program for the top 10 customer shall be considered.</li>
 </ul>
 
-### **Limitations**
+## **Limitations**
 
 Rockbuster and dataset used are fictious, therefore, this project is customized according to the learning goals.
 

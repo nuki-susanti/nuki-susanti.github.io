@@ -1,19 +1,694 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-17T06:26:09+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun learning journeys of data</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">How Safe Are We On The Road? - Road Crash Analysis</title><link href="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" rel="alternate" type="text/html" title="How Safe Are We On The Road? - Road Crash Analysis" /><published>2023-01-10T00:00:00+07:00</published><updated>2023-01-10T00:00:00+07:00</updated><id>http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html"><![CDATA[<p align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-07T17:20:13+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun learning journeys of data</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">Building Student Registration Database Part 1 - SQL Learning Series</title><link href="http://localhost:4000/database/sql/2023/02/03/student-registration-database-part1.html" rel="alternate" type="text/html" title="Building Student Registration Database Part 1 - SQL Learning Series" /><published>2023-02-03T00:00:00+01:00</published><updated>2023-02-03T00:00:00+01:00</updated><id>http://localhost:4000/database/sql/2023/02/03/student-registration-database-part1</id><content type="html" xml:base="http://localhost:4000/database/sql/2023/02/03/student-registration-database-part1.html"><![CDATA[<p align="center">
+  <img src="/assets/images/banners/srd_part1/mysql.png" width="300" />
+  <em>Source: wikipedia</em>
+</p>
+
+<h2 id="motivation"><strong>Motivation</strong></h2>
+
+<p>After completing Data Analysis course, I still feel somehow that SQL topic hadn’t been explored sufficiently. In short, I’m not satisfied enough and need more exercises. I’ve done one SQL-based project using PostgreSQL in which SQL query was used to answer business questions. That project honestly really helps me to understand some important concepts of RDBMS, such as join and CTE (Common Table Expression). Now, I would like to explore SQL from the scratch, from SQL programming to querying. This project will be series learning projects. My goal is hopefully, at the end of the learning series, I could level up my SQL knowledge.</p>
+
+<p style="margin-bottom:-30px"></p>
+
+<h2 id="overview---project-and-tools"><strong>Overview - Project and Tools</strong></h2>
+
+<p>I did some research what I could use as a starting point and came across <a href="https://datamastery.gitlab.io/exercises/registration-database.html">Student Registration Database</a>. This is very simple database schema that I could modify into little bit more complex one. So, I decided to pick this one with some modifications:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ul>
+  <li>I want to have interface application to interact with the database. However, as I don’t want to spend time building frontend interface, CLI-based application could be a way out. For this purpose, I use python library called Typer as well as Rich.</li>
+  <li>I will use MySQL and cloud-based free RDBMS live environment such as <a href="https://railway.app/new">railway.app</a>. As term “free” suggests, it is free to use but only for 24 hours. Afterwards, it will be automatically erased and we have to make a new project environment. It means that we have also to change the connection every 24 hours.</li>
+  <li>As there are no business requirements listed, I may add some constraints or check on the tables along the way (see process point 3).</li>
+  <li>All data checking and constraint will be in the database side. Though application (python) could also do this heavy lifting task, however, the aim of this project is that me exploring and learning SQL. So, this might not reflect the ideal condition in the real world.</li>
+</ul>
+
+<p><b>Tech Stack:</b></p>
+
+<p style="margin-top:-10px"></p>
+
+<ul>
+  <li><a href="https://typer.tiangolo.com">Typer</a> - For building great CLIs that are easy to code</li>
+  <li><a href="https://rich.readthedocs.io/en/stable/introduction.html">Rich</a> - Rich text and beautiful formatting in the terminal</li>
+  <li>Cloud-based database environment – <a href="https://railway.app/new">railway.app</a></li>
+  <li>And of course python</li>
+</ul>
+
+<p style="margin-bottom:-30px"></p>
+
+<h2 id="process"><strong>Process</strong></h2>
+<p style="margin-bottom:-50px"></p>
+
+<h3 id="1-installing-typer-and-rich">1.	Installing Typer and Rich</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">typer</span> <span class="n">rich</span>
+</code></pre></div></div>
+
+<h3 id="2-creating-mysql-provision-on-railwayapp">2.	Creating MySQL provision on railway.app</h3>
+
+<div class="container" style="display: inline-block;">  
+  <figure>
+  <div style="float: left; padding: 10px;">
+    <img src="/assets/images/banners/srd_part1/railway1.png" width="300" height="350" align="center" />
+    <figcaption align="center"><i>MySQL environment provided by railway.app</i></figcaption>
+  </div>
+
+  <div style="float: right; padding: 10px;">
+    <img src="/assets/images/banners/srd_part1/connection.png" width="300" height="350" align="center" />
+    <figcaption align="center"><i>Connection details railway.app</i></figcaption>
+  </div>
+  </figure>
+</div>
+
+<p>In case database shell is to be used in IDE (I used VS Code here and MySQL extension), those connection details must be entered.</p>
+
+<h3 id="3-creating-erd-entity-relationship-diagram">3.	Creating ERD (Entity Relationship Diagram)</h3>
+
+<p>I used <a href="https://dbdiagram.io/">dbdiagram.io</a> for this purpose.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/srd_part1/erd.png" width="800" />
+  <em>Entity Relationship Diagram (ERD)</em>
+</p>
+
+<p>So, I made some <b>improvisation and constraints</b> on the schema:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ul>
+  <li>I added prerequisites table to address mandatory course to take other courses as well as its corresponding minimum grade to pass. For example: students can’t enroll Mathematics 2 when they haven’t taken Mathematics 1 with a minimum grade of 60.</li>
+  <li>Students can only take same course in a year, meaning if they don’t pass a course in year 2022, they can only enroll again in year 2023.</li>
+  <li>Grade is set between 0 – 100.</li>
+</ul>
+
+<h3 id="4-separating-files-based-on-its-purpose">4. Separating files based on its purpose</h3>
+
+<p>I managed to divide the entire application into 4 files:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ol>
+  <li><b><i>app.py</i></b> - This is the interface of the application. However, as I mentioned, this is CLI-based application. So, interface is not actually interface as you can still see the code.</li>
+  <li><b><i>db.py</i></b> - Storing function for database interaction.</li>
+  <li><b><i>sql_query.sql</i></b> - Storing SQL schema, trigger and function.</li>
+  <li><b><i>db_seed.py</i></b> - Storing initial data to populate tables.</li>
+</ol>
+
+<h3 id="5-lets-roll">5.	Let’s roll!</h3>
+
+<p style="margin-bottom:-30px"></p>
+
+<h2 id="part-1"><strong>Part 1</strong></h2>
+<p style="margin-bottom:-50px"></p>
+
+<h3 id="creating-schema">Creating schema</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*File: sql_query.sql*/</span>
+<span class="k">DROP</span> <span class="k">DATABASE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">railway</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">railway</span><span class="p">;</span>
+<span class="n">USE</span> <span class="n">railway</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">departments</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">dept_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span><span class="p">,</span>
+    <span class="n">dept_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">dean_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">building</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">room</span> <span class="nb">INTEGER</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">courses</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">dept_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">course_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span><span class="p">,</span>
+    <span class="n">course_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>  
+    <span class="n">hour</span> <span class="nb">INTEGER</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">dept_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">departments</span><span class="p">(</span><span class="n">dept_id</span><span class="p">)</span>
+        <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">students</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">student_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span><span class="p">,</span>
+    <span class="n">first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">gpa</span> <span class="nb">DOUBLE</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">prerequisites</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">course_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">course_prereq_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">min_grade</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">course_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">courses</span><span class="p">(</span><span class="n">course_id</span><span class="p">)</span>
+        <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span><span class="p">,</span>
+    <span class="k">CHECK</span> <span class="p">(</span><span class="n">min_grade</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">AND</span> <span class="n">min_grade</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">enrolled</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">student_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">course_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">dept_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>  
+    <span class="n">enrollment_year</span> <span class="nb">YEAR</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">grade</span> <span class="nb">INTEGER</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">student_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">students</span><span class="p">(</span><span class="n">student_id</span><span class="p">)</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">course_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">courses</span><span class="p">(</span><span class="n">course_id</span><span class="p">)</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">dept_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">departments</span><span class="p">(</span><span class="n">dept_id</span><span class="p">)</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span><span class="p">,</span>
+    <span class="k">UNIQUE</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">enrollment_year</span><span class="p">),</span>
+    <span class="k">CHECK</span> <span class="p">(</span><span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">AND</span> <span class="n">grade</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="creating-mysql-connection">Creating MySQL connection</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py 
+</span><span class="k">def</span> <span class="nf">create_server_connection</span><span class="p">():</span>
+    <span class="n">connection</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span>
+            <span class="n">user</span><span class="o">=</span><span class="n">env</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"USERNAME"</span><span class="p">),</span>
+            <span class="n">password</span><span class="o">=</span><span class="n">env</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"PASSW"</span><span class="p">),</span>
+            <span class="n">host</span><span class="o">=</span><span class="n">env</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"HOST"</span><span class="p">),</span>
+            <span class="n">port</span><span class="o">=</span><span class="n">env</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"PORT"</span><span class="p">),</span>
+            <span class="n">database</span><span class="o">=</span><span class="n">env</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"DB"</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">"Successfully connected to MySQL"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Error: '</span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s">'"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">connection</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">sql_connection</span><span class="p">():</span>
+    <span class="n">create_server_connection</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>As you can see, connection details are saved in the .env file for confidentiality purpose. Later, it can be easily .gitignore-d.</p>
+
+<h3 id="creating-table-and-populating-database">Creating table and populating database</h3>
+
+<p><b>Creating tables from schema:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py 
+</span><span class="k">def</span> <span class="nf">resetting_db</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">con</span><span class="p">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cur</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'sql_query.sql'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">statement</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="nb">file</span><span class="p">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">multi</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+                        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Executed: </span><span class="si">{</span><span class="n">statement</span><span class="p">.</span><span class="n">statement</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Error: '</span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s">'"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Creating data seed to populate tables:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db_seed.py
+</span><span class="n">seed_departments</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">"cs"</span><span class="p">,</span> <span class="s">"computer science"</span><span class="p">,</span> <span class="s">"rubio"</span><span class="p">,</span> <span class="s">"ajax"</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math"</span><span class="p">,</span> <span class="s">"mathematics"</span><span class="p">,</span> <span class="s">"carson"</span><span class="p">,</span> <span class="s">"acme"</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ee"</span><span class="p">,</span> <span class="s">"electrical engineering"</span><span class="p">,</span> <span class="s">"kasich"</span><span class="p">,</span> <span class="s">"ajax"</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ie"</span><span class="p">,</span> <span class="s">"industrial engineering"</span><span class="p">,</span> <span class="s">"cruz"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"music"</span><span class="p">,</span> <span class="s">"musicology"</span><span class="p">,</span> <span class="s">"costello"</span><span class="p">,</span> <span class="s">"north"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">seed_courses</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">"cs"</span><span class="p">,</span> <span class="s">"cs101"</span><span class="p">,</span> <span class="s">"programming"</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"cs"</span><span class="p">,</span> <span class="s">"cs201"</span><span class="p">,</span> <span class="s">"algorithms"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"cs"</span><span class="p">,</span> <span class="s">"cs202"</span><span class="p">,</span> <span class="s">"systems"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math"</span><span class="p">,</span> <span class="s">"math101"</span><span class="p">,</span> <span class="s">"algebra"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math"</span><span class="p">,</span> <span class="s">"math201"</span><span class="p">,</span> <span class="s">"calculus"</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math"</span><span class="p">,</span> <span class="s">"math301"</span><span class="p">,</span> <span class="s">"analysis"</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ee"</span><span class="p">,</span> <span class="s">"ee102"</span><span class="p">,</span> <span class="s">"circuits"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ie"</span><span class="p">,</span> <span class="s">"ie101"</span><span class="p">,</span> <span class="s">"probability"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ie"</span><span class="p">,</span> <span class="s">"ie102"</span><span class="p">,</span> <span class="s">"statistics"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"music"</span><span class="p">,</span> <span class="s">"music104"</span><span class="p">,</span> <span class="s">"jazz"</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">seed_prerequisites</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">"cs202"</span><span class="p">,</span> <span class="s">"cs201"</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"cs201"</span><span class="p">,</span> <span class="s">"cs101"</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math301"</span><span class="p">,</span> <span class="s">"math201"</span><span class="p">,</span> <span class="mi">70</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math201"</span><span class="p">,</span> <span class="s">"math101"</span><span class="p">,</span> <span class="mi">70</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">seed_students</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">"tb01"</span><span class="p">,</span> <span class="s">"tom"</span><span class="p">,</span> <span class="s">"bush"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ch01"</span><span class="p">,</span> <span class="s">"cruz"</span><span class="p">,</span> <span class="s">"hening"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"cs01"</span><span class="p">,</span> <span class="s">"clinton"</span><span class="p">,</span> <span class="s">"smith"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"es01"</span><span class="p">,</span> <span class="s">"evan"</span><span class="p">,</span> <span class="s">"sanders"</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p><b>Populating database with data seed:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py 
+</span><span class="k">def</span> <span class="nf">populating_db</span><span class="p">():</span>
+
+    <span class="n">sql_departments</span> <span class="o">=</span> <span class="s">"""
+      INSERT INTO departments(dept_id, dept_name, dean_name, building, room) 
+      VALUES(%s, %s, %s, %s, %s);
+    """</span>
+    <span class="n">sql_courses</span> <span class="o">=</span> <span class="s">"""
+      INSERT INTO courses(dept_id, course_id, course_name, hour) 
+      VALUES(%s, %s, %s, %s);
+    """</span>
+    <span class="n">sql_prerequisites</span> <span class="o">=</span> <span class="s">"""
+      INSERT INTO prerequisites(course_id, course_prereq_id, min_grade) 
+      VALUES(%s, %s, %s);
+    """</span>
+    <span class="n">sql_students</span> <span class="o">=</span> <span class="s">"""
+      INSERT INTO students(student_id, first_name, last_name) 
+      VALUES(%s, %s, %s);
+    """</span>
+
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_departments</span><span class="p">,</span> <span class="n">db_seed</span><span class="p">.</span><span class="n">seed_departments</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_courses</span><span class="p">,</span> <span class="n">db_seed</span><span class="p">.</span><span class="n">seed_courses</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_prerequisites</span><span class="p">,</span> <span class="n">db_seed</span><span class="p">.</span><span class="n">seed_prerequisites</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_students</span><span class="p">,</span> <span class="n">db_seed</span><span class="p">.</span><span class="n">seed_students</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Database is successfully initialized."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Here, query function was created to handle CRUD (Create, read, update and delete) operations and thus, also reducing boiler plate code that will be used during interaction with database.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py 
+</span><span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">fetch</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">connection</span><span class="p">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">many</span><span class="p">:</span>
+            <span class="n">cur</span><span class="p">.</span><span class="n">executemany</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cur</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">fetch</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cur</span><span class="p">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">connection</span><span class="p">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Executed successfully: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="n">typer</span><span class="p">.</span><span class="n">style</span><span class="p">(</span><span class="s">"Successful!"</span><span class="p">,</span>
+                   <span class="n">bg</span><span class="o">=</span><span class="n">typer</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="n">typer</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">GREEN</span><span class="p">))</span>
+
+    <span class="k">except</span> <span class="p">(</span><span class="n">IntegrityError</span><span class="p">,</span> <span class="n">DatabaseError</span><span class="p">,</span> <span class="n">Error</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s">"Failed. You have an error message: 
+              </span><span class="si">{</span><span class="n">typer</span><span class="p">.</span><span class="n">style</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">typer</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="n">typer</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">RED</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">cur</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>It is also worth mentioning that parameterized statements “%s” was used rather than literal string for security reason, namely preventing SQL injection.</p>
+
+<p><b>Interface look:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">reset_db</span><span class="p">(</span><span class="n">data_seed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">True</span><span class="p">):</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s">"Are you sure? This will delete all the data. (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">resetting_db</span><span class="p">()</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Successfully reset database"</span><span class="p">)</span>
+
+    <span class="c1"># It will automatically populate database with data seed stored in db_seed.
+</span>    <span class="c1"># Otherwise user should specify --no-data-seed
+</span>        <span class="k">if</span> <span class="n">data_seed</span><span class="p">:</span>
+            <span class="n">populating_db</span><span class="p">()</span> 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Database reset aborted"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Then, when we run this function by writing in terminal <code class="language-plaintext highlighter-rouge">python app.py reset-db</code>.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/srd_part1/terminal1.png" width="500" />
+  <em>Running "reset-db" for resetting and populating database - <b>app.py</b></em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/srd_part1/terminal2.png" width="500" />
+  <em>Resetting database successful - <b>app.py</b></em>
+</p>
+
+<p>It seems to work, but let’s check our database.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/srd_part1/railway2.png" width="500" />
+  <em>Tables are successfully created - <b>railway.app</b></em>
+</p>
+
+<p>So, our database is successfully populated with our initial data.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/srd_part1/railway3.png" width="500" />
+  <em>Tables are successfully populated - <b>railway.app</b></em>
+</p>
+
+<h3 id="updating-tables">Updating tables</h3>
+
+<p>In this step, I added functionalities to add and update all those tables: departments, courses, students, prerequisites and ‚enrolled.</p>
+
+<p style="margin-bottom:-50px"></p>
+
+<h4 id="a-departments">A. Departments</h4>
+
+<p><b>Database function for updating table “departments”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py 
+</span><span class="k">def</span> <span class="nf">adding_department</span><span class="p">(</span><span class="n">dept_details</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"""
+          INSERT INTO departments(dept_id, dept_name, dean_name, building, room) 
+          VALUES(%s, %s, %s, %s, %s);
+        """</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">dept_details</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating table “departments”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py 
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">add_department</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want to add a department? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        
+        <span class="n">dept_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter department ID: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">dept_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter department name: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">dean_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter dean name of the department (optional): "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">building</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter building name (optional): "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">room</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter room number (optional): "</span><span class="p">).</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">room</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="n">dept_details</span> <span class="o">=</span> <span class="p">(</span><span class="n">dept_id</span><span class="p">,</span> <span class="n">dept_name</span><span class="p">,</span> <span class="n">dean_name</span><span class="p">,</span> <span class="n">building</span><span class="p">,</span> <span class="n">room</span><span class="p">)</span>
+
+        <span class="n">adding_department</span><span class="p">(</span><span class="n">dept_details</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>From this process I found out that when user doesn’t input anything (in other words, empty string) for columns “dept_id” and “dept_name”, it is still inserted into database, though I specified “NOT NULL” constraint in the table schema. Eventually, NOT NULL constraint enforces a column to NOT accept NULL values only. Whereas empty string is still interpreted as a value. This of course will be data integrity problem. In order to prevent this from happening, another check for empty string is enforced.</p>
+
+<p>For the other columns: “dean_name”, “building” and “room”, they can hold NULL values which aren’t necessary to be declared explicitly as the default setting are NULL (DEFAULT NULL). However, a problem will arise when converting empty string to integer, so that it was set to be None as default value to be able to insert into the database.</p>
+
+<p><b>Updated database schema:</b></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*File: sql_query.sql*/</span>
+<span class="k">DROP</span> <span class="k">DATABASE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">railway</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">railway</span><span class="p">;</span>
+<span class="n">USE</span> <span class="n">railway</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">departments</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">dept_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">dept_id</span> <span class="o">!=</span> <span class="nv">""</span><span class="p">),</span>
+    <span class="n">dept_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">dept_name</span> <span class="o">!=</span> <span class="nv">""</span><span class="p">),</span>
+    <span class="n">dean_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">building</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">room</span> <span class="nb">INTEGER</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="b-courses">B. Courses</h4>
+
+<p><b>Database function for updating table “courses”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py
+</span> <span class="k">def</span> <span class="nf">adding_course</span><span class="p">(</span><span class="n">course_details</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"""
+          INSERT INTO courses(dept_id, course_id, course_name, hour) 
+          VALUES(%s, %s, %s, %s);
+        """</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">course_details</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating table “courses”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">add_course</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want to add a course? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">dept_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter department ID: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">course_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter course ID: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">course_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter course name: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">hour</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter the duration of the course in hour: "</span><span class="p">).</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">hour</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="n">course_details</span> <span class="o">=</span> <span class="p">(</span><span class="n">dept_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">course_name</span><span class="p">,</span> <span class="n">hour</span><span class="p">)</span>
+
+        <span class="n">adding_course</span><span class="p">(</span><span class="n">course_details</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="c-students">C. Students</h4>
+
+<p><b>Database function for updating table “students”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py
+</span><span class="k">def</span> <span class="nf">adding_student</span><span class="p">(</span><span class="n">student_details</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"INSERT INTO students(student_id, first_name, last_name) VALUES(%s, %s, %s);"</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">student_details</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating table “students”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">add_student</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want add a student? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">student_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter student id: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">first_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter student's first name: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">last_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter student's last name: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="n">student_details</span> <span class="o">=</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">)</span>
+
+        <span class="n">adding_student</span><span class="p">(</span><span class="n">student_details</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="d-prerequisites">D. Prerequisites</h4>
+
+<p><b>Database function for updating table “prerequisites”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py
+</span><span class="k">def</span> <span class="nf">adding_prereq</span><span class="p">(</span><span class="n">prereq_details</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"""
+          INSERT INTO prerequisites(course_id, course_prereq_id, min_grade) VALUES(%s, %s, %s);
+        """</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">prereq_details</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating table “prerequisites”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">add_prereq</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s">"Do you want to add prerequisite for a course? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">course_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter course ID: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">course_prereq_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter course prerequisite: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">min_grade</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter the minimum grade for the course: "</span><span class="p">).</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">min_grade</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># default minimum grade            
+</span>
+        <span class="n">prereq_details</span> <span class="o">=</span> <span class="p">(</span><span class="n">course_id</span><span class="p">,</span> <span class="n">course_prereq_id</span><span class="p">,</span> <span class="n">min_grade</span><span class="p">)</span>
+
+        <span class="n">adding_prereq</span><span class="p">(</span><span class="n">prereq_details</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="e-enrolled">E. Enrolled</h4>
+
+<p>Enrolled table aims to store students and their enrolled course. However, there are constraints in enrolling student for a course, as I mentioned previously in the beginning:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ul>
+  <li>Mandatory course has to be taken before taking other consecutive courses with its corresponding minimum grade to pass. For example: students can’t enroll Mathematics 2 when they haven’t taken Mathematics 1 with a minimum grade of 60. The prerequisites of the courses are stored in table “prerequisites”.</li>
+  <li>Students can only take same course in a year, meaning if they don’t pass a course in year 2022, they can only enroll again in year 2023. This has been specified as “UNIQUE” constraint in the schema.</li>
+</ul>
+
+<p>For this purpose, I created trigger to check before inserting (enrolling) student for a course. Trigger must ensure that it checks the prerequisite course and minimum grade.</p>
+
+<p><b>Trigger for requirements checking before inserting into table “enrolled”:</b></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*File: sql_query.sql
+/*Creating a trigger and temporary table*/
+DROP TRIGGER IF EXISTS before_enrolled_insert;
+CREATE TRIGGER before_student_course_insert
+    BEFORE INSERT ON enrolled 
+    FOR EACH ROW
+BEGIN
+    /*Create temporary tables to hold 1. prerequisites of courses and 2. unmet_prereqs*/
+    DROP TEMPORARY TABLE IF EXISTS tempo_prereqs;
+    DROP TEMPORARY TABLE IF EXISTS unmet_prereqs;
+    CREATE TEMPORARY TABLE IF NOT EXISTS tempo_prereqs(
+        course_prereq VARCHAR(10) REFERENCES courses(course_id),
+        min_grade INTEGER
+    );
+
+    CREATE TEMPORARY TABLE IF NOT EXISTS unmet_prereqs(
+        course_prereq VARCHAR(10) REFERENCES courses(course_id)
+    );
+    
+    /*Does this course have prereqs? 
+    If yes, insert them into temp_prereq -&gt; filter out the course*/
+    INSERT INTO tempo_prereqs(course_prereq, min_grade)
+    SELECT course_prereq_id, min_grade FROM prerequisites 
+      WHERE course_id = NEW.course_id;
+    /*New course ID we want to insert*/
+
+    /*Are there any unmet prereqs? -&gt; student-specific*/
+    INSERT INTO unmet_prereqs(course_prereq)
+    SELECT course_prereq
+    FROM tempo_prereqs AS tp
+    WHERE tp.course_prereq NOT IN
+        (SELECT e.course_id FROM enrolled AS e WHERE 
+        e.student_id= NEW.student_id AND sc.grade &gt; tp.min_grade);
+
+    /*If there are, insert will fail and message the user*/
+    IF EXISTS (SELECT course_prereq FROM unmet_prereqs) THEN
+        SET @message_text = CONCAT(
+            'Student ', NEW.student_id, ' cannot take course ', NEW.course_id, 
+            ' because not all the prerequisites are met.'
+            );
+
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = @message_text;
+    END IF;
+END;
+</span></code></pre></div></div>
+
+<p><b>Database function for updating table “enrolled”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py
+</span><span class="k">def</span> <span class="nf">enrolling_student</span><span class="p">(</span><span class="n">enrollment_details</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"INSERT INTO student_course(student_id, course_id, enrollment_year) VALUES(%s, %s, %s);"</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">enrollment_details</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating table “enrolled”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">enroll_student</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s">"Do you want to enroll a student? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">student_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter your student id: "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">course_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter your course id you want to enroll: "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">().</span><span class="n">year</span>
+
+        <span class="n">enrollment_details</span> <span class="o">=</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+
+        <span class="n">enrolling_student</span><span class="p">(</span><span class="n">enrollment_details</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Further, to support this functionality, <code class="language-plaintext highlighter-rouge">update-grade</code> command is added so that we can set if a student should/should not pass a course.</p>
+
+<p><b>Database function for updating grade in table “enrolled”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py
+</span><span class="k">def</span> <span class="nf">updating_grade</span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">grade</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"""
+          UPDATE enrolled SET grade = %s WHERE student_id = %s 
+          AND course_id = %s 
+          AND enrollment_year = %s;
+        """</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">grade</span><span class="p">,</span> <span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating grade in table “enrolled”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">update_grade</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want to enroll a student? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">student_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter your student id: "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">course_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter the course id: "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter the year: "</span><span class="p">).</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">().</span><span class="n">year</span>
+
+        <span class="n">grade</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter your grade: "</span><span class="p">).</span><span class="n">strip</span><span class="p">())</span>
+
+        <span class="n">updating_grade</span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">grade</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>This is the end of part 1. I will continue in the part 2 for the rest of functionalities.</b></p>
+
+<h2 id="conclusions"><strong>Conclusions</strong></h2>
+
+<p>In the part 1 of this project, I learned:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ol>
+  <li>Creating ERD (Entity Relationship Diagram)</li>
+  <li>Creating DDL (Data Definition Language: CREATE), DML (Data Manipulation Language: SELECT, INSERT, UPDATE), TCL (Transaction Control Language: COMMIT)</li>
+  <li>Applying constraints on MySQL schema </li>
+  <li>Creating trigger and temporary table</li>
+  <li>Building CLI-based application</li>
+</ol>
+
+<p style="margin-bottom:30px"></p>
+
+<p>The code for this project will be uploaded in Github soon.<br />
+Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="database" /><category term="SQL" /><category term="database" /><category term="programming" /><category term="MySQL" /><category term="SQL" /><category term="python" /><summary type="html"><![CDATA[Source: wikipedia]]></summary></entry><entry><title type="html">How Safe Are We On The Road? - Road Crash Analysis</title><link href="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" rel="alternate" type="text/html" title="How Safe Are We On The Road? - Road Crash Analysis" /><published>2023-01-10T00:00:00+01:00</published><updated>2023-01-10T00:00:00+01:00</updated><id>http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html"><![CDATA[<p align="center">
   <img src="/assets/images/banners/road_crash/car_accident.jpg" width="500" />
   <em>Source: pixabay</em>
 </p>
 
-<h3 id="overview---business-problem"><strong>Overview - Business problem</strong></h3>
+<h2 id="overview---business-problem"><strong>Overview - Business problem</strong></h2>
 <p>According to WHO, approximately 1.3 million people die each year as a result of road traffic crashes. Between 20 and 50 million more people suffer non-fatal injuries, with many incurring a disability as a result of their injury. In addition, road traffic crashes cost most countries 3% of their gross domestic product. This worldwide-phenomenon has been quite alarming as private transportation ownership increases, resulting in volume rise of vehicles on the road as well as traffic accidents. It is therefore critical to analyze and derive insights on what factors that could potentially influence the road accident events. These insights could be used for road accidents prevention measures.</p>
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="goal"><strong>Goal</strong></h3>
+<h2 id="goal"><strong>Goal</strong></h2>
 <p>The objective of this road safety analysis to help analyze the influential factors causing traffic accidents, locate accident hot-spots and perform classification supervised machine learning to predict accident severity. Python and Tableau are used for data visualization and analysis presentation. Personally, as a professional in HSE area (Health Safety Environment), I selected this analysis subject intentionally to add values and insights to my current knowledge.</p>
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="data"><strong>Data</strong></h3>
+<h2 id="data"><strong>Data</strong></h2>
 <ul>
   <li>Open source road crash and casualties data from 2021 in South Australia collected by Department for Infrastructure and Transport. Cleaned and merged data results in 21,242 cases of traffic accidents. It can be found <a href="https://data.sa.gov.au/data/dataset/road-crash-data/resource/1057e9ae-4672-4123-9c1d-1877483da401?inner_span=True">here</a>.</li>
   <li><a href="https://data.sa.gov.au/data/dataset/road-crash-data/resource/02fb14f9-8dcb-4a59-863c-5f7cc3ae1832">Data information and dictionary</a></li>
@@ -22,7 +697,7 @@
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="process"><strong>Process</strong></h3>
+<h2 id="process"><strong>Process</strong></h2>
 <p>This analysis, therefore, could be divided into two parts:</p>
 <ol style="margin-top:-20px;">
   <li>Part 1: Data mining</li>
@@ -57,11 +732,11 @@
   <dd>- Spatial analysis</dd>
 </ol>
 
-<h3 id="part-1-data-mining">Part 1: Data mining</h3>
+<h2 id="part-1-data-mining">Part 1: Data mining</h2>
 
 <p style="margin-bottom:-30px"></p>
 
-<h4 id="accident-distribution---how-severe-are-accidents-are-on-the-road">Accident distribution - How severe are accidents are on the road?</h4>
+<h3 id="accident-distribution---how-severe-are-accidents-are-on-the-road">Accident distribution - How severe are accidents are on the road?</h3>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_severity.png" width="300" />
@@ -75,7 +750,7 @@
 
 <p>Pie chart shows property damage with no casualty (PDO) as the lightest level of accident severity accounts for 65.7% of the reported cases. The rest of the cases (34.4%) were divided into three higher severity levels; minor injury, serious injury and death (fatality). It can be seen that death or fatality accounts only for 0.6% of the reported accident cases.  However, compared to serious and minor injury groups, it takes the highest of number casualty in average.</p>
 
-<h4 id="time-based-analysis-when-do-most-accident-happens-in-hourly-basis">Time-based analysis: When do most accident happens, in hourly basis?</h4>
+<h3 id="time-based-analysis-when-do-most-accident-happens-in-hourly-basis">Time-based analysis: When do most accident happens, in hourly basis?</h3>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_hour.png" width="500" />
@@ -94,7 +769,7 @@
 
 <p>In general, accidents occurrence starts to rise in the morning rush-hour, at 08:00 and reaches its peak during afternoon rush-hour, from 15:00 to 17:00. It is the decreasing afterwards. However, a little bit different patterns is shown by fatality category. Fatality cases are shown to be high since midnight at 02:00 and steadily increases during morning rush-hour until reaches its peaks in the mid-day at 12:00 and in the afternoon rush-hour. While it decreases after afternoon rush-hour, it climbs again at 21:00. From this pattern, fatality cases mostly happen in these two time frames: least crowded time and crowded time. In terms of average casualty of fatality accidents, there seems to be an hourly pattern that shows peak at 5, 12, 18 and 22.</p>
 
-<h4 id="time-based-analysis-when-do-most-accident-happens-in-daily-basis">Time-based analysis: When do most accident happens, in daily basis?</h4>
+<h3 id="time-based-analysis-when-do-most-accident-happens-in-daily-basis">Time-based analysis: When do most accident happens, in daily basis?</h3>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_day.png" width="500" />
@@ -115,7 +790,7 @@
 
 <p>Generally, average casualty on fatality and serious injury remains stable during weekeday and slightly rise during weekend. Conversely, average casualty on minor injury remains stabil during weekday, but decreases during weekend. From this pattern, there seems to be general behavior occurs during the week: Thursday becomes the day of high number of accidents and high casualty, weekend generally shows lower vehicle volumes but increase fatality cases and fatality casualty.</p>
 
-<h4 id="time-based-analysis-when-do-most-accident-happens-in-monthly-basis">Time-based analysis: When do most accident happens, in monthly basis?</h4>
+<h3 id="time-based-analysis-when-do-most-accident-happens-in-monthly-basis">Time-based analysis: When do most accident happens, in monthly basis?</h3>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_month.png" width="500" />
@@ -136,7 +811,7 @@
 
 <p>In terms of average casualty, interestingly, only fatality has seasonality. It increases steadily during Q1 and reach the first peak in April (Q2). The second and third peaks occur in July (Q2) and October (Q3), respectively. This pattern reflects three holidays, Easter, summer and winter holidays.</p>
 
-<h4 id="people-based-analysis-who-are-at-risk---sex-alcohol-and-drugs-involvement">People-based analysis: Who are at risk? - Sex, alcohol and drugs involvement</h4>
+<h3 id="people-based-analysis-who-are-at-risk---sex-alcohol-and-drugs-involvement">People-based analysis: Who are at risk? - Sex, alcohol and drugs involvement</h3>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_sex.png" width="300" />
@@ -155,7 +830,7 @@
 
 <p>Ca. 60% of the accidents happens to be male and 40% is female. However, in average, death or fatality in female (2.24) is higher compared to that in male (1.83). Surprisingly, in South Australia, involvement of alcohol and drugs play little role in the number of accidents. It might be related to the measures taken by local authority or law enforcement in controlling alcohol and drugs circulation.</p>
 
-<h4 id="people-based-analysis-who-are-at-risk---age">People-based analysis: Who are at risk? - Age</h4>
+<h3 id="people-based-analysis-who-are-at-risk---age">People-based analysis: Who are at risk? - Age</h3>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_age.png" width="500" />
@@ -176,7 +851,7 @@
 
 <p>The highest casualty on fatality accidents in average still happen with people 20-25 years of age and it decreases slightly with increasing age. However, it generally raises again when people reach 70 years of age. In conclusion, children and very old people are the most vulnarable groups when it comes to injury and fatality, respectively.</p>
 
-<h4 id="weather-based-analysis---how-does-weather-affect-accident-occurences">Weather-based analysis - How does weather affect accident occurences?</h4>
+<h3 id="weather-based-analysis---how-does-weather-affect-accident-occurences">Weather-based analysis - How does weather affect accident occurences?</h3>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/raining_vs_not_raining.png" width="200" />
@@ -195,7 +870,7 @@
 
 <p>All those weather-related features are conditions collected at the crash locations. It is interesting that most accidents happen in the clear weather condtions, unlike what people normally assume. In other words, weather play little influence to accident events.</p>
 
-<h4 id="spatial-analysis---is-there-any-accident-hot-spot">Spatial analysis - Is there any accident ‘hot-spot’?</h4>
+<h3 id="spatial-analysis---is-there-any-accident-hot-spot">Spatial analysis - Is there any accident ‘hot-spot’?</h3>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/crash_map.png" width="600" />
@@ -239,7 +914,7 @@
 
 <p>Interestingly, most fatalities incidents happened to be in close to the city center area. In other other words, not only does the complex road system corresponds postively to the number of accidents, but also to the accident severity.</p>
 
-<h3 id="part-2-model-building---severity-prediction-using-supervised-machine-learning">Part 2: Model building - Severity prediction using supervised machine learning</h3>
+<h2 id="part-2-model-building---severity-prediction-using-supervised-machine-learning">Part 2: Model building - Severity prediction using supervised machine learning</h2>
 
 <p>All previously analyzed factors (time, age, sex, road system and distance to city center) seem to be influential to the accident severity. However, it is not clear  to what extent those factors would impact severity. In other words, the order of importance is analyzed using classification model.</p>
 
@@ -273,7 +948,7 @@
 
 <p style="margin-top:-30px"></p>
 
-<h3 id="limitations"><strong>Limitations</strong></h3>
+<h2 id="limitations"><strong>Limitations</strong></h2>
 
 <ol>
   <li>The severity is indeed result of people not using safety equipment, such as helmet or safey belt. Dataset has this feature in it, however, it could not be used for this analysis as 90% of the data is missing.</li>
@@ -284,13 +959,13 @@
 
 <p style="margin-top:-30px"></p>
 
-<h3 id="further-analysis"><strong>Further Analysis</strong></h3>
+<h2 id="further-analysis"><strong>Further Analysis</strong></h2>
 
 <p>The effect of safety equipment used by the victims or people involved on the traffic accidents should be analyzed and included in the model prediction.</p>
 
 <p style="margin-top:-30px"></p>
 
-<h3 id="final-notes"><strong>Final Notes</strong></h3>
+<h2 id="final-notes"><strong>Final Notes</strong></h2>
 
 <p>There are undeniably many factors that could cause or influence traffic accident occurrence, other than what was being analyzed in this analysis. However, providing insights from this data could certainly help involved parties such as local authority and community in taking measures preventing traffic accidents.<br />
 For instance:</p>
@@ -305,12 +980,12 @@ For instance:</p>
 
 <p>Find the code for this analysis <a href="https://github.com/nuki-susanti/Road-Crash-Analysis">Github</a><br />
 Find tableau presentation <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysis_16687247255900/RoadCrashAnalysis">Tableau</a><br />
-Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="data analysis" /><category term="data science" /><category term="machine learning" /><category term="data mining" /><category term="classification" /><category term="supervised machine learning" /><summary type="html"><![CDATA[Source: pixabay]]></summary></entry><entry><title type="html">Building Snake Game Using Python Turtle</title><link href="http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html" rel="alternate" type="text/html" title="Building Snake Game Using Python Turtle" /><published>2023-01-06T00:00:00+07:00</published><updated>2023-01-06T00:00:00+07:00</updated><id>http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle</id><content type="html" xml:base="http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html"><![CDATA[<p align="center">
+Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="data analysis" /><category term="data science" /><category term="machine learning" /><category term="data mining" /><category term="classification" /><category term="supervised machine learning" /><summary type="html"><![CDATA[Source: pixabay]]></summary></entry><entry><title type="html">Building Snake Game Using Python Turtle</title><link href="http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html" rel="alternate" type="text/html" title="Building Snake Game Using Python Turtle" /><published>2023-01-06T00:00:00+01:00</published><updated>2023-01-06T00:00:00+01:00</updated><id>http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle</id><content type="html" xml:base="http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html"><![CDATA[<p align="center">
  <img src="/assets/images/banners/snake_game/cover_game.jpg" width="600" />
  Source: <a href="https://www.emulatorpc.com/snake-game//">emulatorpc.com</a>
 </p>
 
-<h3 id="overview"><strong>Overview</strong></h3>
+<h2 id="overview"><strong>Overview</strong></h2>
 <p>Being non-developer, but always dealing with code here and there, I have been feeling, my coding skill is lacking. So, this week, I wanted to refresh my programming skill and revisit a programming concept I have learned in the past, namely OOP (Object-Oriented Programming). I did some quick research on the small project I could take as exercise and come across old game I used to play on my old 3350 Nokia. Yes, snake game.</p>
 
 <p>I use python as the main programming language and found that it comes with pre-installed library, turtle, thus it doesn’t need to be installed externally. Turtle is a pre-installed Python library that enables users to create pictures and shapes by providing them with a virtual canvas. As this game is very simple and we all might be familiar with the rules, I decided to re-create this game using python and turtle. 
@@ -318,7 +993,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="object-oriented-programming"><strong>Object-Oriented Programming</strong></h3>
+<h2 id="object-oriented-programming"><strong>Object-Oriented Programming</strong></h2>
 <p>As opposed to procedural, object-oriented programming uses concept of class and object. I always imagine that class is like building blocks when playing or building Lego. It is reusable piece of ‘tools’ that allows me to re-create an object without having to build everything from the scratch, which is why it is called ‘blueprint’. I really liked this concept when it was introduced to me at the first time because it requires less line of code to achieve the same goal. In addition, my code appears to be tidy and neat because OOP hides the ‘main machine’ on the back. From developer POV, OOP creates more maintainable code.</p>
 
 <p>Class has attributes and methods. Attributes are everything that an object has, such as manufacturing year, color, shape, etc., while methods represent the abilities of an object; can it fly, talk or cook? It is built using method called constructor ‘<strong>init</strong>’. When this method is called, it allows the class to initialize the attributes of the class.</p>
@@ -327,7 +1002,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="building-snake-game"><strong>Building Snake Game</strong></h3>
+<h2 id="building-snake-game"><strong>Building Snake Game</strong></h2>
 <p>For this game, I broke down the steps into smaller ones to identify what I should do first, second, third and so on. In addition, I divided the files into several files that it won’t clutter the main file (‘app.py’). At the end, I happened to have five separate python files.</p>
 
 <p align="center">
@@ -342,7 +1017,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
 
 <p style="margin-bottom:-30px"></p>
 
-<h4 id="1-setting-up-the-screen">1.	Setting up the screen</h4>
+<h3 id="1-setting-up-the-screen">1.	Setting up the screen</h3>
 
 <p align="center">
   <img src="/assets/images/banners/snake_game/part1a.png" width="600" />
@@ -354,7 +1029,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part1b.png" width="600" />
 </p>
 
-<h4 id="2-creating-snake-body">2.	Creating snake body</h4>
+<h3 id="2-creating-snake-body">2.	Creating snake body</h3>
 
 <p>I made the initial snake or seed of snake using only 2 blocks of square by initializing turtle object from turtle class. The default size of each block is 20 x 20. The starting position of initial snake is supposed to be at the center of the screen (default is (0,0)). Here tuple is used to define the starting point.</p>
 
@@ -368,7 +1043,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part2b.png" width="600" />
 </p>
 
-<h4 id="3-moving-the-snake">3.	Moving the snake</h4>
+<h3 id="3-moving-the-snake">3.	Moving the snake</h3>
 
 <p>Still coming from the same snake class but using different method. This method aims for the body of the snake to follow its head. Remember that snake is made of two different parts of turtle blocks and each of block could move independently.</p>
 
@@ -376,7 +1051,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part3.png" width="600" />
 </p>
 
-<h4 id="4-controlling-the-snake-using-keypress">4.	Controlling the snake using keypress</h4>
+<h3 id="4-controlling-the-snake-using-keypress">4.	Controlling the snake using keypress</h3>
 
 <p>This step serves for controlling purpose using keyboard up, down, left and right.</p>
 
@@ -388,7 +1063,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part4b.png" width="600" />
 </p>
 
-<h4 id="5-tracking-the-score">5.	Tracking the score</h4>
+<h3 id="5-tracking-the-score">5.	Tracking the score</h3>
 
 <p>I made separate a file to note and track the score (‘scoreboard.py’).</p>
 
@@ -396,7 +1071,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part5.png" width="600" />
 </p>
 
-<h4 id="6-feeding-on-the-food">6.	Feeding on the food</h4>
+<h3 id="6-feeding-on-the-food">6.	Feeding on the food</h3>
 
 <p>I also made ‘food.py’. file to write food class. I played a bit with shape and color of the food. It has turtle shape (I believe a real snake will have hard time when it tries to feed on turtle :)) and its color varies following the list of color specified at the top of the food.py file.</p>
 
@@ -412,7 +1087,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part6c.png" width="600" />
 </p>
 
-<h4 id="7-detecting-collision-with-the-wall">7.	Detecting collision with the wall</h4>
+<h3 id="7-detecting-collision-with-the-wall">7.	Detecting collision with the wall</h3>
 
 <p align="center">
   <img src="/assets/images/banners/snake_game/part7a.png" width="600" />
@@ -422,13 +1097,13 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part7b.png" width="600" />
 </p>
 
-<h4 id="8-detecting-collision-with-its-own-body">8. Detecting collision with its own body</h4>
+<h3 id="8-detecting-collision-with-its-own-body">8. Detecting collision with its own body</h3>
 
 <p align="center">
   <img src="/assets/images/banners/snake_game/part8.png" width="600" />
 </p>
 
-<h4 id="9-adding-difficulty-levels">9. Adding difficulty levels</h4>
+<h3 id="9-adding-difficulty-levels">9. Adding difficulty levels</h3>
 
 <p>This is an additional feature I added at the beginning of the game, but the last step I took. It can be achieved by changing time.sleep after importing time library. Easy was set to be 1s, medium 0.5s and hard was 0.1s.</p>
 
@@ -440,7 +1115,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part9b.png" width="600" />
 </p>
 
-<h3 id="playing-the-game"><strong>Playing the game</strong></h3>
+<h2 id="playing-the-game"><strong>Playing the game</strong></h2>
 
 <p>Here is the final look of the game. I have fun experimenting and trying it myself! :)</p>
 
@@ -453,16 +1128,16 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
 </p>
 
 <p>Find the code in <a href="https://github.com/nuki-susanti/Snake-Game">Github</a><br />
-Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="coding" /><category term="game" /><category term="coding" /><category term="object-oriented programming" /><category term="oop" /><category term="game" /><summary type="html"><![CDATA[Source: emulatorpc.com]]></summary></entry><entry><title type="html">Rockbuster - Movie Rental Analysis</title><link href="http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html" rel="alternate" type="text/html" title="Rockbuster - Movie Rental Analysis" /><published>2022-12-19T00:00:00+07:00</published><updated>2022-12-19T00:00:00+07:00</updated><id>http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis</id><content type="html" xml:base="http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html"><![CDATA[<p align="center">
+Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="coding" /><category term="game" /><category term="coding" /><category term="object-oriented programming" /><category term="oop" /><category term="game" /><summary type="html"><![CDATA[Source: emulatorpc.com]]></summary></entry><entry><title type="html">Rockbuster - Movie Rental Analysis</title><link href="http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html" rel="alternate" type="text/html" title="Rockbuster - Movie Rental Analysis" /><published>2022-12-19T00:00:00+01:00</published><updated>2022-12-19T00:00:00+01:00</updated><id>http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis</id><content type="html" xml:base="http://localhost:4000/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html"><![CDATA[<p align="center">
  <img src="/assets/images/banners/rockbuster/rockbuster.png" width="500" />
 </p>
 
-<h3 id="overview---business-problem"><strong>Overview - Business problem</strong></h3>
+<h2 id="overview---business-problem"><strong>Overview - Business problem</strong></h2>
 <p>Rockbuster Stealth LLC is a movie rental company that used to have stores around the world. Facing stiff competition from streaming services such as Netflix and Amazon Prime, the Rockbuster Stealth management team is planning to use its existing movie licenses to launch an online video rental service in order to stay competitive.</p>
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="goal"><strong>Goal</strong></h3>
+<h2 id="goal"><strong>Goal</strong></h2>
 <p>This analysis is intended to answer a series of business key questions and derive data-driven answers for company strategy in 2020.</p>
 <ol style="margin-top:-20px;">
 <li>Which movies contributed the most/least to revenue gain?</li>
@@ -475,12 +1150,12 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="data"><strong>Data</strong></h3>
+<h2 id="data"><strong>Data</strong></h2>
 <p>Rockbuster company and data being used are all fictious. The dataset containing information about Rockbuster’s film inventory, customers, and payments, among other things is provided by Careerfoundry and can be found <a href="https://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip">here</a>.</p>
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="process"><strong>Process</strong></h3>
+<h2 id="process"><strong>Process</strong></h2>
 <p>This is SQL-based project using PostgreSQL database to analyse and essentially to answer business questions of a movie rental company. I began by drafting data dictionary that can be found <a href="https://github.com/nuki-susanti/Rockbuster-Analysis/blob/main/Data_Dictionary.pdf">here</a>.</p>
 
 <p align="center">
@@ -493,11 +1168,11 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a
   <em>Sample of data dictionary</em>
 </p>
 
-<h3 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h3>
+<h2 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h2>
 
 <p style="margin-bottom:-30px"></p>
 
-<h4 id="rockbuster-overview">Rockbuster overview</h4>
+<h3 id="rockbuster-overview">Rockbuster overview</h3>
 
 <p align="center">
   <img src="/assets/images/banners/rockbuster/overview_1.png" />
@@ -521,7 +1196,7 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a
   <img src="/assets/images/banners/rockbuster/overview.png" width="400" />
 </p>
 
-<h4 id="movies-and-revenue-by-rating-and-genre">Movies and Revenue by rating and genre</h4>
+<h3 id="movies-and-revenue-by-rating-and-genre">Movies and Revenue by rating and genre</h3>
 
 <p align="center">
   <img src="/assets/images/banners/rockbuster/movies_revenue_by_rating.png" />
@@ -554,7 +1229,7 @@ G - General Audiences, All Ages Admitted. <br /></p>
   </blockquote>
 </blockquote>
 
-<h4 id="mostleast-profitable-movies">Most/least profitable movies</h4>
+<h3 id="mostleast-profitable-movies">Most/least profitable movies</h3>
 
 <p align="center">
   <img src="/assets/images/banners/rockbuster/revenue_by_title.png" />
@@ -570,11 +1245,11 @@ G - General Audiences, All Ages Admitted. <br /></p>
   <img src="/assets/images/banners/rockbuster/least_profitable_movie.png" width="300" />
 </p>
 
-<h4 id="average-rental-duration">Average rental duration</h4>
+<h3 id="average-rental-duration">Average rental duration</h3>
 
 <p>As discovered previously, the average rental duration obtained from SQL query is 4.985 days or 5 days.</p>
 
-<h4 id="revenue-by-country">Revenue by country</h4>
+<h3 id="revenue-by-country">Revenue by country</h3>
 
 <p align="center">
   <img src="/assets/images/banners/rockbuster/revenue_by_country.png" />
@@ -588,7 +1263,7 @@ G - General Audiences, All Ages Admitted. <br /></p>
   <img src="/assets/images/banners/rockbuster/sales_figure.png" width="600" />
 </p>
 
-<h4 id="top-customers">Top customers</h4>
+<h3 id="top-customers">Top customers</h3>
 
 <p align="center">
   <img src="/assets/images/banners/rockbuster/top_customer_sql.png" />
@@ -598,7 +1273,7 @@ G - General Audiences, All Ages Admitted. <br /></p>
   <img src="/assets/images/banners/rockbuster/top_customer.png" width="800" />
 </p>
 
-<h3 id="conclusion">Conclusion</h3>
+<h2 id="conclusion">Conclusion</h2>
 
 <ul>
   <li style="font-weight: bold">Popularity</li>
@@ -617,7 +1292,7 @@ G - General Audiences, All Ages Admitted. <br /></p>
     </ul>
 </ul>
 
-<h3 id="recommendations">Recommendations</h3>
+<h2 id="recommendations">Recommendations</h2>
 
 <ul>
   <li>Top 5 movies by genre having revenue above $4,000: Sports, Sci-Fi, Animation, Drama and Comedy. Rockbuster should indeed invest more in those genres. However, these genres don‘t seem to relate to each other, thus, market (customer rental preference) by age groups shall be captured to specifically fulfill each group preferences.</li>
@@ -628,23 +1303,23 @@ G - General Audiences, All Ages Admitted. <br /></p>
   <li>Large population is indeed beneficial. However, repeated order from the same customer should be taken into account such as the case with Philippines, regardless its less population, it has the highest rental order / customer compared to others. For this purpose, such loyalty program for the top 10 customer shall be considered.</li>
 </ul>
 
-<h3 id="limitations"><strong>Limitations</strong></h3>
+<h2 id="limitations"><strong>Limitations</strong></h2>
 
 <p>Rockbuster and dataset used are fictious, therefore, this project is customized according to the learning goals.</p>
 
 <p>Find the code for this analysis <a href="https://github.com/nuki-susanti/Rockbuster-Analysis">Github</a><br />
 Find visualization in <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RockbusterStealthDataAnalysis_16618096649900/RockbusterAnalysis?publish=yes">Tableau</a><br />
-Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="database" /><category term="SQL" /><category term="exploratory data analysis" /><category term="database" /><category term="PostgreSQL" /><category term="SQL" /><category term="exploratory data analysis" /><category term="EDA" /><category term="visualization" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Instacart - Online Grocery Analysis</title><link href="http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html" rel="alternate" type="text/html" title="Instacart - Online Grocery Analysis" /><published>2022-12-18T00:00:00+07:00</published><updated>2022-12-18T00:00:00+07:00</updated><id>http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html"><![CDATA[<p align="center">
+Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="database" /><category term="SQL" /><category term="exploratory data analysis" /><category term="database" /><category term="PostgreSQL" /><category term="SQL" /><category term="exploratory data analysis" /><category term="EDA" /><category term="visualization" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Instacart - Online Grocery Analysis</title><link href="http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html" rel="alternate" type="text/html" title="Instacart - Online Grocery Analysis" /><published>2022-12-18T00:00:00+01:00</published><updated>2022-12-18T00:00:00+01:00</updated><id>http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html"><![CDATA[<p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Instacart_logo_and_wordmark.svg" width="500" />
   <em>Source: upload.wikimedia.org</em>
 </p>
 
-<h3 id="overview---business-problem"><strong>Overview - Business problem</strong></h3>
+<h2 id="overview---business-problem"><strong>Overview - Business problem</strong></h2>
 <p>Instacart is an online grocery store that has already made very good sales, but they want to uncover more information about their sales patterns. They assume they can’t target everyone using the same methods, and they’re considering a targeted marketing strategy. They want to target different customers with applicable marketing campaigns to see whether they have an effect on the sale of their products.</p>
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="goal"><strong>Goal</strong></h3>
+<h2 id="goal"><strong>Goal</strong></h2>
 <p>This analysis is intended to perform an initial exploratory data analysis in order to derive insights and suggest strategies for better segmentation based on the provided criteria. The key questions to be answered:</p>
 <ol style="margin-top:-20px;">
 <li>What are the busiest days of the week and hours of the day are (i.e., the days and times with the most orders) in order to schedule ads at times when there are fewer orders?</li>
@@ -664,7 +1339,7 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="data"><strong>Data</strong></h3>
+<h2 id="data"><strong>Data</strong></h2>
 <p>Instacart is a real company that’s made their data available online. However, the contents of the project brief as well as the data have been fabricated for the purpose of this project. The dataset comprises of information on the following parameters:</p>
 <ul>
   <li><a href="https://s3.amazonaws.com/coach-courses-us/public/courses/data-immersion/A4/A4_Data_Assets/customers.zip">Customers</a></li>
@@ -676,14 +1351,14 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="process"><strong>Process</strong></h3>
+<h2 id="process"><strong>Process</strong></h2>
 <p>This is python-based project to analyse and essentially to answer business questions of an online grocery store that operates through an app. First step is performing data wrangling which consist of data cleaning, consistency checking and merging. The merged dataset is used to answer above-defined business key question and the corresponding visualizations are performed using python.</p>
 
-<h3 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h3>
+<h2 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h2>
 
 <p style="margin-bottom:-30px"></p>
 
-<h4 id="busiest-days-of-the-week-and-hours-of-the-day">Busiest days of the week and hours of the day</h4>
+<h3 id="busiest-days-of-the-week-and-hours-of-the-day">Busiest days of the week and hours of the day</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/hist_order_hour_of_day.png" width="500" />
@@ -701,7 +1376,7 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a
   <li>During weekend, ads could be targetted for new customers, such as referal bonus. When many people are ordering, they might also see this interesting offer and ask their families, friends, etc. to join.</li>
 </ul>
 
-<h4 id="times-of-the-day-when-people-spend-the-most-money">Times of the day when people spend the most money</h4>
+<h3 id="times-of-the-day-when-people-spend-the-most-money">Times of the day when people spend the most money</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/line_prices_ohd.png" width="500" />
@@ -714,7 +1389,7 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a
 <p><strong>Recommendations</strong>:
 Ads of high range products should be started at 10 AM until around 6 PM.</p>
 
-<h4 id="price-range-groupings-to-direct-marketing-efforts">Price range groupings to direct marketing efforts</h4>
+<h3 id="price-range-groupings-to-direct-marketing-efforts">Price range groupings to direct marketing efforts</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/hist2_prices.png" width="500" />
@@ -750,7 +1425,7 @@ Ads of high range products should be started at 10 AM until around 6 PM.</p>
 
 <p><strong>Deeper research should be performed to address those three points. Afterwards, ads can then be adjusted accordingly.</strong></p>
 
-<h4 id="popular-products-and-departments">Popular products and departments</h4>
+<h3 id="popular-products-and-departments">Popular products and departments</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/bar_sales_per_depts.png" width="800" height="400" />
@@ -768,7 +1443,7 @@ Ads of high range products should be started at 10 AM until around 6 PM.</p>
   <li>For products from produce department, it should be highlighted in case those products are locally produced. This of course could influence customers who are aware of sustainability issue.</li>
 </ul>
 
-<h4 id="customer-types-and-behavior---brand-loyalty">Customer types and behavior - Brand loyalty</h4>
+<h3 id="customer-types-and-behavior---brand-loyalty">Customer types and behavior - Brand loyalty</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/pie_cust_dist.png" width="500" />
@@ -793,7 +1468,7 @@ Ads of high range products should be started at 10 AM until around 6 PM.</p>
 More research should be conducted on these groups, for example questionnaire on: why someone decides to join as a new customer, what makes them loyal and what encourage them to regularly shop on Instacart? <br /> Once their motives are discovered, specific ads should be effectively targeted to each of this group.
 </p>
 
-<h4 id="customer-types-and-behavior---ordering-habits-by-loyalty-status">Customer types and behavior - Ordering habits by loyalty status</h4>
+<h3 id="customer-types-and-behavior---ordering-habits-by-loyalty-status">Customer types and behavior - Ordering habits by loyalty status</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/bar_avgspend_habit.png" width="600" />
@@ -808,7 +1483,7 @@ More research should be conducted on these groups, for example questionnaire on:
 <p><strong>Recommendations</strong>:<br />
 Regular reminder (for example: notification via app, email, etc.) could be used to encourage new customers to make new orders.</p>
 
-<h4 id="customer-types-and-behavior---ordering-habits-by-region">Customer types and behavior - Ordering habits by region</h4>
+<h3 id="customer-types-and-behavior---ordering-habits-by-region">Customer types and behavior - Ordering habits by region</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/line_order_hour.png" width="600" />
@@ -837,7 +1512,7 @@ Regular reminder (for example: notification via app, email, etc.) could be used 
   <li>Data from department labelled missing here should be gained and researched more as there is promising market.</li>
 </ul>
 
-<h4 id="customer-types-and-behavior---ordering-habits-by-age-and-family-status">Customer types and behavior - Ordering habits by age and family status</h4>
+<h3 id="customer-types-and-behavior---ordering-habits-by-age-and-family-status">Customer types and behavior - Ordering habits by age and family status</h3>
 
 <p>This analysis aims to discover if there is a connection between age and family status in terms of ordering habits.</p>
 
@@ -872,7 +1547,7 @@ Regular reminder (for example: notification via app, email, etc.) could be used 
 <p><strong>Recommendations</strong>:<br />
 As there is no connection between family status and income in terms of ordering habit, so ads should be targetted to each of this group individually containing their corresponding products. Ads for low and mid-range products will attracts more order traffic as most orders are placed by customers who earn less than $200,000.</p>
 
-<h4 id="customer-demographic-classifications">Customer demographic classifications</h4>
+<h3 id="customer-demographic-classifications">Customer demographic classifications</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/pie_cust_per_region.png" width="500" />
@@ -933,11 +1608,11 @@ As there is no connection between family status and income in terms of ordering 
   <li style="margin-top:-10px">Top 3 most profitable departments are produce, dairy eggs and beverages despite medium or low order quantity. Thus, profit can be increased if orders from these department can be increased by intensifying specific ads.</li>
 </ul>
 
-<h3 id="limitations"><strong>Limitations</strong></h3>
+<h2 id="limitations"><strong>Limitations</strong></h2>
 
 <p>The content of the dataset is fabricated, therefore, it does not completely reflect real situation of Instacart.</p>
 
-<h3 id="further-analysis"><strong>Further Analysis</strong></h3>
+<h2 id="further-analysis"><strong>Further Analysis</strong></h2>
 
 <p>As previously mentioned that age, income and family status in general do not make huge difference in terms of ordering habit. It is, thus, interesting to analyze deeper on what factor mainly triggers different ordering habit. For this purpose, more data might be required such as data from customized customer surveys.</p>
 

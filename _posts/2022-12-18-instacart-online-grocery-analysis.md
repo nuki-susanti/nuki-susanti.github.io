@@ -12,12 +12,12 @@ tags: [exploratory data analysis, EDA, visualization]
 </p>
 
 
-### **Overview - Business problem** 
+## **Overview - Business problem** 
 Instacart is an online grocery store that has already made very good sales, but they want to uncover more information about their sales patterns. They assume they can't target everyone using the same methods, and they’re considering a targeted marketing strategy. They want to target different customers with applicable marketing campaigns to see whether they have an effect on the sale of their products.
 
 <p style="margin-bottom:-30px"></p>
 
-### **Goal**
+## **Goal**
 This analysis is intended to perform an initial exploratory data analysis in order to derive insights and suggest strategies for better segmentation based on the provided criteria. The key questions to be answered:
 <ol style="margin-top:-20px;">
 <li>What are the busiest days of the week and hours of the day are (i.e., the days and times with the most orders) in order to schedule ads at times when there are fewer orders?</li>
@@ -37,7 +37,7 @@ This analysis is intended to perform an initial exploratory data analysis in ord
 
 <p style="margin-bottom:-30px"></p>
 
-### **Data**
+## **Data**
 Instacart is a real company that’s made their data available online. However, the contents of the project brief as well as the data have been fabricated for the purpose of this project. The dataset comprises of information on the following parameters:
 * [Customers](https://s3.amazonaws.com/coach-courses-us/public/courses/data-immersion/A4/A4_Data_Assets/customers.zip)  
 * [Orders and Products](https://s3.amazonaws.com/coach-courses-us/public/courses/data-immersion/A4/A4_Data_Assets/4.3_orders_products.zip)
@@ -47,14 +47,14 @@ Data dictionary can be found [here](https://gist.github.com/jeremystan/c3b39d947
 
 <p style="margin-bottom:-30px"></p>
 
-### **Process**
+## **Process**
 This is python-based project to analyse and essentially to answer business questions of an online grocery store that operates through an app. First step is performing data wrangling which consist of data cleaning, consistency checking and merging. The merged dataset is used to answer above-defined business key question and the corresponding visualizations are performed using python.
 
-### Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis (EDA)
 
 <p style="margin-bottom:-30px"></p>
 
-#### Busiest days of the week and hours of the day
+### Busiest days of the week and hours of the day
 
 <p align="center">
   <img src="/assets/images/banners/instacart/hist_order_hour_of_day.png" width="500">
@@ -72,7 +72,7 @@ Those bar charts show that most orders occur between 10 AM to 3 PM with only sli
   <li>During weekend, ads could be targetted for new customers, such as referal bonus. When many people are ordering, they might also see this interesting offer and ask their families, friends, etc. to join.</li>
 </ul>
 
-#### Times of the day when people spend the most money
+### Times of the day when people spend the most money
 
 <p align="center">
   <img src="/assets/images/banners/instacart/line_prices_ohd.png" width="500">
@@ -85,7 +85,7 @@ Interestingly, the lowest value of orders occured at 10 AM and slowly increase a
 **Recommendations**:
 Ads of high range products should be started at 10 AM until around 6 PM.
 
-#### Price range groupings to direct marketing efforts
+### Price range groupings to direct marketing efforts
 
 <p align="center">
   <img src="/assets/images/banners/instacart/hist2_prices.png" width="500">
@@ -117,7 +117,7 @@ The histogram above shows the range of product prices. The lowest, highest and a
 
 **Deeper research should be performed to address those three points. Afterwards, ads can then be adjusted accordingly.**
 
-#### Popular products and departments
+### Popular products and departments
 
 <p align="center">
   <img src="/assets/images/banners/instacart/bar_sales_per_depts.png" width="800" height="400">
@@ -135,7 +135,7 @@ Looking at two bar charts above, 4 most profitable departments are: dairy eggs, 
   <li>For products from produce department, it should be highlighted in case those products are locally produced. This of course could influence customers who are aware of sustainability issue.</li>
 </ul>
 
-#### Customer types and behavior - Brand loyalty
+### Customer types and behavior - Brand loyalty
 
 <p align="center">
   <img src="/assets/images/banners/instacart/pie_cust_dist.png" width="500">
@@ -156,7 +156,7 @@ It can be seen that regular customers and loyal customers made up the majority o
 More research should be conducted on these groups, for example questionnaire on: why someone decides to join as a new customer, what makes them loyal and what encourage them to regularly shop on Instacart? <br/> Once their motives are discovered, specific ads should be effectively targeted to each of this group.
 </p>
 
-#### Customer types and behavior - Ordering habits by loyalty status
+### Customer types and behavior - Ordering habits by loyalty status
 
 <p align="center">
   <img src="/assets/images/banners/instacart/bar_avgspend_habit.png" width="600">
@@ -171,7 +171,7 @@ The bar charts above shows the spending habit in average and in maximum values i
 **Recommendations**:<br/>
 Regular reminder (for example: notification via app, email, etc.) could be used to encourage new customers to make new orders.
 
-#### Customer types and behavior - Ordering habits by region
+### Customer types and behavior - Ordering habits by region
 
 <p align="center">
   <img src="/assets/images/banners/instacart/line_order_hour.png" width="600">
@@ -201,7 +201,7 @@ It is so surprising when total sales is broken down into region and departments.
 </ul>
 
 
-#### Customer types and behavior - Ordering habits by age and family status
+### Customer types and behavior - Ordering habits by age and family status
 
 This analysis aims to discover if there is a connection between age and family status in terms of ordering habits.
 
@@ -236,7 +236,7 @@ Bar chart above shows that family status does not influence the average number o
 **Recommendations**:<br/>
 As there is no connection between family status and income in terms of ordering habit, so ads should be targetted to each of this group individually containing their corresponding products. Ads for low and mid-range products will attracts more order traffic as most orders are placed by customers who earn less than $200,000.
 
-####  Customer demographic classifications
+###  Customer demographic classifications
 
 <p align="center">
   <img src="/assets/images/banners/instacart/pie_cust_per_region.png" width="500">
@@ -293,11 +293,11 @@ In conclusion, the popularity of certain types of goods show also a similar patt
   <li style="margin-top:-10px">Top 3 most profitable departments are produce, dairy eggs and beverages despite medium or low order quantity. Thus, profit can be increased if orders from these department can be increased by intensifying specific ads.</li>
 </ul>
 
-### **Limitations**
+## **Limitations**
 
 The content of the dataset is fabricated, therefore, it does not completely reflect real situation of Instacart.
 
-### **Further Analysis**
+## **Further Analysis**
 
 As previously mentioned that age, income and family status in general do not make huge difference in terms of ordering habit. It is, thus, interesting to analyze deeper on what factor mainly triggers different ordering habit. For this purpose, more data might be required such as data from customized customer surveys.
 

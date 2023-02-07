@@ -18,11 +18,11 @@
 <meta property="og:url" content="http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html">
 <meta property="og:site_name" content="Home">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2022-12-18T00:00:00+07:00">
+<meta property="article:published_time" content="2022-12-18T00:00:00+01:00">
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="Instacart - Online Grocery Analysis">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nuki Susanti"},"dateModified":"2022-12-18T00:00:00+07:00","datePublished":"2022-12-18T00:00:00+07:00","description":"Source: upload.wikimedia.org","headline":"Instacart - Online Grocery Analysis","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html"},"url":"http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nuki Susanti"},"dateModified":"2022-12-18T00:00:00+01:00","datePublished":"2022-12-18T00:00:00+01:00","description":"Source: upload.wikimedia.org","headline":"Instacart - Online Grocery Analysis","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html"},"url":"http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -663,12 +663,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
   <em>Source: upload.wikimedia.org</em>
 </p>
 
-<h3 id="overview---business-problem"><strong>Overview - Business problem</strong></h3>
+<h2 id="overview---business-problem"><strong>Overview - Business problem</strong></h2>
 <p>Instacart is an online grocery store that has already made very good sales, but they want to uncover more information about their sales patterns. They assume they can’t target everyone using the same methods, and they’re considering a targeted marketing strategy. They want to target different customers with applicable marketing campaigns to see whether they have an effect on the sale of their products.</p>
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="goal"><strong>Goal</strong></h3>
+<h2 id="goal"><strong>Goal</strong></h2>
 <p>This analysis is intended to perform an initial exploratory data analysis in order to derive insights and suggest strategies for better segmentation based on the provided criteria. The key questions to be answered:</p>
 <ol style="margin-top:-20px;">
 <li>What are the busiest days of the week and hours of the day are (i.e., the days and times with the most orders) in order to schedule ads at times when there are fewer orders?</li>
@@ -688,7 +688,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="data"><strong>Data</strong></h3>
+<h2 id="data"><strong>Data</strong></h2>
 <p>Instacart is a real company that’s made their data available online. However, the contents of the project brief as well as the data have been fabricated for the purpose of this project. The dataset comprises of information on the following parameters:</p>
 <ul>
   <li><a href="https://s3.amazonaws.com/coach-courses-us/public/courses/data-immersion/A4/A4_Data_Assets/customers.zip">Customers</a></li>
@@ -700,14 +700,14 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="process"><strong>Process</strong></h3>
+<h2 id="process"><strong>Process</strong></h2>
 <p>This is python-based project to analyse and essentially to answer business questions of an online grocery store that operates through an app. First step is performing data wrangling which consist of data cleaning, consistency checking and merging. The merged dataset is used to answer above-defined business key question and the corresponding visualizations are performed using python.</p>
 
-<h3 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h3>
+<h2 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h2>
 
 <p style="margin-bottom:-30px"></p>
 
-<h4 id="busiest-days-of-the-week-and-hours-of-the-day">Busiest days of the week and hours of the day</h4>
+<h3 id="busiest-days-of-the-week-and-hours-of-the-day">Busiest days of the week and hours of the day</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/hist_order_hour_of_day.png" width="500">
@@ -725,7 +725,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   <li>During weekend, ads could be targetted for new customers, such as referal bonus. When many people are ordering, they might also see this interesting offer and ask their families, friends, etc. to join.</li>
 </ul>
 
-<h4 id="times-of-the-day-when-people-spend-the-most-money">Times of the day when people spend the most money</h4>
+<h3 id="times-of-the-day-when-people-spend-the-most-money">Times of the day when people spend the most money</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/line_prices_ohd.png" width="500">
@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <p><strong>Recommendations</strong>:
 Ads of high range products should be started at 10 AM until around 6 PM.</p>
 
-<h4 id="price-range-groupings-to-direct-marketing-efforts">Price range groupings to direct marketing efforts</h4>
+<h3 id="price-range-groupings-to-direct-marketing-efforts">Price range groupings to direct marketing efforts</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/hist2_prices.png" width="500">
@@ -774,7 +774,7 @@ Ads of high range products should be started at 10 AM until around 6 PM.</p>
 
 <p><strong>Deeper research should be performed to address those three points. Afterwards, ads can then be adjusted accordingly.</strong></p>
 
-<h4 id="popular-products-and-departments">Popular products and departments</h4>
+<h3 id="popular-products-and-departments">Popular products and departments</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/bar_sales_per_depts.png" width="800" height="400">
@@ -792,7 +792,7 @@ Ads of high range products should be started at 10 AM until around 6 PM.</p>
   <li>For products from produce department, it should be highlighted in case those products are locally produced. This of course could influence customers who are aware of sustainability issue.</li>
 </ul>
 
-<h4 id="customer-types-and-behavior---brand-loyalty">Customer types and behavior - Brand loyalty</h4>
+<h3 id="customer-types-and-behavior---brand-loyalty">Customer types and behavior - Brand loyalty</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/pie_cust_dist.png" width="500">
@@ -817,7 +817,7 @@ Ads of high range products should be started at 10 AM until around 6 PM.</p>
 More research should be conducted on these groups, for example questionnaire on: why someone decides to join as a new customer, what makes them loyal and what encourage them to regularly shop on Instacart? <br> Once their motives are discovered, specific ads should be effectively targeted to each of this group.
 </p>
 
-<h4 id="customer-types-and-behavior---ordering-habits-by-loyalty-status">Customer types and behavior - Ordering habits by loyalty status</h4>
+<h3 id="customer-types-and-behavior---ordering-habits-by-loyalty-status">Customer types and behavior - Ordering habits by loyalty status</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/bar_avgspend_habit.png" width="600">
@@ -832,7 +832,7 @@ More research should be conducted on these groups, for example questionnaire on:
 <p><strong>Recommendations</strong>:<br>
 Regular reminder (for example: notification via app, email, etc.) could be used to encourage new customers to make new orders.</p>
 
-<h4 id="customer-types-and-behavior---ordering-habits-by-region">Customer types and behavior - Ordering habits by region</h4>
+<h3 id="customer-types-and-behavior---ordering-habits-by-region">Customer types and behavior - Ordering habits by region</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/line_order_hour.png" width="600">
@@ -861,7 +861,7 @@ Regular reminder (for example: notification via app, email, etc.) could be used 
   <li>Data from department labelled missing here should be gained and researched more as there is promising market.</li>
 </ul>
 
-<h4 id="customer-types-and-behavior---ordering-habits-by-age-and-family-status">Customer types and behavior - Ordering habits by age and family status</h4>
+<h3 id="customer-types-and-behavior---ordering-habits-by-age-and-family-status">Customer types and behavior - Ordering habits by age and family status</h3>
 
 <p>This analysis aims to discover if there is a connection between age and family status in terms of ordering habits.</p>
 
@@ -896,7 +896,7 @@ Regular reminder (for example: notification via app, email, etc.) could be used 
 <p><strong>Recommendations</strong>:<br>
 As there is no connection between family status and income in terms of ordering habit, so ads should be targetted to each of this group individually containing their corresponding products. Ads for low and mid-range products will attracts more order traffic as most orders are placed by customers who earn less than $200,000.</p>
 
-<h4 id="customer-demographic-classifications">Customer demographic classifications</h4>
+<h3 id="customer-demographic-classifications">Customer demographic classifications</h3>
 
 <p align="center">
   <img src="/assets/images/banners/instacart/pie_cust_per_region.png" width="500">
@@ -958,11 +958,11 @@ As there is no connection between family status and income in terms of ordering 
   <li style="margin-top:-10px">Top 3 most profitable departments are produce, dairy eggs and beverages despite medium or low order quantity. Thus, profit can be increased if orders from these department can be increased by intensifying specific ads.</li>
 </ul>
 
-<h3 id="limitations"><strong>Limitations</strong></h3>
+<h2 id="limitations"><strong>Limitations</strong></h2>
 
 <p>The content of the dataset is fabricated, therefore, it does not completely reflect real situation of Instacart.</p>
 
-<h3 id="further-analysis"><strong>Further Analysis</strong></h3>
+<h2 id="further-analysis"><strong>Further Analysis</strong></h2>
 
 <p>As previously mentioned that age, income and family status in general do not make huge difference in terms of ordering habit. It is, thus, interesting to analyze deeper on what factor mainly triggers different ordering habit. For this purpose, more data might be required such as data from customized customer surveys.</p>
 
@@ -982,7 +982,7 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a
         <li><a class="post-link" href="/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" title="Rockbuster - Movie Rental Analysis">How Safe Are We On The Road? - Road Crash Analysis</a></li>
 <li><a class="post-link" href="/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html" title="Rockbuster - Movie Rental Analysis">Rockbuster - Movie Rental Analysis</a></li>
 <li><a class="post-link" href="/coding/game/2023/01/06/snake-game-using-turtle.html" title="Rockbuster - Movie Rental Analysis">Building Snake Game Using Python Turtle</a></li>
-<li><a class="post-link" href="/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html" title="Rockbuster - Movie Rental Analysis">Instacart - Online Grocery Analysis</a></li>
+<li><a class="post-link" href="/database/sql/2023/02/03/student-registration-database-part1.html" title="Rockbuster - Movie Rental Analysis">Building Student Registration Database Part 1 - SQL Learning Series</a></li>
 </ul>
     </div>
 <div class="post-comments"></div></section>

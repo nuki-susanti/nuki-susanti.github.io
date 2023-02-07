@@ -12,24 +12,24 @@ tags: [data mining, classification, supervised machine learning]
 </p>
 
 
-### **Overview - Business problem** 
+## **Overview - Business problem** 
 According to WHO, approximately 1.3 million people die each year as a result of road traffic crashes. Between 20 and 50 million more people suffer non-fatal injuries, with many incurring a disability as a result of their injury. In addition, road traffic crashes cost most countries 3% of their gross domestic product. This worldwide-phenomenon has been quite alarming as private transportation ownership increases, resulting in volume rise of vehicles on the road as well as traffic accidents. It is therefore critical to analyze and derive insights on what factors that could potentially influence the road accident events. These insights could be used for road accidents prevention measures.
 
 <p style="margin-bottom:-30px"></p>
 
-### **Goal**
+## **Goal**
 The objective of this road safety analysis to help analyze the influential factors causing traffic accidents, locate accident hot-spots and perform classification supervised machine learning to predict accident severity. Python and Tableau are used for data visualization and analysis presentation. Personally, as a professional in HSE area (Health Safety Environment), I selected this analysis subject intentionally to add values and insights to my current knowledge.
 
 <p style="margin-bottom:-30px"></p>
 
-### **Data**
+## **Data**
 * Open source road crash and casualties data from 2021 in South Australia collected by Department for Infrastructure and Transport. Cleaned and merged data results in 21,242 cases of traffic accidents. It can be found [here](https://data.sa.gov.au/data/dataset/road-crash-data/resource/1057e9ae-4672-4123-9c1d-1877483da401?inner_span=True).
 * [Data information and dictionary](https://data.sa.gov.au/data/dataset/road-crash-data/resource/02fb14f9-8dcb-4a59-863c-5f7cc3ae1832)
 * [Geojson of South Australian suburb boundaries](https://data.sa.gov.au/data/dataset/suburb-boundaries)
 
 <p style="margin-bottom:-30px"></p>
 
-### **Process**
+## **Process**
 This analysis, therefore, could be divided into two parts:
 <ol style="margin-top:-20px;">
   <li>Part 1: Data mining</li>
@@ -64,11 +64,11 @@ Data mining methodology called CRISP-DM(Cross Industry Standard Process for Data
   <dd>- Spatial analysis</dd>
 </ol>
 
-### Part 1: Data mining
+## Part 1: Data mining
 
 <p style="margin-bottom:-30px"></p>
 
-#### Accident distribution - How severe are accidents are on the road?
+### Accident distribution - How severe are accidents are on the road?
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_severity.png" width="300">
@@ -82,7 +82,7 @@ Data mining methodology called CRISP-DM(Cross Industry Standard Process for Data
 
 Pie chart shows property damage with no casualty (PDO) as the lightest level of accident severity accounts for 65.7% of the reported cases. The rest of the cases (34.4%) were divided into three higher severity levels; minor injury, serious injury and death (fatality). It can be seen that death or fatality accounts only for 0.6% of the reported accident cases.  However, compared to serious and minor injury groups, it takes the highest of number casualty in average.
 
-#### Time-based analysis: When do most accident happens, in hourly basis?
+### Time-based analysis: When do most accident happens, in hourly basis?
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_hour.png" width="500">
@@ -101,7 +101,7 @@ Pie chart shows property damage with no casualty (PDO) as the lightest level of 
 
 In general, accidents occurrence starts to rise in the morning rush-hour, at 08:00 and reaches its peak during afternoon rush-hour, from 15:00 to 17:00. It is the decreasing afterwards. However, a little bit different patterns is shown by fatality category. Fatality cases are shown to be high since midnight at 02:00 and steadily increases during morning rush-hour until reaches its peaks in the mid-day at 12:00 and in the afternoon rush-hour. While it decreases after afternoon rush-hour, it climbs again at 21:00. From this pattern, fatality cases mostly happen in these two time frames: least crowded time and crowded time. In terms of average casualty of fatality accidents, there seems to be an hourly pattern that shows peak at 5, 12, 18 and 22.
 
-#### Time-based analysis: When do most accident happens, in daily basis?
+### Time-based analysis: When do most accident happens, in daily basis?
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_day.png" width="500">
@@ -122,7 +122,7 @@ Based on its characteristics, accident occurences of PDO and minor injury group 
 
 Generally, average casualty on fatality and serious injury remains stable during weekeday and slightly rise during weekend. Conversely, average casualty on minor injury remains stabil during weekday, but decreases during weekend. From this pattern, there seems to be general behavior occurs during the week: Thursday becomes the day of high number of accidents and high casualty, weekend generally shows lower vehicle volumes but increase fatality cases and fatality casualty.
 
-#### Time-based analysis: When do most accident happens, in monthly basis?
+### Time-based analysis: When do most accident happens, in monthly basis?
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_month.png" width="500">
@@ -143,7 +143,7 @@ Generally, accident events of property damage and minor injury remains stable du
 
 In terms of average casualty, interestingly, only fatality has seasonality. It increases steadily during Q1 and reach the first peak in April (Q2). The second and third peaks occur in July (Q2) and October (Q3), respectively. This pattern reflects three holidays, Easter, summer and winter holidays.
 
-#### People-based analysis: Who are at risk? - Sex, alcohol and drugs involvement
+### People-based analysis: Who are at risk? - Sex, alcohol and drugs involvement
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_sex.png" width="300">
@@ -162,7 +162,7 @@ In terms of average casualty, interestingly, only fatality has seasonality. It i
 
 Ca. 60% of the accidents happens to be male and 40% is female. However, in average, death or fatality in female (2.24) is higher compared to that in male (1.83). Surprisingly, in South Australia, involvement of alcohol and drugs play little role in the number of accidents. It might be related to the measures taken by local authority or law enforcement in controlling alcohol and drugs circulation.
 
-#### People-based analysis: Who are at risk? - Age
+### People-based analysis: Who are at risk? - Age
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_dist_by_age.png" width="500">
@@ -183,7 +183,7 @@ The highest number of accident happens with people 20-25 years of age. The numbe
 
 The highest casualty on fatality accidents in average still happen with people 20-25 years of age and it decreases slightly with increasing age. However, it generally raises again when people reach 70 years of age. In conclusion, children and very old people are the most vulnarable groups when it comes to injury and fatality, respectively.
 
-#### Weather-based analysis - How does weather affect accident occurences?
+### Weather-based analysis - How does weather affect accident occurences?
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/raining_vs_not_raining.png" width="200">
@@ -202,7 +202,7 @@ The highest casualty on fatality accidents in average still happen with people 2
 
 All those weather-related features are conditions collected at the crash locations. It is interesting that most accidents happen in the clear weather condtions, unlike what people normally assume. In other words, weather play little influence to accident events.
 
-#### Spatial analysis - Is there any accident 'hot-spot'?
+### Spatial analysis - Is there any accident 'hot-spot'?
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/crash_map.png" width="600">
@@ -246,7 +246,7 @@ The hypothesis is only partially proved to be true. Most accidents cluster withi
 
 Interestingly, most fatalities incidents happened to be in close to the city center area. In other other words, not only does the complex road system corresponds postively to the number of accidents, but also to the accident severity.
 
-### Part 2: Model building - Severity prediction using supervised machine learning
+## Part 2: Model building - Severity prediction using supervised machine learning
 
 All previously analyzed factors (time, age, sex, road system and distance to city center) seem to be influential to the accident severity. However, it is not clear  to what extent those factors would impact severity. In other words, the order of importance is analyzed using classification model.
 
@@ -280,7 +280,7 @@ Among top 20 important fetaures, distance to city center become to be the most i
 
 <p style="margin-top:-30px"></p>
 
-### **Limitations**
+## **Limitations**
 
 1. The severity is indeed result of people not using safety equipment, such as helmet or safey belt. Dataset has this feature in it, however, it could not be used for this analysis as 90% of the data is missing. 
 2. Accidents occur at a very remote areas of South Australia might be not recorded or captured as many as accidents that occur in developed areas.
@@ -289,13 +289,13 @@ Among top 20 important fetaures, distance to city center become to be the most i
 
 <p style="margin-top:-30px"></p>
 
-### **Further Analysis**
+## **Further Analysis**
 
 The effect of safety equipment used by the victims or people involved on the traffic accidents should be analyzed and included in the model prediction.
 
 <p style="margin-top:-30px"></p>
 
-### **Final Notes**
+## **Final Notes**
 
 There are undeniably many factors that could cause or influence traffic accident occurrence, other than what was being analyzed in this analysis. However, providing insights from this data could certainly help involved parties such as local authority and community in taking measures preventing traffic accidents.\
 For instance:

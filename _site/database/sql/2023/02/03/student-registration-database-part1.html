@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Building Student Registration Database Part 1 - SQL Learning Series | Home</title>
+<meta name="generator" content="Jekyll v4.3.1">
+<meta property="og:title" content="Building Student Registration Database Part 1 - SQL Learning Series">
+<meta name="author" content="Nuki Susanti">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Source: wikipedia">
+<meta property="og:description" content="Source: wikipedia">
+<link rel="canonical" href="http://localhost:4000/database/sql/2023/02/03/student-registration-database-part1.html">
+<meta property="og:url" content="http://localhost:4000/database/sql/2023/02/03/student-registration-database-part1.html">
+<meta property="og:site_name" content="Home">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-02-03T00:00:00+01:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Building Student Registration Database Part 1 - SQL Learning Series">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nuki Susanti"},"dateModified":"2023-02-03T00:00:00+01:00","datePublished":"2023-02-03T00:00:00+01:00","description":"Source: wikipedia","headline":"Building Student Registration Database Part 1 - SQL Learning Series","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/database/sql/2023/02/03/student-registration-database-part1.html"},"url":"http://localhost:4000/database/sql/2023/02/03/student-registration-database-part1.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Home">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="Home" src="" onerror="this.style.display='none'">
+  Home
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/about.html">ABOUT ME</a><a class="page-link" href="/resume.html">RESUME</a><a class="page-link" href="/archives.html">PROJECTS</a><a class="page-link" href="/contact.html">CONTACT</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p align="center">
+  <img src="/assets/images/banners/srd_part1/mysql.png" width="300">
+  <em>Source: wikipedia</em>
+</p>
+
+<h2 id="motivation"><strong>Motivation</strong></h2>
+
+<p>After completing Data Analysis course, I still feel somehow that SQL topic hadn’t been explored sufficiently. In short, I’m not satisfied enough and need more exercises. I’ve done one SQL-based project using PostgreSQL in which SQL query was used to answer business questions. That project honestly really helps me to understand some important concepts of RDBMS, such as join and CTE (Common Table Expression). Now, I would like to explore SQL from the scratch, from SQL programming to querying. This project will be series learning projects. My goal is hopefully, at the end of the learning series, I could level up my SQL knowledge.</p>
+
+<p style="margin-bottom:-30px"></p>
+
+<h2 id="overview---project-and-tools"><strong>Overview - Project and Tools</strong></h2>
+
+<p>I did some research what I could use as a starting point and came across <a href="https://datamastery.gitlab.io/exercises/registration-database.html">Student Registration Database</a>. This is very simple database schema that I could modify into little bit more complex one. So, I decided to pick this one with some modifications:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ul>
+  <li>I want to have interface application to interact with the database. However, as I don’t want to spend time building frontend interface, CLI-based application could be a way out. For this purpose, I use python library called Typer as well as Rich.</li>
+  <li>I will use MySQL and cloud-based free RDBMS live environment such as <a href="https://railway.app/new">railway.app</a>. As term “free” suggests, it is free to use but only for 24 hours. Afterwards, it will be automatically erased and we have to make a new project environment. It means that we have also to change the connection every 24 hours.</li>
+  <li>As there are no business requirements listed, I may add some constraints or check on the tables along the way (see process point 3).</li>
+  <li>All data checking and constraint will be in the database side. Though application (python) could also do this heavy lifting task, however, the aim of this project is that me exploring and learning SQL. So, this might not reflect the ideal condition in the real world.</li>
+</ul>
+
+<p><b>Tech Stack:</b></p>
+
+<p style="margin-top:-10px"></p>
+
+<ul>
+  <li>
+<a href="https://typer.tiangolo.com">Typer</a> - For building great CLIs that are easy to code</li>
+  <li>
+<a href="https://rich.readthedocs.io/en/stable/introduction.html">Rich</a> - Rich text and beautiful formatting in the terminal</li>
+  <li>Cloud-based database environment – <a href="https://railway.app/new">railway.app</a>
+</li>
+  <li>And of course python</li>
+</ul>
+
+<p style="margin-bottom:-30px"></p>
+
+<h2 id="process"><strong>Process</strong></h2>
+<p style="margin-bottom:-50px"></p>
+
+<h3 id="1-installing-typer-and-rich">1.	Installing Typer and Rich</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">typer</span> <span class="n">rich</span>
+</code></pre></div></div>
+
+<h3 id="2-creating-mysql-provision-on-railwayapp">2.	Creating MySQL provision on railway.app</h3>
+
+<div class="container" style="display: inline-block;">  
+  <figure>
+  <div style="float: left; padding: 10px;">
+    <img src="/assets/images/banners/srd_part1/railway1.png" width="300" height="350" align="center">
+    <figcaption align="center"><i>MySQL environment provided by railway.app</i></figcaption>
+  </div>
+
+  <div style="float: right; padding: 10px;">
+    <img src="/assets/images/banners/srd_part1/connection.png" width="300" height="350" align="center">
+    <figcaption align="center"><i>Connection details railway.app</i></figcaption>
+  </div>
+  </figure>
+</div>
+
+<p>In case database shell is to be used in IDE (I used VS Code here and MySQL extension), those connection details must be entered.</p>
+
+<h3 id="3-creating-erd-entity-relationship-diagram">3.	Creating ERD (Entity Relationship Diagram)</h3>
+
+<p>I used <a href="https://dbdiagram.io/">dbdiagram.io</a> for this purpose.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/srd_part1/erd.png" width="800">
+  <em>Entity Relationship Diagram (ERD)</em>
+</p>
+
+<p>So, I made some <b>improvisation and constraints</b> on the schema:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ul>
+  <li>I added prerequisites table to address mandatory course to take other courses as well as its corresponding minimum grade to pass. For example: students can’t enroll Mathematics 2 when they haven’t taken Mathematics 1 with a minimum grade of 60.</li>
+  <li>Students can only take same course in a year, meaning if they don’t pass a course in year 2022, they can only enroll again in year 2023.</li>
+  <li>Grade is set between 0 – 100.</li>
+</ul>
+
+<h3 id="4-separating-files-based-on-its-purpose">4. Separating files based on its purpose</h3>
+
+<p>I managed to divide the entire application into 4 files:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ol>
+  <li>
+<b><i>app.py</i></b> - This is the interface of the application. However, as I mentioned, this is CLI-based application. So, interface is not actually interface as you can still see the code.</li>
+  <li>
+<b><i>db.py</i></b> - Storing function for database interaction.</li>
+  <li>
+<b><i>sql_query.sql</i></b> - Storing SQL schema, trigger and function.</li>
+  <li>
+<b><i>db_seed.py</i></b> - Storing initial data to populate tables.</li>
+</ol>
+
+<h3 id="5-lets-roll">5.	Let’s roll!</h3>
+
+<p style="margin-bottom:-30px"></p>
+
+<h2 id="part-1"><strong>Part 1</strong></h2>
+<p style="margin-bottom:-50px"></p>
+
+<h3 id="creating-schema">Creating schema</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*File: sql_query.sql*/</span>
+<span class="k">DROP</span> <span class="k">DATABASE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">railway</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">railway</span><span class="p">;</span>
+<span class="n">USE</span> <span class="n">railway</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">departments</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">dept_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span><span class="p">,</span>
+    <span class="n">dept_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">dean_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">building</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">room</span> <span class="nb">INTEGER</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">courses</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">dept_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">course_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span><span class="p">,</span>
+    <span class="n">course_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>  
+    <span class="n">hour</span> <span class="nb">INTEGER</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">dept_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">departments</span><span class="p">(</span><span class="n">dept_id</span><span class="p">)</span>
+        <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">students</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">student_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span><span class="p">,</span>
+    <span class="n">first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">gpa</span> <span class="nb">DOUBLE</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">prerequisites</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">course_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">course_prereq_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">min_grade</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">course_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">courses</span><span class="p">(</span><span class="n">course_id</span><span class="p">)</span>
+        <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span><span class="p">,</span>
+    <span class="k">CHECK</span> <span class="p">(</span><span class="n">min_grade</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">AND</span> <span class="n">min_grade</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">enrolled</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">student_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">course_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">dept_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>  
+    <span class="n">enrollment_year</span> <span class="nb">YEAR</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">grade</span> <span class="nb">INTEGER</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">student_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">students</span><span class="p">(</span><span class="n">student_id</span><span class="p">)</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">course_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">courses</span><span class="p">(</span><span class="n">course_id</span><span class="p">)</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">dept_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">departments</span><span class="p">(</span><span class="n">dept_id</span><span class="p">)</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span><span class="p">,</span>
+    <span class="k">UNIQUE</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">enrollment_year</span><span class="p">),</span>
+    <span class="k">CHECK</span> <span class="p">(</span><span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">AND</span> <span class="n">grade</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="creating-mysql-connection">Creating MySQL connection</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py 
+</span><span class="k">def</span> <span class="nf">create_server_connection</span><span class="p">():</span>
+    <span class="n">connection</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span>
+            <span class="n">user</span><span class="o">=</span><span class="n">env</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"USERNAME"</span><span class="p">),</span>
+            <span class="n">password</span><span class="o">=</span><span class="n">env</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"PASSW"</span><span class="p">),</span>
+            <span class="n">host</span><span class="o">=</span><span class="n">env</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"HOST"</span><span class="p">),</span>
+            <span class="n">port</span><span class="o">=</span><span class="n">env</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"PORT"</span><span class="p">),</span>
+            <span class="n">database</span><span class="o">=</span><span class="n">env</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"DB"</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">"Successfully connected to MySQL"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Error: '</span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s">'"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">connection</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">sql_connection</span><span class="p">():</span>
+    <span class="n">create_server_connection</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>As you can see, connection details are saved in the .env file for confidentiality purpose. Later, it can be easily .gitignore-d.</p>
+
+<h3 id="creating-table-and-populating-database">Creating table and populating database</h3>
+
+<p><b>Creating tables from schema:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py 
+</span><span class="k">def</span> <span class="nf">resetting_db</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">con</span><span class="p">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cur</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'sql_query.sql'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">statement</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="nb">file</span><span class="p">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">multi</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+                        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Executed: </span><span class="si">{</span><span class="n">statement</span><span class="p">.</span><span class="n">statement</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Error: '</span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s">'"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Creating data seed to populate tables:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db_seed.py
+</span><span class="n">seed_departments</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">"cs"</span><span class="p">,</span> <span class="s">"computer science"</span><span class="p">,</span> <span class="s">"rubio"</span><span class="p">,</span> <span class="s">"ajax"</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math"</span><span class="p">,</span> <span class="s">"mathematics"</span><span class="p">,</span> <span class="s">"carson"</span><span class="p">,</span> <span class="s">"acme"</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ee"</span><span class="p">,</span> <span class="s">"electrical engineering"</span><span class="p">,</span> <span class="s">"kasich"</span><span class="p">,</span> <span class="s">"ajax"</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ie"</span><span class="p">,</span> <span class="s">"industrial engineering"</span><span class="p">,</span> <span class="s">"cruz"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"music"</span><span class="p">,</span> <span class="s">"musicology"</span><span class="p">,</span> <span class="s">"costello"</span><span class="p">,</span> <span class="s">"north"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">seed_courses</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">"cs"</span><span class="p">,</span> <span class="s">"cs101"</span><span class="p">,</span> <span class="s">"programming"</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"cs"</span><span class="p">,</span> <span class="s">"cs201"</span><span class="p">,</span> <span class="s">"algorithms"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"cs"</span><span class="p">,</span> <span class="s">"cs202"</span><span class="p">,</span> <span class="s">"systems"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math"</span><span class="p">,</span> <span class="s">"math101"</span><span class="p">,</span> <span class="s">"algebra"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math"</span><span class="p">,</span> <span class="s">"math201"</span><span class="p">,</span> <span class="s">"calculus"</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math"</span><span class="p">,</span> <span class="s">"math301"</span><span class="p">,</span> <span class="s">"analysis"</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ee"</span><span class="p">,</span> <span class="s">"ee102"</span><span class="p">,</span> <span class="s">"circuits"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ie"</span><span class="p">,</span> <span class="s">"ie101"</span><span class="p">,</span> <span class="s">"probability"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ie"</span><span class="p">,</span> <span class="s">"ie102"</span><span class="p">,</span> <span class="s">"statistics"</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"music"</span><span class="p">,</span> <span class="s">"music104"</span><span class="p">,</span> <span class="s">"jazz"</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">seed_prerequisites</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">"cs202"</span><span class="p">,</span> <span class="s">"cs201"</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"cs201"</span><span class="p">,</span> <span class="s">"cs101"</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math301"</span><span class="p">,</span> <span class="s">"math201"</span><span class="p">,</span> <span class="mi">70</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"math201"</span><span class="p">,</span> <span class="s">"math101"</span><span class="p">,</span> <span class="mi">70</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">seed_students</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">"tb01"</span><span class="p">,</span> <span class="s">"tom"</span><span class="p">,</span> <span class="s">"bush"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"ch01"</span><span class="p">,</span> <span class="s">"cruz"</span><span class="p">,</span> <span class="s">"hening"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"cs01"</span><span class="p">,</span> <span class="s">"clinton"</span><span class="p">,</span> <span class="s">"smith"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"es01"</span><span class="p">,</span> <span class="s">"evan"</span><span class="p">,</span> <span class="s">"sanders"</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p><b>Populating database with data seed:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py 
+</span><span class="k">def</span> <span class="nf">populating_db</span><span class="p">():</span>
+
+    <span class="n">sql_departments</span> <span class="o">=</span> <span class="s">"""
+      INSERT INTO departments(dept_id, dept_name, dean_name, building, room) 
+      VALUES(%s, %s, %s, %s, %s);
+    """</span>
+    <span class="n">sql_courses</span> <span class="o">=</span> <span class="s">"""
+      INSERT INTO courses(dept_id, course_id, course_name, hour) 
+      VALUES(%s, %s, %s, %s);
+    """</span>
+    <span class="n">sql_prerequisites</span> <span class="o">=</span> <span class="s">"""
+      INSERT INTO prerequisites(course_id, course_prereq_id, min_grade) 
+      VALUES(%s, %s, %s);
+    """</span>
+    <span class="n">sql_students</span> <span class="o">=</span> <span class="s">"""
+      INSERT INTO students(student_id, first_name, last_name) 
+      VALUES(%s, %s, %s);
+    """</span>
+
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_departments</span><span class="p">,</span> <span class="n">db_seed</span><span class="p">.</span><span class="n">seed_departments</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_courses</span><span class="p">,</span> <span class="n">db_seed</span><span class="p">.</span><span class="n">seed_courses</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_prerequisites</span><span class="p">,</span> <span class="n">db_seed</span><span class="p">.</span><span class="n">seed_prerequisites</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_students</span><span class="p">,</span> <span class="n">db_seed</span><span class="p">.</span><span class="n">seed_students</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Database is successfully initialized."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Here, query function was created to handle CRUD (Create, read, update and delete) operations and thus, also reducing boiler plate code that will be used during interaction with database.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py 
+</span><span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">fetch</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">connection</span><span class="p">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">many</span><span class="p">:</span>
+            <span class="n">cur</span><span class="p">.</span><span class="n">executemany</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cur</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">fetch</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cur</span><span class="p">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">connection</span><span class="p">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Executed successfully: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="n">typer</span><span class="p">.</span><span class="n">style</span><span class="p">(</span><span class="s">"Successful!"</span><span class="p">,</span>
+                   <span class="n">bg</span><span class="o">=</span><span class="n">typer</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="n">typer</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">GREEN</span><span class="p">))</span>
+
+    <span class="k">except</span> <span class="p">(</span><span class="n">IntegrityError</span><span class="p">,</span> <span class="n">DatabaseError</span><span class="p">,</span> <span class="n">Error</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s">"Failed. You have an error message: 
+              </span><span class="si">{</span><span class="n">typer</span><span class="p">.</span><span class="n">style</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">typer</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="n">typer</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">RED</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">cur</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>It is also worth mentioning that parameterized statements “%s” was used rather than literal string for security reason, namely preventing SQL injection.</p>
+
+<p><b>Interface look:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">reset_db</span><span class="p">(</span><span class="n">data_seed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">True</span><span class="p">):</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s">"Are you sure? This will delete all the data. (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">resetting_db</span><span class="p">()</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Successfully reset database"</span><span class="p">)</span>
+
+    <span class="c1"># It will automatically populate database with data seed stored in db_seed.
+</span>    <span class="c1"># Otherwise user should specify --no-data-seed
+</span>        <span class="k">if</span> <span class="n">data_seed</span><span class="p">:</span>
+            <span class="n">populating_db</span><span class="p">()</span> 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Database reset aborted"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Then, when we run this function by writing in terminal <code class="language-plaintext highlighter-rouge">python app.py reset-db</code>.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/srd_part1/terminal1.png" width="500">
+  <em>Running "reset-db" for resetting and populating database - <b>app.py</b></em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/srd_part1/terminal2.png" width="500">
+  <em>Resetting database successful - <b>app.py</b></em>
+</p>
+
+<p>It seems to work, but let’s check our database.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/srd_part1/railway2.png" width="500">
+  <em>Tables are successfully created - <b>railway.app</b></em>
+</p>
+
+<p>So, our database is successfully populated with our initial data.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/srd_part1/railway3.png" width="500">
+  <em>Tables are successfully populated - <b>railway.app</b></em>
+</p>
+
+<h3 id="updating-tables">Updating tables</h3>
+
+<p>In this step, I added functionalities to add and update all those tables: departments, courses, students, prerequisites and ‚enrolled.</p>
+
+<p style="margin-bottom:-50px"></p>
+
+<h4 id="a-departments">A. Departments</h4>
+
+<p><b>Database function for updating table “departments”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py 
+</span><span class="k">def</span> <span class="nf">adding_department</span><span class="p">(</span><span class="n">dept_details</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"""
+          INSERT INTO departments(dept_id, dept_name, dean_name, building, room) 
+          VALUES(%s, %s, %s, %s, %s);
+        """</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">dept_details</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating table “departments”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py 
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">add_department</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want to add a department? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        
+        <span class="n">dept_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter department ID: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">dept_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter department name: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">dean_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter dean name of the department (optional): "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">building</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter building name (optional): "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">room</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter room number (optional): "</span><span class="p">).</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">room</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="n">dept_details</span> <span class="o">=</span> <span class="p">(</span><span class="n">dept_id</span><span class="p">,</span> <span class="n">dept_name</span><span class="p">,</span> <span class="n">dean_name</span><span class="p">,</span> <span class="n">building</span><span class="p">,</span> <span class="n">room</span><span class="p">)</span>
+
+        <span class="n">adding_department</span><span class="p">(</span><span class="n">dept_details</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>From this process I found out that when user doesn’t input anything (in other words, empty string) for columns “dept_id” and “dept_name”, it is still inserted into database, though I specified “NOT NULL” constraint in the table schema. Eventually, NOT NULL constraint enforces a column to NOT accept NULL values only. Whereas empty string is still interpreted as a value. This of course will be data integrity problem. In order to prevent this from happening, another check for empty string is enforced.</p>
+
+<p>For the other columns: “dean_name”, “building” and “room”, they can hold NULL values which aren’t necessary to be declared explicitly as the default setting are NULL (DEFAULT NULL). However, a problem will arise when converting empty string to integer, so that it was set to be None as default value to be able to insert into the database.</p>
+
+<p><b>Updated database schema:</b></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*File: sql_query.sql*/</span>
+<span class="k">DROP</span> <span class="k">DATABASE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">railway</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">railway</span><span class="p">;</span>
+<span class="n">USE</span> <span class="n">railway</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">departments</span><span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">dept_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">dept_id</span> <span class="o">!=</span> <span class="nv">""</span><span class="p">),</span>
+    <span class="n">dept_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">dept_name</span> <span class="o">!=</span> <span class="nv">""</span><span class="p">),</span>
+    <span class="n">dean_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">building</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">room</span> <span class="nb">INTEGER</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="b-courses">B. Courses</h4>
+
+<p><b>Database function for updating table “courses”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py
+</span> <span class="k">def</span> <span class="nf">adding_course</span><span class="p">(</span><span class="n">course_details</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"""
+          INSERT INTO courses(dept_id, course_id, course_name, hour) 
+          VALUES(%s, %s, %s, %s);
+        """</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">course_details</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating table “courses”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">add_course</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want to add a course? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">dept_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter department ID: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">course_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter course ID: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">course_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter course name: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">hour</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter the duration of the course in hour: "</span><span class="p">).</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">hour</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="n">course_details</span> <span class="o">=</span> <span class="p">(</span><span class="n">dept_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">course_name</span><span class="p">,</span> <span class="n">hour</span><span class="p">)</span>
+
+        <span class="n">adding_course</span><span class="p">(</span><span class="n">course_details</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="c-students">C. Students</h4>
+
+<p><b>Database function for updating table “students”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py
+</span><span class="k">def</span> <span class="nf">adding_student</span><span class="p">(</span><span class="n">student_details</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"INSERT INTO students(student_id, first_name, last_name) VALUES(%s, %s, %s);"</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">student_details</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating table “students”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">add_student</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want add a student? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">student_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter student id: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">first_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter student's first name: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">last_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter student's last name: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="n">student_details</span> <span class="o">=</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">)</span>
+
+        <span class="n">adding_student</span><span class="p">(</span><span class="n">student_details</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="d-prerequisites">D. Prerequisites</h4>
+
+<p><b>Database function for updating table “prerequisites”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py
+</span><span class="k">def</span> <span class="nf">adding_prereq</span><span class="p">(</span><span class="n">prereq_details</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"""
+          INSERT INTO prerequisites(course_id, course_prereq_id, min_grade) VALUES(%s, %s, %s);
+        """</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">prereq_details</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating table “prerequisites”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">add_prereq</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s">"Do you want to add prerequisite for a course? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">course_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter course ID: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">course_prereq_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter course prerequisite: "</span><span class="p">).</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">min_grade</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter the minimum grade for the course: "</span><span class="p">).</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">min_grade</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># default minimum grade            
+</span>
+        <span class="n">prereq_details</span> <span class="o">=</span> <span class="p">(</span><span class="n">course_id</span><span class="p">,</span> <span class="n">course_prereq_id</span><span class="p">,</span> <span class="n">min_grade</span><span class="p">)</span>
+
+        <span class="n">adding_prereq</span><span class="p">(</span><span class="n">prereq_details</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="e-enrolled">E. Enrolled</h4>
+
+<p>Enrolled table aims to store students and their enrolled course. However, there are constraints in enrolling student for a course, as I mentioned previously in the beginning:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ul>
+  <li>Mandatory course has to be taken before taking other consecutive courses with its corresponding minimum grade to pass. For example: students can’t enroll Mathematics 2 when they haven’t taken Mathematics 1 with a minimum grade of 60. The prerequisites of the courses are stored in table “prerequisites”.</li>
+  <li>Students can only take same course in a year, meaning if they don’t pass a course in year 2022, they can only enroll again in year 2023. This has been specified as “UNIQUE” constraint in the schema.</li>
+</ul>
+
+<p>For this purpose, I created trigger to check before inserting (enrolling) student for a course. Trigger must ensure that it checks the prerequisite course and minimum grade.</p>
+
+<p><b>Trigger for requirements checking before inserting into table “enrolled”:</b></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*File: sql_query.sql
+/*Creating a trigger and temporary table*/
+DROP TRIGGER IF EXISTS before_enrolled_insert;
+CREATE TRIGGER before_student_course_insert
+    BEFORE INSERT ON enrolled 
+    FOR EACH ROW
+BEGIN
+    /*Create temporary tables to hold 1. prerequisites of courses and 2. unmet_prereqs*/
+    DROP TEMPORARY TABLE IF EXISTS tempo_prereqs;
+    DROP TEMPORARY TABLE IF EXISTS unmet_prereqs;
+    CREATE TEMPORARY TABLE IF NOT EXISTS tempo_prereqs(
+        course_prereq VARCHAR(10) REFERENCES courses(course_id),
+        min_grade INTEGER
+    );
+
+    CREATE TEMPORARY TABLE IF NOT EXISTS unmet_prereqs(
+        course_prereq VARCHAR(10) REFERENCES courses(course_id)
+    );
+    
+    /*Does this course have prereqs? 
+    If yes, insert them into temp_prereq -&gt; filter out the course*/
+    INSERT INTO tempo_prereqs(course_prereq, min_grade)
+    SELECT course_prereq_id, min_grade FROM prerequisites 
+      WHERE course_id = NEW.course_id;
+    /*New course ID we want to insert*/
+
+    /*Are there any unmet prereqs? -&gt; student-specific*/
+    INSERT INTO unmet_prereqs(course_prereq)
+    SELECT course_prereq
+    FROM tempo_prereqs AS tp
+    WHERE tp.course_prereq NOT IN
+        (SELECT e.course_id FROM enrolled AS e WHERE 
+        e.student_id= NEW.student_id AND sc.grade &gt; tp.min_grade);
+
+    /*If there are, insert will fail and message the user*/
+    IF EXISTS (SELECT course_prereq FROM unmet_prereqs) THEN
+        SET @message_text = CONCAT(
+            'Student ', NEW.student_id, ' cannot take course ', NEW.course_id, 
+            ' because not all the prerequisites are met.'
+            );
+
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = @message_text;
+    END IF;
+END;
+</span></code></pre></div></div>
+
+<p><b>Database function for updating table “enrolled”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py
+</span><span class="k">def</span> <span class="nf">enrolling_student</span><span class="p">(</span><span class="n">enrollment_details</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"INSERT INTO student_course(student_id, course_id, enrollment_year) VALUES(%s, %s, %s);"</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">enrollment_details</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating table “enrolled”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">enroll_student</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s">"Do you want to enroll a student? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">student_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter your student id: "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">course_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter your course id you want to enroll: "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">().</span><span class="n">year</span>
+
+        <span class="n">enrollment_details</span> <span class="o">=</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+
+        <span class="n">enrolling_student</span><span class="p">(</span><span class="n">enrollment_details</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Further, to support this functionality, <code class="language-plaintext highlighter-rouge">update-grade</code> command is added so that we can set if a student should/should not pass a course.</p>
+
+<p><b>Database function for updating grade in table “enrolled”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: db.py
+</span><span class="k">def</span> <span class="nf">updating_grade</span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">grade</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">create_server_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="s">"""
+          UPDATE enrolled SET grade = %s WHERE student_id = %s 
+          AND course_id = %s 
+          AND enrollment_year = %s;
+        """</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">grade</span><span class="p">,</span> <span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">query</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">sql_script</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>Interface function for updating grade in table “enrolled”:</b></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: app.py
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">update_grade</span><span class="p">():</span>
+    <span class="n">user_answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want to enroll a student? (y/n): "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">user_answer</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+        <span class="n">student_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter your student id: "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">course_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter the course id: "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter the year: "</span><span class="p">).</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">().</span><span class="n">year</span>
+
+        <span class="n">grade</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter your grade: "</span><span class="p">).</span><span class="n">strip</span><span class="p">())</span>
+
+        <span class="n">updating_grade</span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">grade</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typer</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="s">"Okay. Thank you!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><b>This is the end of part 1. I will continue in the part 2 for the rest of functionalities.</b></p>
+
+<h2 id="conclusions"><strong>Conclusions</strong></h2>
+
+<p>In the part 1 of this project, I learned:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ol>
+  <li>Creating ERD (Entity Relationship Diagram)</li>
+  <li>Creating DDL (Data Definition Language: CREATE), DML (Data Manipulation Language: SELECT, INSERT, UPDATE), TCL (Transaction Control Language: COMMIT)</li>
+  <li>Applying constraints on MySQL schema </li>
+  <li>Creating trigger and temporary table</li>
+  <li>Building CLI-based application</li>
+</ol>
+
+<p style="margin-bottom:30px"></p>
+
+<p>The code for this project will be uploaded in Github soon.<br>
+Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a></p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" title="How Safe Are We On The Road? - Road Crash Analysis">How Safe Are We On The...</a><span></span>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/coding/game/2023/01/06/snake-game-using-turtle.html" title="">Building Snake Game Using Python Turtle</a></li>
+<li><a class="post-link" href="/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" title="">How Safe Are We On The Road? - Road Crash Analysis</a></li>
+<li><a class="post-link" href="/database/sql/2023/02/03/student-registration-database-part1.html" title="">Building Student Registration Database Part 1 - SQL Learning Series</a></li>
+<li><a class="post-link" href="/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html" title="">Rockbuster - Movie Rental Analysis</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>
+<span class="copyleft">©</span> 2023 Nuki Susanti</div>
+      <div>This page is powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat" target="_blank" rel="noopener noreferrer">Yat Theme</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

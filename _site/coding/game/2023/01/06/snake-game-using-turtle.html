@@ -18,11 +18,11 @@
 <meta property="og:url" content="http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html">
 <meta property="og:site_name" content="Home">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2023-01-06T00:00:00+07:00">
+<meta property="article:published_time" content="2023-01-06T00:00:00+01:00">
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="Building Snake Game Using Python Turtle">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nuki Susanti"},"dateModified":"2023-01-06T00:00:00+07:00","datePublished":"2023-01-06T00:00:00+07:00","description":"Source: emulatorpc.com","headline":"Building Snake Game Using Python Turtle","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html"},"url":"http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nuki Susanti"},"dateModified":"2023-01-06T00:00:00+01:00","datePublished":"2023-01-06T00:00:00+01:00","description":"Source: emulatorpc.com","headline":"Building Snake Game Using Python Turtle","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html"},"url":"http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -662,7 +662,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
  Source: <a href="https://www.emulatorpc.com/snake-game//">emulatorpc.com</a>
 </p>
 
-<h3 id="overview"><strong>Overview</strong></h3>
+<h2 id="overview"><strong>Overview</strong></h2>
 <p>Being non-developer, but always dealing with code here and there, I have been feeling, my coding skill is lacking. So, this week, I wanted to refresh my programming skill and revisit a programming concept I have learned in the past, namely OOP (Object-Oriented Programming). I did some quick research on the small project I could take as exercise and come across old game I used to play on my old 3350 Nokia. Yes, snake game.</p>
 
 <p>I use python as the main programming language and found that it comes with pre-installed library, turtle, thus it doesn’t need to be installed externally. Turtle is a pre-installed Python library that enables users to create pictures and shapes by providing them with a virtual canvas. As this game is very simple and we all might be familiar with the rules, I decided to re-create this game using python and turtle. 
@@ -670,7 +670,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="object-oriented-programming"><strong>Object-Oriented Programming</strong></h3>
+<h2 id="object-oriented-programming"><strong>Object-Oriented Programming</strong></h2>
 <p>As opposed to procedural, object-oriented programming uses concept of class and object. I always imagine that class is like building blocks when playing or building Lego. It is reusable piece of ‘tools’ that allows me to re-create an object without having to build everything from the scratch, which is why it is called ‘blueprint’. I really liked this concept when it was introduced to me at the first time because it requires less line of code to achieve the same goal. In addition, my code appears to be tidy and neat because OOP hides the ‘main machine’ on the back. From developer POV, OOP creates more maintainable code.</p>
 
 <p>Class has attributes and methods. Attributes are everything that an object has, such as manufacturing year, color, shape, etc., while methods represent the abilities of an object; can it fly, talk or cook? It is built using method called constructor ‘<strong>init</strong>’. When this method is called, it allows the class to initialize the attributes of the class.</p>
@@ -679,7 +679,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
 
 <p style="margin-bottom:-30px"></p>
 
-<h3 id="building-snake-game"><strong>Building Snake Game</strong></h3>
+<h2 id="building-snake-game"><strong>Building Snake Game</strong></h2>
 <p>For this game, I broke down the steps into smaller ones to identify what I should do first, second, third and so on. In addition, I divided the files into several files that it won’t clutter the main file (‘app.py’). At the end, I happened to have five separate python files.</p>
 
 <p align="center">
@@ -694,7 +694,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
 
 <p style="margin-bottom:-30px"></p>
 
-<h4 id="1-setting-up-the-screen">1.	Setting up the screen</h4>
+<h3 id="1-setting-up-the-screen">1.	Setting up the screen</h3>
 
 <p align="center">
   <img src="/assets/images/banners/snake_game/part1a.png" width="600">
@@ -706,7 +706,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part1b.png" width="600">
 </p>
 
-<h4 id="2-creating-snake-body">2.	Creating snake body</h4>
+<h3 id="2-creating-snake-body">2.	Creating snake body</h3>
 
 <p>I made the initial snake or seed of snake using only 2 blocks of square by initializing turtle object from turtle class. The default size of each block is 20 x 20. The starting position of initial snake is supposed to be at the center of the screen (default is (0,0)). Here tuple is used to define the starting point.</p>
 
@@ -720,7 +720,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part2b.png" width="600">
 </p>
 
-<h4 id="3-moving-the-snake">3.	Moving the snake</h4>
+<h3 id="3-moving-the-snake">3.	Moving the snake</h3>
 
 <p>Still coming from the same snake class but using different method. This method aims for the body of the snake to follow its head. Remember that snake is made of two different parts of turtle blocks and each of block could move independently.</p>
 
@@ -728,7 +728,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part3.png" width="600">
 </p>
 
-<h4 id="4-controlling-the-snake-using-keypress">4.	Controlling the snake using keypress</h4>
+<h3 id="4-controlling-the-snake-using-keypress">4.	Controlling the snake using keypress</h3>
 
 <p>This step serves for controlling purpose using keyboard up, down, left and right.</p>
 
@@ -740,7 +740,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part4b.png" width="600">
 </p>
 
-<h4 id="5-tracking-the-score">5.	Tracking the score</h4>
+<h3 id="5-tracking-the-score">5.	Tracking the score</h3>
 
 <p>I made separate a file to note and track the score (‘scoreboard.py’).</p>
 
@@ -748,7 +748,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part5.png" width="600">
 </p>
 
-<h4 id="6-feeding-on-the-food">6.	Feeding on the food</h4>
+<h3 id="6-feeding-on-the-food">6.	Feeding on the food</h3>
 
 <p>I also made ‘food.py’. file to write food class. I played a bit with shape and color of the food. It has turtle shape (I believe a real snake will have hard time when it tries to feed on turtle :)) and its color varies following the list of color specified at the top of the food.py file.</p>
 
@@ -764,7 +764,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part6c.png" width="600">
 </p>
 
-<h4 id="7-detecting-collision-with-the-wall">7.	Detecting collision with the wall</h4>
+<h3 id="7-detecting-collision-with-the-wall">7.	Detecting collision with the wall</h3>
 
 <p align="center">
   <img src="/assets/images/banners/snake_game/part7a.png" width="600">
@@ -774,13 +774,13 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part7b.png" width="600">
 </p>
 
-<h4 id="8-detecting-collision-with-its-own-body">8. Detecting collision with its own body</h4>
+<h3 id="8-detecting-collision-with-its-own-body">8. Detecting collision with its own body</h3>
 
 <p align="center">
   <img src="/assets/images/banners/snake_game/part8.png" width="600">
 </p>
 
-<h4 id="9-adding-difficulty-levels">9. Adding difficulty levels</h4>
+<h3 id="9-adding-difficulty-levels">9. Adding difficulty levels</h3>
 
 <p>This is an additional feature I added at the beginning of the game, but the last step I took. It can be achieved by changing time.sleep after importing time library. Easy was set to be 1s, medium 0.5s and hard was 0.1s.</p>
 
@@ -792,7 +792,7 @@ Turtle documentation can be found <a href="https://docs.python.org/3/library/tur
   <img src="/assets/images/banners/snake_game/part9b.png" width="600">
 </p>
 
-<h3 id="playing-the-game"><strong>Playing the game</strong></h3>
+<h2 id="playing-the-game"><strong>Playing the game</strong></h2>
 
 <p>Here is the final look of the game. I have fun experimenting and trying it myself! :)</p>
 
@@ -817,10 +817,10 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/">Linkedin</a
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html" title="How Safe Are We On The Road? - Road Crash Analysis">Rockbuster - Movie Rental Analysis</a></li>
+        <li><a class="post-link" href="/database/sql/2023/02/03/student-registration-database-part1.html" title="How Safe Are We On The Road? - Road Crash Analysis">Building Student Registration Database Part 1 - SQL Learning Series</a></li>
 <li><a class="post-link" href="/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html" title="How Safe Are We On The Road? - Road Crash Analysis">Instacart - Online Grocery Analysis</a></li>
-<li><a class="post-link" href="/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" title="How Safe Are We On The Road? - Road Crash Analysis">How Safe Are We On The Road? - Road Crash Analysis</a></li>
 <li><a class="post-link" href="/coding/game/2023/01/06/snake-game-using-turtle.html" title="How Safe Are We On The Road? - Road Crash Analysis">Building Snake Game Using Python Turtle</a></li>
+<li><a class="post-link" href="/database/sql/exploratory%20data%20analysis/2022/12/19/rockbuster-movie-rental-analysis.html" title="How Safe Are We On The Road? - Road Crash Analysis">Rockbuster - Movie Rental Analysis</a></li>
 </ul>
     </div>
 <div class="post-comments"></div></section>
