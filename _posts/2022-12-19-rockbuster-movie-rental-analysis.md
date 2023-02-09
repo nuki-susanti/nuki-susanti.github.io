@@ -182,6 +182,6 @@ As discovered previously, the average rental duration obtained from SQL query is
 
 Rockbuster and dataset used are fictious, therefore, this project is customized according to the learning goals.
 
-Find the code for this analysis [Github](https://github.com/nuki-susanti/Rockbuster-Analysis)\
-Find visualization in [Tableau](https://public.tableau.com/app/profile/nuki.susanti/viz/RockbusterStealthDataAnalysis_16618096649900/RockbusterAnalysis?publish=yes)\
-Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/)
+Find the code for this analysis [Github](https://github.com/nuki-susanti/Rockbuster-Analysis){:target="_blank"}\
+Find visualization in [Tableau](https://public.tableau.com/app/profile/nuki.susanti/viz/RockbusterStealthDataAnalysis_16618096649900/RockbusterAnalysis?publish=yes){:target="_blank"}\
+Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/){:target="_blank"}

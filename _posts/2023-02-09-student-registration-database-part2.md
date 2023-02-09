@@ -360,5 +360,5 @@ During this project, I learned these following points:
 <p style="margin-bottom:30px"></p>
 
 
-Find the code for this project [Github](https://github.com/nuki-susanti/Student-Registration-Database)\
-Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/)
+Find the code for this project [Github](https://github.com/nuki-susanti/Student-Registration-Database){:target="_blank"}\
+Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/){:target="_blank"}

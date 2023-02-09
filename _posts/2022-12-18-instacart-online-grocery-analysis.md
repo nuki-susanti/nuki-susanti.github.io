@@ -301,5 +301,5 @@ The content of the dataset is fabricated, therefore, it does not completely refl
 
 As previously mentioned that age, income and family status in general do not make huge difference in terms of ordering habit. It is, thus, interesting to analyze deeper on what factor mainly triggers different ordering habit. For this purpose, more data might be required such as data from customized customer surveys.
 
-Find the code for this analysis [Github](https://github.com/nuki-susanti/Instacart-Analysis)\
-Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/)
+Find the code for this analysis [Github](https://github.com/nuki-susanti/Instacart-Analysis){:target="_blank"}\
+Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/){:target="_blank"}

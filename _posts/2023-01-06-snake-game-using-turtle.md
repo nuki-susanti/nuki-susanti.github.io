@@ -154,5 +154,5 @@ Here is the final look of the game. I have fun experimenting and trying it mysel
   <img src="/assets/images/banners/snake_game/game_b.png" width="600">
 </p>
 
-Find the code in [Github](https://github.com/nuki-susanti/Snake-Game)\
-Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/)
+Find the code in [Github](https://github.com/nuki-susanti/Snake-Game){:target="_blank"}\
+Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/){:target="_blank"}
