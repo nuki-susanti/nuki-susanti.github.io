@@ -340,26 +340,26 @@ Then, when we run this function by writing in terminal `python app.py reset-db`.
 
 <p align="center">
   <img src="/assets/images/banners/srd_part1/terminal1.png" width="500">
-  <em>Running "reset-db" for resetting and populating database - <b>app.py</b></em>
+  <em>Running "reset-db" for resetting and populating database</em>
 </p>
 
 <p align="center">
   <img src="/assets/images/banners/srd_part1/terminal2.png" width="500">
-  <em>Resetting database successful - <b>app.py</b></em>
+  <em>Resetting database successful</em>
 </p>
 
 It seems to work, but let’s check our database.
 
 <p align="center">
   <img src="/assets/images/banners/srd_part1/railway2.png" width="500">
-  <em>Tables are successfully created - <b>railway.app</b></em>
+  <em>Tables are successfully created</em>
 </p>
 
 So, our database is successfully populated with our initial data.
 
 <p align="center">
   <img src="/assets/images/banners/srd_part1/railway3.png" width="500">
-  <em>Tables are successfully populated - <b>railway.app</b></em>
+  <em>Tables are successfully populated</em>
 </p>
 
 ### Updating tables
@@ -674,25 +674,13 @@ def update_grade():
         typer.echo("Okay. Thank you!")
 ```
 
-<b>This is the end of part 1. I will continue in the part 2 for the rest of functionalities.</b>
-
 ## **Conclusions**
 
-In the part 1 of this project, I learned:
+<b>This is the end of part 1. I will continue in the part 2 for the rest of functionalities.</b>
 
-<p style="margin-top:-10px"></p>
-
-<ol>
-  <li>Creating ERD (Entity Relationship Diagram)</li>
-  <li>Creating DDL (Data Definition Language: CREATE), DML (Data Manipulation Language: SELECT, INSERT, UPDATE), TCL (Transaction Control Language: COMMIT)</li>
-  <li>Applying constraints on MySQL schema</li>
-  <li>Applying parameterized statements</li>
-  <li>Creating trigger and temporary table</li>
-  <li>Building CLI-based application</li>
-</ol>
 
 <p style="margin-bottom:30px"></p>
 
 
-The code for this project will be uploaded in Github soon.\
+Find the code for this project [Github](https://github.com/nuki-susanti/Student-Registration-Database)\
 Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/)
