@@ -137,7 +137,7 @@ CREATE TABLE students(
     student_id VARCHAR(10) NOT NULL UNIQUE,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
-    gpa DOUBLE(3,2)
+    gpa FLOAT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE prerequisites(
@@ -154,12 +154,10 @@ CREATE TABLE enrolled(
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     student_id VARCHAR(10) NOT NULL,
     course_id VARCHAR(10) NOT NULL,
-    dept_id VARCHAR(255) NOT NULL,  
     enrollment_year YEAR NOT NULL,
     grade INTEGER,
     FOREIGN KEY (student_id) REFERENCES students(student_id) ON UPDATE CASCADE,
     FOREIGN KEY (course_id) REFERENCES courses(course_id) ON UPDATE CASCADE,
-    FOREIGN KEY (dept_id) REFERENCES departments(dept_id) ON UPDATE CASCADE,
     UNIQUE (student_id, course_id, enrollment_year),
     CHECK (grade >= 0 AND grade <= 100)
 );
@@ -578,11 +576,9 @@ BEGIN
         course_prereq VARCHAR(10) REFERENCES courses(course_id)
     );
     
-    /*Does this course have prereqs? 
-    If yes, insert them into temp_prereq -> filter out the course*/
+    /*Does this course have prereqs? If yes, insert them into temp_prereq -> filter out the course*/
     INSERT INTO tempo_prereqs(course_prereq, min_grade)
-    SELECT course_prereq_id, min_grade FROM prerequisites 
-      WHERE course_id = NEW.course_id;
+    SELECT course_prereq_id, min_grade FROM prerequisites WHERE course_id = NEW.course_id;
     /*New course ID we want to insert*/
 
     /*Are there any unmet prereqs? -> student-specific*/
@@ -590,8 +586,7 @@ BEGIN
     SELECT course_prereq
     FROM tempo_prereqs AS tp
     WHERE tp.course_prereq NOT IN
-        (SELECT e.course_id FROM enrolled AS e WHERE 
-        e.student_id= NEW.student_id AND sc.grade > tp.min_grade);
+        (SELECT e.course_id FROM enrolled AS e WHERE e.student_id= NEW.student_id AND e.grade > tp.min_grade);
 
     /*If there are, insert will fail and message the user*/
     IF EXISTS (SELECT course_prereq FROM unmet_prereqs) THEN
@@ -661,7 +656,7 @@ def updating_grade(student_id, course_id, year, grade):
 # File: app.py
 @app.command()
 def update_grade():
-    user_answer = input("Do you want to enroll a student? (y/n): ").strip().lower()
+    user_answer = input("Do you want to update course grade? (y/n): ").strip().lower()
 
     if user_answer == "y":
         student_id = input("Enter your student id: ").strip().lower()
@@ -690,7 +685,8 @@ In the part 1 of this project, I learned:
 <ol>
   <li>Creating ERD (Entity Relationship Diagram)</li>
   <li>Creating DDL (Data Definition Language: CREATE), DML (Data Manipulation Language: SELECT, INSERT, UPDATE), TCL (Transaction Control Language: COMMIT)</li>
-  <li>Applying constraints on MySQL schema </li>
+  <li>Applying constraints on MySQL schema</li>
+  <li>Applying parameterized statements</li>
   <li>Creating trigger and temporary table</li>
   <li>Building CLI-based application</li>
 </ol>
