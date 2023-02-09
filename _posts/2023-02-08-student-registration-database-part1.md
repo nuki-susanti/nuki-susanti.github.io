@@ -20,12 +20,12 @@ After completing Data Analysis course, I still feel somehow that SQL topic hadn�
 
 ## **Overview - Project and Tools**
 
-I did some research what I could use as a starting point and came across [Student Registration Database](https://datamastery.gitlab.io/exercises/registration-database.html). This is very simple database schema that I could modify into little bit more complex one. So, I decided to pick this one with some modifications:
+I did some research what I could use as a starting point and came across [Student Registration Database](https://datamastery.gitlab.io/exercises/registration-database.html){:target="_blank"}. This is very simple database schema that I could modify into little bit more complex one. So, I decided to pick this one with some modifications:
 
 <p style="margin-top:-10px"></p>
 
 * I want to have interface application to interact with the database. However, as I don’t want to spend time building frontend interface, CLI-based application could be a way out. For this purpose, I use python library called Typer as well as Rich.
-* I will use MySQL and cloud-based free RDBMS live environment such as [railway.app](https://railway.app/new). As term “free” suggests, it is free to use but only for 24 hours. Afterwards, it will be automatically erased and we have to make a new project environment. It means that we have also to change the connection every 24 hours.
+* I will use MySQL and cloud-based free RDBMS live environment such as [railway.app](https://railway.app/new){:target="_blank"}. As term “free” suggests, it is free to use but only for 24 hours. Afterwards, it will be automatically erased and we have to make a new project environment. It means that we have also to change the connection every 24 hours.
 * As there are no business requirements listed, I may add some constraints or check on the tables along the way (see process point 3).
 * All data checking and constraint will be in the database side. Though application (python) could also do this heavy lifting task, however, the aim of this project is that me exploring and learning SQL. So, this might not reflect the ideal condition in the real world.
 
@@ -33,9 +33,9 @@ I did some research what I could use as a starting point and came across [Studen
 
 <p style="margin-top:-10px"></p>
 
-* [Typer](https://typer.tiangolo.com) - For building great CLIs that are easy to code
-* [Rich](https://rich.readthedocs.io/en/stable/introduction.html) - Rich text and beautiful formatting in the terminal
-* Cloud-based database environment – [railway.app](https://railway.app/new)
+* [Typer](https://typer.tiangolo.com){:target="_blank"} - For building great CLIs that are easy to code
+* [Rich](https://rich.readthedocs.io/en/stable/introduction.html){:target="_blank"} - Rich text and beautiful formatting in the terminal
+* Cloud-based database environment – [railway.app](https://railway.app/new){:target="_blank"}
 * And of course python
 
 <p style="margin-bottom:-30px"></p>
@@ -69,7 +69,7 @@ In case database shell is to be used in IDE (I used VS Code here and MySQL exten
 
 ### 3.	Creating ERD (Entity Relationship Diagram)
 
-I used [dbdiagram.io](https://dbdiagram.io/) for this purpose.
+I used [dbdiagram.io](https://dbdiagram.io/){:target="_blank"} for this purpose.
 
 <p align="center">
   <img src="/assets/images/banners/srd_part1/erd.png" width="800">

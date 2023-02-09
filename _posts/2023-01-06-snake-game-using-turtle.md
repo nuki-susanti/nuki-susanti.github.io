@@ -16,7 +16,7 @@ tags: [coding, object-oriented programming, oop, game]
 Being non-developer, but always dealing with code here and there, I have been feeling, my coding skill is lacking. So, this week, I wanted to refresh my programming skill and revisit a programming concept I have learned in the past, namely OOP (Object-Oriented Programming). I did some quick research on the small project I could take as exercise and come across old game I used to play on my old 3350 Nokia. Yes, snake game. 
 
 I use python as the main programming language and found that it comes with pre-installed library, turtle, thus it doesn’t need to be installed externally. Turtle is a pre-installed Python library that enables users to create pictures and shapes by providing them with a virtual canvas. As this game is very simple and we all might be familiar with the rules, I decided to re-create this game using python and turtle. 
-Turtle documentation can be found [here](https://docs.python.org/3/library/turtle.html).
+Turtle documentation can be found [here](https://docs.python.org/3/library/turtle.html){:target="_blank"}.
 
 <p style="margin-bottom:-30px"></p>
 

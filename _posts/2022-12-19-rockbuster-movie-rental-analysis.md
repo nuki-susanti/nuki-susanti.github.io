@@ -30,12 +30,12 @@ Essentially, this project aims to learn relational database management systems (
 <p style="margin-bottom:-30px"></p>
 
 ## **Data**
-Rockbuster company and data being used are all fictious. The dataset containing information about Rockbuster’s film inventory, customers, and payments, among other things is provided by Careerfoundry and can be found [here](https://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip).
+Rockbuster company and data being used are all fictious. The dataset containing information about Rockbuster’s film inventory, customers, and payments, among other things is provided by Careerfoundry and can be found [here](https://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip){:target="_blank"}.
 
 <p style="margin-bottom:-30px"></p>
 
 ## **Process**
-This is SQL-based project using PostgreSQL database to analyse and essentially to answer business questions of a movie rental company. I began by drafting data dictionary that can be found [here](https://github.com/nuki-susanti/Rockbuster-Analysis/blob/main/Data_Dictionary.pdf).
+This is SQL-based project using PostgreSQL database to analyse and essentially to answer business questions of a movie rental company. I began by drafting data dictionary that can be found [here](https://github.com/nuki-susanti/Rockbuster-Analysis/blob/main/Data_Dictionary.pdf){:target="_blank"}.
 
 <p align="center">
   <img src="/assets/images/banners/rockbuster/erd.png" width="900">

@@ -39,11 +39,11 @@ This analysis is intended to perform an initial exploratory data analysis in ord
 
 ## **Data**
 Instacart is a real company that’s made their data available online. However, the contents of the project brief as well as the data have been fabricated for the purpose of this project. The dataset comprises of information on the following parameters:
-* [Customers](https://s3.amazonaws.com/coach-courses-us/public/courses/data-immersion/A4/A4_Data_Assets/customers.zip)  
-* [Orders and Products](https://s3.amazonaws.com/coach-courses-us/public/courses/data-immersion/A4/A4_Data_Assets/4.3_orders_products.zip)
+* [Customers](https://s3.amazonaws.com/coach-courses-us/public/courses/data-immersion/A4/A4_Data_Assets/customers.zip){:target="_blank"}
+* [Orders and Products](https://s3.amazonaws.com/coach-courses-us/public/courses/data-immersion/A4/A4_Data_Assets/4.3_orders_products.zip){:target="_blank"}
 * [Departments](https://s3.amazonaws.com/coach-courses-us/public/courses/data-immersion/A4/A4_Data_Assets/4.4_departments.zip)
 
-Data dictionary can be found [here](https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b).
+Data dictionary can be found [here](https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b){:target="_blank"}.
 
 <p style="margin-bottom:-30px"></p>
 

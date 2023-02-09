@@ -23,9 +23,9 @@ The objective of this road safety analysis to help analyze the influential facto
 <p style="margin-bottom:-30px"></p>
 
 ## **Data**
-* Open source road crash and casualties data from 2021 in South Australia collected by Department for Infrastructure and Transport. Cleaned and merged data results in 21,242 cases of traffic accidents. It can be found [here](https://data.sa.gov.au/data/dataset/road-crash-data/resource/1057e9ae-4672-4123-9c1d-1877483da401?inner_span=True).
-* [Data information and dictionary](https://data.sa.gov.au/data/dataset/road-crash-data/resource/02fb14f9-8dcb-4a59-863c-5f7cc3ae1832)
-* [Geojson of South Australian suburb boundaries](https://data.sa.gov.au/data/dataset/suburb-boundaries)
+* Open source road crash and casualties data from 2021 in South Australia collected by Department for Infrastructure and Transport. Cleaned and merged data results in 21,242 cases of traffic accidents. It can be found [here](https://data.sa.gov.au/data/dataset/road-crash-data/resource/1057e9ae-4672-4123-9c1d-1877483da401?inner_span=True){:target="_blank"}.
+* [Data information and dictionary](https://data.sa.gov.au/data/dataset/road-crash-data/resource/02fb14f9-8dcb-4a59-863c-5f7cc3ae1832){:target="_blank"}
+* [Geojson of South Australian suburb boundaries](https://data.sa.gov.au/data/dataset/suburb-boundaries){:target="_blank"}
 
 <p style="margin-bottom:-30px"></p>
 
@@ -257,7 +257,7 @@ All previously analyzed factors (time, age, sex, road system and distance to cit
 
 Bar chart above shows that we deal with highly imbalanced dataset that would deliver poor predictive performance, specifically for the minority class. This is a problem because typically, the minority class is more important and therefore the problem is more sensitive to classification errors for the minority class than the majority class. 
 
-There are of course techniques to handle the imbalance dataset problem in classification. I would link good articles for that [here](https://towardsdatascience.com/guide-to-classification-on-imbalanced-datasets-d6653aa5fa23) and [here](https://www.analyticsvidhya.com/blog/2017/03/imbalanced-data-classification/). However, for the sake of simplicity, binary classification was choosen consiting of injury/death group (sum of fatality, serious and minor injury) and PDO.
+There are of course techniques to handle the imbalance dataset problem in classification. I would link good articles for that [here](https://towardsdatascience.com/guide-to-classification-on-imbalanced-datasets-d6653aa5fa23){:target="_blank"} and [here](https://www.analyticsvidhya.com/blog/2017/03/imbalanced-data-classification/){:target="_blank"}. However, for the sake of simplicity, binary classification was choosen consiting of injury/death group (sum of fatality, serious and minor injury) and PDO.
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/accident_hist_by_casualty2.png" width="600">
