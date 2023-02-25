@@ -8,7 +8,7 @@ tags: [database, programming, MySQL, SQL, python]
 
 
 <p align="center">
-  <img src="/assets/images/banners/srd_part1/mysql.png" width="300">
+  <img src="/assets/images/banners/srd_part1/mysql.png">
   <em>Source: wikipedia</em>
 </p>
 

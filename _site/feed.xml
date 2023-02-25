@@ -1,5 +1,190 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-09T19:01:46+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun learning journeys of data</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">Building Student Registration Database Part 2 - SQL Learning Series</title><link href="http://localhost:4000/database/sql/2023/02/09/student-registration-database-part2.html" rel="alternate" type="text/html" title="Building Student Registration Database Part 2 - SQL Learning Series" /><published>2023-02-09T00:00:00+01:00</published><updated>2023-02-09T00:00:00+01:00</updated><id>http://localhost:4000/database/sql/2023/02/09/student-registration-database-part2</id><content type="html" xml:base="http://localhost:4000/database/sql/2023/02/09/student-registration-database-part2.html"><![CDATA[<p align="center">
-  <img src="/assets/images/banners/srd_part1/mysql.png" width="300" />
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-25T21:47:19+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun learning journeys of data</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">Web Scraping Using Python Scrapy - indeed.com</title><link href="http://localhost:4000/web%20scraping/data%20acquisition/2023/02/24/web-scraping-using-python-scrapy.html" rel="alternate" type="text/html" title="Web Scraping Using Python Scrapy - indeed.com" /><published>2023-02-24T00:00:00+01:00</published><updated>2023-02-24T00:00:00+01:00</updated><id>http://localhost:4000/web%20scraping/data%20acquisition/2023/02/24/web-scraping-using-python%20scrapy</id><content type="html" xml:base="http://localhost:4000/web%20scraping/data%20acquisition/2023/02/24/web-scraping-using-python-scrapy.html"><![CDATA[<p align="center">
+  <img src="https://i.ytimg.com/vi/ve_0h4Y8nuI/maxresdefault.jpg" />
+  <em>Source: wikipedia</em>
+</p>
+
+<h2 id="motivation"><strong>Motivation</strong></h2>
+
+<p>As a (future) data analyst, data acquisition is one of the day-to-day work. It is quite convenient when data we need is already published somewhere on the internet as open source data. We can of course get right into analysis. However, as we know this world is not ideal. Sometimes, data analyst must go get their hand dirty by acquring data themselves, such as web scraping and web crawling. Altough web scraping and web crawling might be used interchangebly, however, they are very different process. This small project, however, is web scraping which is acquiring job data from job portal indeed.com.</p>
+
+<p>Before scraping, I did quick research on the legality of web scraping. This topic remains gray area till date, however, we can relect on the linkedIn saga who sued hiQ Lab which I don’t want to go detail into. From my quick research, I may conclude that it should be fine to scrape “public data” which doesn’t include any authorization. Further, here, I don’t scrape any data containing PII. In addition, one should be more “ethical” since scraping may overload the web server.</p>
+<p style="margin-bottom:-30px"></p>
+
+<h2 id="overview---project-and-tools"><strong>Overview - Project and Tools</strong></h2>
+
+<p>The aim of this projects are:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ul>
+  <li>Exercising web scraping skills and dataa acquisitions</li>
+  <li>Performing job posting analysis since I have been getting many rejections while applying data analyst position in Germany, haha.. I wonder what makes data analyst in Germany to be hired in terms of skills and qualifications. I wanted to prove my assumption through analysis whether a classical stereotype is true that formal degree in the relevant major is more important than skills, even in this digital era where everybody can learn almost everything.</li>
+</ul>
+
+<p>The job data analysis will be performed next and written in separate article.</p>
+
+<p><b>Tech Stack:</b></p>
+
+<p style="margin-top:-10px"></p>
+
+<ul>
+  <li><a href="https://scrapy.org" target="_blank">Scrapy</a> - Python framework for web scraping and web crawling</li>
+  <li><a href="https://scrapeops.io" target="_blank">Proxy provider</a> - For tunneling the scraper request to the web server</li>
+</ul>
+
+<p style="margin-bottom:-30px"></p>
+
+<h2 id="process"><strong>Process</strong></h2>
+<p style="margin-bottom:-50px"></p>
+
+<h3 id="1-installing-scrapy">1.	Installing Scrapy</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">scrapy</span>
+</code></pre></div></div>
+
+<h3 id="2-inspecting-indeedcom-page">2.	Inspecting indeed.com page</h3>
+
+<p>As mentioned, I will be interested in discovering data analyst job requirement in Germany. By inputing keyword “data analyst” and location “Germany”, indeed will give me this look.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/scrapy/indeed1.png" />
+  <em>The looks of de.indeed.com</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/scrapy/indeed2.png" />
+  <em>Inspecting page element</em>
+</p>
+
+<p>Firstly, I scraped the div container of the front page to get all the links leading to the actual job page, then scraped one by one the information about the “job title”, “location, “status” and “job description”. Afterwards, I will go to the next page and do exactly the same thing.</p>
+
+<h4 id="scraping-front-page">Scraping front page</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: indeed_scraper.py
+</span><span class="k">def</span> <span class="nf">parse_front</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+
+        <span class="n">links</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span>
+            <span class="s">'//div[@id="mosaic-provider-jobcards"]//td[@class="resultContent"]/div/h2/a/@href'</span><span class="p">)</span>
+        <span class="n">links_to_follow</span> <span class="o">=</span> <span class="n">links</span><span class="p">.</span><span class="n">extract</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">links_to_follow</span><span class="p">:</span>
+            <span class="n">url_to_follow</span> <span class="o">=</span> <span class="s">"https://de.indeed.com"</span> <span class="o">+</span> <span class="n">url</span>
+            <span class="k">yield</span> <span class="n">response</span><span class="p">.</span><span class="n">follow</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url_to_follow</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">parse_page</span><span class="p">)</span>
+
+        <span class="c1"># Paginate Through Jobs Pages
+</span>        <span class="n">next_page</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//a[@aria-label="Next Page"]/@href'</span><span class="p">).</span><span class="n">get</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">next_page</span><span class="p">:</span>
+            <span class="n">next_page_url</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">next_page</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">next_page_url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">parse_front</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="scraping-actual-page">Scraping actual page</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: indeed_scraper.py
+</span><span class="k">def</span> <span class="nf">parse_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+
+        <span class="n">job_title_ext</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//h1/span[@role="text"]/text()'</span><span class="p">).</span><span class="n">extract_first</span><span class="p">()</span>
+
+        <span class="n">company_name_ext</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//div[@data-company-name="true"]/a/text()'</span><span class="p">).</span><span class="n">extract_first</span><span class="p">()</span>
+
+        <span class="n">location_ext</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//*[contains(@class,"jobsearch-JobInfoHeader-subtitle")]/div[2]/div[1]/text()'</span><span class="p">).</span><span class="n">extract_first</span><span class="p">()</span>
+
+        <span class="n">status_ext</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//*[@id="salaryInfoAndJobType"]/span/text()'</span><span class="p">).</span><span class="n">extract_first</span><span class="p">()</span>
+        
+        <span class="n">description</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//div[@id="jobDescriptionText"]//descendant::*/text()'</span><span class="p">)</span>
+        <span class="n">description_ext</span> <span class="o">=</span> <span class="n">description</span><span class="p">.</span><span class="n">extract</span><span class="p">()</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">description_ext</span><span class="p">)</span>
+
+        <span class="k">yield</span> <span class="p">{</span>
+            <span class="s">'title'</span><span class="p">:</span> <span class="n">job_title_ext</span><span class="p">,</span>
+            <span class="s">'company'</span><span class="p">:</span> <span class="n">company_name_ext</span><span class="p">,</span>
+            <span class="s">'location'</span><span class="p">:</span> <span class="n">location_ext</span><span class="p">,</span>
+            <span class="s">'status'</span><span class="p">:</span> <span class="n">status_ext</span><span class="p">,</span>
+            <span class="s">'jobdesc'</span><span class="p">:</span> <span class="n">desc</span>
+        <span class="p">}</span>
+</code></pre></div></div>
+
+<p>In order to finetune my selector, I used <code class="language-plaintext highlighter-rouge">scrapy shell</code>command.</p>
+
+<h3 id="3-setting-up-the-proxy">3.	Setting up the proxy</h3>
+
+<p>Website owners definitely will not let some random people just visit their websites, overloaded their server with requests and just “steal” data or information from them. And without a proxy which tunnel our scraping requests, scraper bot would be easily detected and blocked. Proxy tunnels request scraper bots and act as middleman (midlleware) handling our scraper bots request. In other words, our requests will not be sent directly to the web server keeping our identity hidden.</p>
+
+<p>To integrate the proxy easily into our scrapy project, I installed the ScrapeOps Scrapy proxy SDK a Downloader Middleware.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">scrapeops</span><span class="o">-</span><span class="n">scrapy</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">sdk</span>
+</code></pre></div></div>
+
+<p>Further, cloud service has anti-bot protection that will block our scraping activity. To avoid blocking, we need rotating proxy from proxy provider. <i>A rotating proxy is a proxy server that changes our internet-enabled device’s IP address for each HTTP request that our web browser makes. It generates new IPs from its vast pool of addresses, hiding our actual IP address to keep us anonymous online. <a href="https://firstsiteguide.com/what-is-rotating-proxy/">Source</a></i>. This will make website server thinks that all of scraper requests coming from the different sources/person. However, I would recommend a legitimate proxy provider for this purpose, unless you want your IP to get blocked. I used free plan from a professional <a href="https://scrapeops.io/" target="_blank">proxy provider</a> which gives me 1000 free API credits. Further, I also applied 3s time delay between request to be more “ethical”.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: settings.py
+</span><span class="n">BOT_NAME</span> <span class="o">=</span> <span class="s">'indeed_scraper_spider'</span>
+
+<span class="n">SPIDER_MODULES</span> <span class="o">=</span> <span class="p">[</span><span class="s">'indeed_scraper_spider.spiders'</span><span class="p">]</span>
+<span class="n">NEWSPIDER_MODULE</span> <span class="o">=</span> <span class="s">'indeed_scraper_spider.spiders'</span>
+
+<span class="c1"># Obey robots.txt rules
+</span><span class="n">ROBOTSTXT_OBEY</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="c1">## ScrapeOps API Key
+</span><span class="n">SCRAPEOPS_API_KEY</span> <span class="o">=</span> <span class="s">'YOUR API KEY'</span>
+
+<span class="c1">## Enable ScrapeOps Proxy
+</span><span class="n">SCRAPEOPS_PROXY_ENABLED</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c1"># Add In The ScrapeOps Monitoring Extension
+</span><span class="n">EXTENSIONS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'scrapeops_scrapy.extension.ScrapeOpsMonitor'</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> 
+<span class="p">}</span>
+
+<span class="n">DOWNLOADER_MIDDLEWARES</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="c1">## ScrapeOps Monitor
+</span>    <span class="s">'scrapeops_scrapy.middleware.retry.RetryMiddleware'</span><span class="p">:</span> <span class="mi">550</span><span class="p">,</span>
+    <span class="s">'scrapy.downloadermiddlewares.retry.RetryMiddleware'</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    
+    <span class="c1">## Proxy Middleware
+</span>    <span class="s">'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk'</span><span class="p">:</span> <span class="mi">725</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">DOWNLOAD_DELAY</span> <span class="o">=</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<p>Credit source: <a href="https://scrapeops.io/python-scrapy-playbook/python-scrapy-indeed-scraper/">Scrapeops Article</a></p>
+
+<h3 id="4-lets-roll">4.	Let’s roll!</h3>
+
+<p>Run command: <code class="language-plaintext highlighter-rouge">scrapy crawl indeed_scraper -o jobsposting_indeed.json</code></p>
+
+<p align="center">
+  <img src="/assets/images/banners/scrapy/indeed3.png" />
+  <em>Scraping indeed.com page</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/scrapy/indeed4.png" />
+  <em>Saving results as json file</em>
+</p>
+
+<p>With free plan proxy, I managed to scape 715 job postings or almost 30% of around 2,500 available job postings.</p>
+
+<h2 id="conclusions"><strong>Conclusions</strong></h2>
+
+<p>This is of course a very simple scraping script, however, there are some takeaway points for me:</p>
+
+<p style="margin-top:-10px"></p>
+
+<ul>
+  <li>DOM (Document Object Model)</li>
+  <li>Selector using xpath and css</li>
+  <li>Proxy use</li>
+  <li>Builidng scraper bot</li>
+</ul>
+
+<p style="margin-bottom:30px"></p>
+
+<p>Find the code for this project <a href="https://github.com/nuki-susanti/Indeed-Scraping" target="_blank">Github</a><br />
+Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_blank">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="web scraping" /><category term="data acquisition" /><category term="web scraping" /><category term="data acquisition" /><category term="scrapy" /><category term="python" /><summary type="html"><![CDATA[Source: wikipedia]]></summary></entry><entry><title type="html">Building Student Registration Database Part 2 - SQL Learning Series</title><link href="http://localhost:4000/database/sql/2023/02/09/student-registration-database-part2.html" rel="alternate" type="text/html" title="Building Student Registration Database Part 2 - SQL Learning Series" /><published>2023-02-09T00:00:00+01:00</published><updated>2023-02-09T00:00:00+01:00</updated><id>http://localhost:4000/database/sql/2023/02/09/student-registration-database-part2</id><content type="html" xml:base="http://localhost:4000/database/sql/2023/02/09/student-registration-database-part2.html"><![CDATA[<p align="center">
+  <img src="/assets/images/banners/srd_part1/mysql.png" />
   <em>Source: wikipedia</em>
 </p>
 
@@ -335,7 +520,7 @@
 
 <p>Find the code for this project <a href="https://github.com/nuki-susanti/Student-Registration-Database" target="_blank">Github</a><br />
 Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_blank">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="database" /><category term="SQL" /><category term="database" /><category term="programming" /><category term="MySQL" /><category term="SQL" /><category term="python" /><summary type="html"><![CDATA[Source: wikipedia]]></summary></entry><entry><title type="html">Building Student Registration Database Part 1 - SQL Learning Series</title><link href="http://localhost:4000/database/sql/2023/02/08/student-registration-database-part1.html" rel="alternate" type="text/html" title="Building Student Registration Database Part 1 - SQL Learning Series" /><published>2023-02-08T00:00:00+01:00</published><updated>2023-02-08T00:00:00+01:00</updated><id>http://localhost:4000/database/sql/2023/02/08/student-registration-database-part1</id><content type="html" xml:base="http://localhost:4000/database/sql/2023/02/08/student-registration-database-part1.html"><![CDATA[<p align="center">
-  <img src="/assets/images/banners/srd_part1/mysql.png" width="300" />
+  <img src="/assets/images/banners/srd_part1/mysql.png" />
   <em>Source: wikipedia</em>
 </p>
 
@@ -366,7 +551,6 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
   <li><a href="https://typer.tiangolo.com" target="_blank">Typer</a> - For building great CLIs that are easy to code</li>
   <li><a href="https://rich.readthedocs.io/en/stable/introduction.html" target="_blank">Rich</a> - Rich text and beautiful formatting in the terminal</li>
   <li>Cloud-based database environment – <a href="https://railway.app/new" target="_blank">railway.app</a></li>
-  <li>And of course python</li>
 </ul>
 
 <p style="margin-bottom:-30px"></p>
@@ -1299,7 +1483,7 @@ For instance:</p>
 
 <p>Find the code for this analysis <a href="https://github.com/nuki-susanti/Road-Crash-Analysis" target="_blank">Github</a><br />
 Find tableau presentation <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysis_16687247255900/RoadCrashAnalysis" target="_blank">Tableau</a><br />
-Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_blank">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="data analysis" /><category term="data science" /><category term="machine learning" /><category term="data mining" /><category term="classification" /><category term="supervised machine learning" /><summary type="html"><![CDATA[Source: pixabay]]></summary></entry><entry><title type="html">Building Snake Game Using Python Turtle</title><link href="http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html" rel="alternate" type="text/html" title="Building Snake Game Using Python Turtle" /><published>2023-01-06T00:00:00+01:00</published><updated>2023-01-06T00:00:00+01:00</updated><id>http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle</id><content type="html" xml:base="http://localhost:4000/coding/game/2023/01/06/snake-game-using-turtle.html"><![CDATA[<p align="center">
+Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_blank">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="data analysis" /><category term="data science" /><category term="machine learning" /><category term="data mining" /><category term="classification" /><category term="supervised machine learning" /><summary type="html"><![CDATA[Source: pixabay]]></summary></entry><entry><title type="html">Building Snake Game Using Python Turtle</title><link href="http://localhost:4000/coding/game/2023/01/06/snake-game-using-python-turtle.html" rel="alternate" type="text/html" title="Building Snake Game Using Python Turtle" /><published>2023-01-06T00:00:00+01:00</published><updated>2023-01-06T00:00:00+01:00</updated><id>http://localhost:4000/coding/game/2023/01/06/snake-game-using-python%20turtle</id><content type="html" xml:base="http://localhost:4000/coding/game/2023/01/06/snake-game-using-python-turtle.html"><![CDATA[<p align="center">
  <img src="/assets/images/banners/snake_game/cover_game.jpg" width="600" />
  Source: <a href="https://www.emulatorpc.com/snake-game//">emulatorpc.com</a>
 </p>

@@ -8,7 +8,7 @@ tags: [database, programming, MySQL, SQL, python]
 
 
 <p align="center">
-  <img src="/assets/images/banners/srd_part1/mysql.png" width="300">
+  <img src="/assets/images/banners/srd_part1/mysql.png">
   <em>Source: wikipedia</em>
 </p>
 
@@ -36,7 +36,6 @@ I did some research what I could use as a starting point and came across [Studen
 * [Typer](https://typer.tiangolo.com){:target="_blank"} - For building great CLIs that are easy to code
 * [Rich](https://rich.readthedocs.io/en/stable/introduction.html){:target="_blank"} - Rich text and beautiful formatting in the terminal
 * Cloud-based database environment – [railway.app](https://railway.app/new){:target="_blank"}
-* And of course python
 
 <p style="margin-bottom:-30px"></p>
 
