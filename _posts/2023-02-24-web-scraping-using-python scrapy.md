@@ -14,9 +14,9 @@ tags: [web scraping, data acquisition, scrapy, python]
 
 ## **Motivation**
 
-As a (future) data analyst, data acquisition is one of the day-to-day work. It is quite convenient when data we need is already published somewhere on the internet as open source data. We can of course get right into analysis. However, as we know this world is not ideal. Sometimes, data analyst must go get their hand dirty by acquring data themselves, such as web scraping and web crawling. Altough web scraping and web crawling might be used interchangebly, however, they are very different process. This small project, however, is web scraping which is acquiring job data from job portal indeed.com.
+As a (future) data analyst, data acquisition is one of the day-to-day work. It is quite convenient when data we need is already published somewhere on the internet as open source data. We can of course get right into analysis. However, as we know that this world is not ideal. Sometimes, data analyst must go get their hand dirty by acquring data themselves, such as web scraping and web crawling. Altough web scraping and web crawling might be used interchangebly, however, they are actually very different process. This small project is web scraping which is acquiring job posting data from job portal indeed.com.
 
-Before scraping, I did quick research on the legality of web scraping. This topic remains gray area till date, however, we can relect on the linkedIn saga who sued hiQ Lab which I don't want to go detail into. From my quick research, I may conclude that it should be fine to scrape "public data" which doesn't include any authorization. Further, here, I don't scrape any data containing PII. In addition, one should be more "ethical" since scraping may overload the web server.
+Before scraping, I did quick research on the legality of web scraping. This topic remains gray area till date, however, we can reflect on the linkedIn saga who sued hiQ Lab which I don't want to go detail into. From my quick research, it may be concluded that it should be fine to scrape "public data" which doesn't include any authorization. Further, here, I don't scrape any data containing PII. In addition, one should be more "ethical" since scraping may overload the web server.
 <p style="margin-bottom:-30px"></p>
 
 ## **Overview - Project and Tools**
@@ -26,9 +26,9 @@ The aim of this projects are:
 <p style="margin-top:-10px"></p>
 
 * Exercising web scraping skills and dataa acquisitions
-* Performing job posting analysis since I have been getting many rejections while applying data analyst position in Germany, haha.. I wonder what makes data analyst in Germany to be hired in terms of skills and qualifications. I wanted to prove my assumption through analysis whether a classical stereotype is true that formal degree in the relevant major is more important than skills, even in this digital era where everybody can learn almost everything.
+* Performing job posting analysis since I have been getting many rejections while applying data analyst position in Germany, haha.. I wonder what makes data analyst in Germany to be hired in terms of skills and qualifications. I wanted to prove my assumption through analysis whether a classical stereotype is true that formal degree in the relevant major is more important than skills, even in this digital era where everybody can learn almost anything.
 
-The job data analysis will be performed next and written in separate article.
+The job posting analysis will be performed next and written in a separate article.
 
 <b>Tech Stack:</b>
 
@@ -50,7 +50,7 @@ pip install scrapy
 
 ### 2.	Inspecting indeed.com page
 
-As mentioned, I will be interested in discovering data analyst job requirement in Germany. By inputing keyword "data analyst" and location "Germany", indeed will give me this look.
+As mentioned, I will be interested in discovering data analyst job requirements in Germany. By inputing keyword "data analyst" and location "Germany", indeed will give me this look.
 
 <p align="center">
   <img src="/assets/images/banners/scrapy/indeed1.png">
@@ -111,11 +111,11 @@ def parse_page(self, response):
         }
 ```
 
-In order to finetune my selector, I used ```scrapy shell```command.
+In order to finetune my selector, I really recommend using ```scrapy shell```command.
 
 ### 3.	Setting up the proxy
 
-Website owners definitely will not let some random people just visit their websites, overloaded their server with requests and just "steal" data or information from them. And without a proxy which tunnel our scraping requests, scraper bot would be easily detected and blocked. Proxy tunnels request scraper bots and act as middleman (midlleware) handling our scraper bots request. In other words, our requests will not be sent directly to the web server keeping our identity hidden.
+Website owners definitely will not let some random people just visit their websites, overload the server with requests and just "steal" data or information from them. Without having a proxy that tunnels our scraping requests, scraper bot would be easily detected and blocked. Proxy tunnels request scraper bots and acts as middleman (midlleware) handling our scraper bot requests. In other words, our requests will not be sent directly to the web server, thus, keeping our identity hidden.
 
 To integrate the proxy easily into our scrapy project, I installed the ScrapeOps Scrapy proxy SDK a Downloader Middleware.
 
@@ -123,7 +123,7 @@ To integrate the proxy easily into our scrapy project, I installed the ScrapeOps
 pip install scrapeops-scrapy-proxy-sdk
 ```
 
-Further, cloud service has anti-bot protection that will block our scraping activity. To avoid blocking, we need rotating proxy from proxy provider. <i>A rotating proxy is a proxy server that changes our internet-enabled device's IP address for each HTTP request that our web browser makes. It generates new IPs from its vast pool of addresses, hiding our actual IP address to keep us anonymous online. [Source](https://firstsiteguide.com/what-is-rotating-proxy/)</i>. This will make website server thinks that all of scraper requests coming from the different sources/person. However, I would recommend a legitimate proxy provider for this purpose, unless you want your IP to get blocked. I used free plan from a professional [proxy provider](https://scrapeops.io/){:target="_blank"} which gives me 1000 free API credits. Further, I also applied 3s time delay between request to be more "ethical".
+Further, cloud service has anti-bot protection that will block our scraping activity. To avoid blocking, we need to rotate proxy provided by proxy provider. <i>A rotating proxy is a proxy server that changes our internet-enabled device's IP address for each HTTP request that our web browser makes. It generates new IPs from its vast pool of addresses, hiding our actual IP address to keep us anonymous online. [Source](https://firstsiteguide.com/what-is-rotating-proxy/)</i>. This will make website server thinks that all of scraper requests coming from the different sources/person. However, I would recommend a legitimate proxy provider for this purpose, unless you want your IP to get blocked. I used free plan from a professional [proxy provider](https://scrapeops.io/){:target="_blank"} which gives me 1000 free API credits. Further, I also applied 3s time delay between request to be more "ethical".
 
 ```python
 # File: settings.py
@@ -175,11 +175,11 @@ Run command: ```scrapy crawl indeed_scraper -o jobsposting_indeed.json ```
   <em>Saving results as json file</em>
 </p>
 
-With free plan proxy, I managed to scape 715 job postings or almost 30% of around 2,500 available job postings.
+With free plan proxy, I managed to scrape 715 job postings or almost 30% of around 2,500 available job postings.
 
 ## **Conclusions**
 
-This is of course a very simple scraping script, however, there are some takeaway points for me:    
+This is indeed a very simple scraping script, however, there are some takeaway points for me:    
 
 <p style="margin-top:-10px"></p>
 

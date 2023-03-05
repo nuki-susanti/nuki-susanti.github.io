@@ -1,5 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+
+<head>
+
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
+
+  {%- include google-analytics.html -%}
+  
+  {%- endif -%}
+
+</head>
 
   {%- include head.html -%}
 

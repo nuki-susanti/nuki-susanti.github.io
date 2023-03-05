@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
-  {%- include head.html -%}
+<head>
 
-  <body>
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
 
-    {%- include views/header.html -%}
+  {%- include google-analytics.html -%}
+  
+  {%- endif -%}
 
-    {%- include views/banner.html -%}
+</head>
 
-    {%- include extensions/hashlocate.html -%}
+{%- include head.html -%}
 
-    {%- include extensions/theme-toggle.html -%}
+<body>
 
-    {%- include extensions/click-to-top.html -%}
+  {%- include views/header.html -%}
 
-    {%- include google-analytics.html -%}
+  {%- include views/banner.html -%}
 
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </main>
+  {%- include extensions/hashlocate.html -%}
 
-    {%- include views/footer.html -%}
+  {%- include extensions/theme-toggle.html -%}
 
-  </body>
+  {%- include extensions/click-to-top.html -%}
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      {{ content }}
+    </div>
+  </main>
+
+  {%- include views/footer.html -%}
+
+</body>
+
 </html>
