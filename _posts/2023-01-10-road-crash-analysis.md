@@ -18,7 +18,7 @@ According to WHO, approximately 1.3 million people die each year as a result of 
 <p style="margin-bottom:-30px"></p>
 
 ## **Goal**
-The objective of this road safety analysis to help analyze the influential factors causing traffic accidents, locate accident hot-spots and perform classification supervised machine learning to predict accident severity. Python and Tableau are used for data visualization and analysis presentation. Personally, as a professional in HSE area (Health Safety Environment), I selected this analysis subject intentionally to add values and insights to my current knowledge.
+The objective of this road safety analysis to help analyze the influential factors causing traffic accidents, locate accident hot-spots and perform supervised machine learning for predicting accident severity. Python and Tableau are used for data visualization and analysis presentation. Personally, as a professional in HSE area (Health Safety Environment), I selected this analysis subject intentionally to add values and insights to my current knowledge.
 
 <p style="margin-bottom:-30px"></p>
 
@@ -32,11 +32,11 @@ The objective of this road safety analysis to help analyze the influential facto
 ## **Process**
 This analysis, therefore, could be divided into two parts:
 <ol style="margin-top:-20px;">
-  <li>Part 1: Data mining</li>
-  <li>Part 2: Model building</li>
+  <li>Part 1: Exploration</li>
+  <li>Part 2: Modeling</li>
 </ol>
 
-Data mining methodology called CRISP-DM(Cross Industry Standard Process for Data Mining, without deployment) is used to during this analysis process.
+The methodology for this purpose is called CRISP-DM(Cross Industry Standard Process for Data Mining, without deployment) is used to during this analysis process.
 <p align="center">
   <img src="/assets/images/banners/road_crash/data_mining_steps.png">
   <em>CRISP-DM Methodology. Source by author.</em>
@@ -64,7 +64,7 @@ Data mining methodology called CRISP-DM(Cross Industry Standard Process for Data
   <dd>- Spatial analysis</dd>
 </ol>
 
-## Part 1: Data mining
+## Part 1: Data exploration
 
 <p style="margin-bottom:-30px"></p>
 
@@ -99,7 +99,7 @@ Pie chart shows property damage with no casualty (PDO) as the lightest level of 
   <em>Average total casualty by hour</em>
 </p>
 
-In general, accidents occurrence starts to rise in the morning rush-hour, at 08:00 and reaches its peak during afternoon rush-hour, from 15:00 to 17:00. It is the decreasing afterwards. However, a little bit different patterns is shown by fatality category. Fatality cases are shown to be high since midnight at 02:00 and steadily increases during morning rush-hour until reaches its peaks in the mid-day at 12:00 and in the afternoon rush-hour. While it decreases after afternoon rush-hour, it climbs again at 21:00. From this pattern, fatality cases mostly happen in these two time frames: least crowded time and crowded time. In terms of average casualty of fatality accidents, there seems to be an hourly pattern that shows peak at 5, 12, 18 and 22.
+In general, accidents occurrence starts to rise in the morning rush-hour, at 07:00 and reaches its peak during afternoon rush-hour, from 15:00 to 17:00. It is the decreasing afterwards. However, a little bit different patterns is shown by fatality category. Fatality cases are shown to be high since midnight at 02:00 and steadily increases during morning rush-hour until reaches its peaks in the mid-day at 12:00 and in the afternoon rush-hour. While it decreases after afternoon rush-hour, it climbs again at 21:00. From this pattern, fatality cases mostly happen in these two time frames: least crowded time and crowded time. In terms of average casualty of fatality accidents, there seems to be an hourly pattern that shows peak at 5, 12, 18 and 22.
 
 ### Time-based analysis: When do most accident happens, in daily basis?
 
@@ -160,7 +160,7 @@ In terms of average casualty, interestingly, only fatality has seasonality. It i
   <em>Accident distribution by drugs and alcohol involvement</em>
 </p>
 
-Ca. 60% of the accidents happens to be male and 40% is female. However, in average, death or fatality in female (2.24) is higher compared to that in male (1.83). Surprisingly, in South Australia, involvement of alcohol and drugs play little role in the number of accidents. It might be related to the measures taken by local authority or law enforcement in controlling alcohol and drugs circulation.
+Ca. 60% of the accidents happens to be male and 40% is female. However, in average, death or fatality in female (2.24) is higher compared to that in male (1.83). Surprisingly, in South Australia, involvement of alcohol and drugs play little role in the number of accidents. It might be related to the measures taken by local authority or law enforcement in controlling alcohol and drugs circulation. However, alcohol and drugs involvement increased accident severities of injuries and death (fatality). With alochol involved, number of accidents with fatality increases drastically from 0.5% to 3.7%. While, with drugs involvement, it increases from 0.5% to 4.4%. The similar increase trends are also observed from serious injury and minor injury. In conclusion, alcohol and drugs involvement could contribute to the increase of accidents severity.
 
 ### People-based analysis: Who are at risk? - Age
 
@@ -246,7 +246,7 @@ The hypothesis is only partially proved to be true. Most accidents cluster withi
 
 Interestingly, most fatalities incidents happened to be in close to the city center area. In other other words, not only does the complex road system corresponds postively to the number of accidents, but also to the accident severity.
 
-## Part 2: Model building - Severity prediction using supervised machine learning
+## Part 2: Data modeling - Supervised machine learning for predicting accident severity
 
 All previously analyzed factors (time, age, sex, road system and distance to city center) seem to be influential to the accident severity. However, it is not clear  to what extent those factors would impact severity. In other words, the order of importance is analyzed using classification model.
 
@@ -291,7 +291,7 @@ Among top 20 important fetaures, distance to city center become to be the most i
 
 ## **Further Analysis**
 
-The effect of safety equipment used by the victims or people involved on the traffic accidents should be analyzed and included in the model prediction.
+The effect of safety equipment used by the victims or people involved on the traffic accidents should be analyzed and included in the model.
 
 <p style="margin-top:-30px"></p>
 
@@ -309,5 +309,5 @@ For instance:
 Finally, those insights could help creating safer environment and less financial loss due to property damage.
 
 Find the code for this analysis [Github](https://github.com/nuki-susanti/Road-Crash-Analysis){:target="_blank"}\
-Find tableau presentation [Tableau](https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysis_16687247255900/RoadCrashAnalysis){:target="_blank"}\
+Find tableau presentation [Tableau](https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysisVer_2/Dashboard1?publish=yes){:target="_blank"}\
 Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/){:target="_blank"}
