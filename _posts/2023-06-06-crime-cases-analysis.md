@@ -16,7 +16,7 @@ tags: [exploratory data analysis, EDA, visualization, tableau]
 
 This project is part of my application process to The Data School - Germany. After reviewing one my portfolio <a href="https://nuki-susanti.github.io/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" target="_blank" rel="noopener noreferrer">Road Crash Analysis</a>, they decided to proceed to the final step. They provided me an already cleaned data to work with and asked me to analyze and build a dashboard out of it using Tableau. No coding work is needed.
 
-To be honest, I was (always) a bit lost when deciding a layout or design of the dashboard. Then, it was out of nowhere that I came up with newspaper-looking dashboard. I did enjoy the analysis that occupied my whole weekend, however, I definitely have to work harder in the design!
+To be honest, I was (always) a bit lost when deciding a layout or design of the dashboard. Then, it was out of nowhere that I came up with newspaper looking-like dashboard. I did enjoy the analysis that occupied my whole weekend, however, I definitely have to work harder in the design!
 <p style="margin-bottom:-30px"></p>
 
 ## **Delivery Package**
