@@ -3,7 +3,7 @@ layout: post
 title: How Safe Are We On The Road? - Road Crash Analysis
 subtitle: Each post also has a subtitle
 categories: [data analysis, data science, machine learning]
-tags: [data mining, classification, supervised machine learning]
+tags: [data mining, classification, supervised machine learning, python, visualization, tableau]
 ---
 
 <p align="center">
@@ -11,6 +11,11 @@ tags: [data mining, classification, supervised machine learning]
   <em>Source: pixabay</em>
 </p>
 
+<p style="margin-top:50px"></p>
+
+<i style="font-size:18px">The dashboard for this analysis is built in Tableau, which can be found [here](https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysisVer_2/Home){:target="_blank"}.</i>
+
+<p style="margin-bottom:-10px"></p>
 
 ## **Overview - Business problem** 
 According to WHO, approximately 1.3 million people die each year as a result of road traffic crashes. Between 20 and 50 million more people suffer non-fatal injuries, with many incurring a disability as a result of their injury. In addition, road traffic crashes cost most countries 3% of their gross domestic product. This worldwide-phenomenon has been quite alarming as private transportation ownership increases, resulting in volume rise of vehicles on the road as well as traffic accidents. It is therefore critical to analyze and derive insights on what factors that could potentially influence the road accident events. These insights could be used for road accidents prevention measures.
@@ -85,17 +90,17 @@ Pie chart shows property damage with no casualty (PDO) as the lightest level of 
 ### Time-based analysis: When do most accident happens, in hourly basis?
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_dist_by_hour.png" width="500">
+  <img src="/assets/images/banners/road_crash/accident_dist_by_hour.png" width="400">
   <em>Accident distribution by hour</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_number_by_hour.png" width="800" height="300">
+  <img src="/assets/images/banners/road_crash/accident_number_by_hour.png" height="400">
   <em>Percentage of number of accidents by hour</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/avg_cas_by_hour.png" width="800" height="200">
+  <img src="/assets/images/banners/road_crash/avg_cas_by_hour.png" height="300">
   <em>Average total casualty by hour</em>
 </p>
 
@@ -104,17 +109,17 @@ In general, accidents occurrence starts to rise in the morning rush-hour, at 07:
 ### Time-based analysis: When do most accident happens, in daily basis?
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_dist_by_day.png" width="500">
+  <img src="/assets/images/banners/road_crash/accident_dist_by_day.png" width="400">
   <em>Accident distribution by day</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_number_by_day.png" width="800" height="300">
+  <img src="/assets/images/banners/road_crash/accident_number_by_day.png" height="400">
   <em>Percentage of number of accidents by day</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/avg_cas_by_day.png" width="800" height="200">
+  <img src="/assets/images/banners/road_crash/avg_cas_by_day.png" height="200">
   <em>Average total casualty by day</em>
 </p>
 
@@ -125,17 +130,17 @@ Generally, average casualty on fatality and serious injury remains stable during
 ### Time-based analysis: When do most accident happens, in monthly basis?
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_dist_by_month.png" width="500">
+  <img src="/assets/images/banners/road_crash/accident_dist_by_month.png" width="400">
   <em>Accident distribution by month</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_number_by_month.png" width="800" height="300">
+  <img src="/assets/images/banners/road_crash/accident_number_by_month.png" height="400">
   <em>Percentage of number of accidents by month</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/avg_cas_by_month.png" width="800" height="200">
+  <img src="/assets/images/banners/road_crash/avg_cas_by_month.png" height="300">
   <em>Average total casualty by month</em>
 </p>
 
@@ -146,36 +151,37 @@ In terms of average casualty, interestingly, only fatality has seasonality. It i
 ### People-based analysis: Who are at risk? - Sex, alcohol and drugs involvement
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_dist_by_sex.png" width="300">
-  <em>Accident distribution by sex</em>
+  <img src="/assets/images/banners/road_crash/accident_dist_by_sex_age.png" width="500">
+  <em>Accident distribution by sex and age</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/avg_cas_by_sex.png" width="300" height="450">
+  <img src="/assets/images/banners/road_crash/avg_cas_by_sex.png" width="300">
   <em>Average total casualty by sex</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/drugs_alcohol_by_sex.png" width="800" height="300">
+  <img src="/assets/images/banners/road_crash/alcohol_involvement.png" width="300">
+  <img src="/assets/images/banners/road_crash/drugs_involvement.png" width="300">
   <em>Accident distribution by drugs and alcohol involvement</em>
 </p>
 
-Ca. 60% of the accidents happens to be male and 40% is female. However, in average, death or fatality in female (2.24) is higher compared to that in male (1.83). Surprisingly, in South Australia, involvement of alcohol and drugs play little role in the number of accidents. It might be related to the measures taken by local authority or law enforcement in controlling alcohol and drugs circulation. However, alcohol and drugs involvement increased accident severities of injuries and death (fatality). With alochol involved, number of accidents with fatality increases drastically from 0.5% to 3.7%. While, with drugs involvement, it increases from 0.5% to 4.4%. The similar increase trends are also observed from serious injury and minor injury. In conclusion, alcohol and drugs involvement could contribute to the increase of accidents severity.
+Ca. 60% of the accidents happens to be male and 40% is female. Both male and female is domintaed by young people from 20-25 years of age. However, in average, death or fatality in female (2.2) is higher compared to that in male (1.8). Surprisingly, in South Australia, involvement of alcohol and drugs play little role in the number of accidents. It might be related to the measures taken by local authority or law enforcement in controlling alcohol and drugs circulation. However, alcohol and drugs involvement increased accident severities of injuries and death (fatality). With alochol involved, number of accidents with fatality increases drastically from 0.5% to 3.7%. While, with drugs involvement, it increases from 0.5% to 4.4%. The similar increase trends are also observed from serious injury and minor injury. In conclusion, alcohol and drugs involvement could contribute to the increase of accidents severity.
 
 ### People-based analysis: Who are at risk? - Age
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_dist_by_age.png" width="500">
+  <img src="/assets/images/banners/road_crash/accident_dist_by_age.png" width="400">
   <em>Accident distribution by age</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_number_by_age.png" width="800" height="300">
+  <img src="/assets/images/banners/road_crash/accident_number_by_age.png" height="300">
   <em>Percentage of number of accidents by age</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/avg_cas_by_age.png" width="800" height="200">
+  <img src="/assets/images/banners/road_crash/avg_cas_by_age.png" height="300">
   <em>Average total casualty by age</em>
 </p>
 
@@ -186,19 +192,25 @@ The highest casualty on fatality accidents in average still happen with people 2
 ### Weather-based analysis - How does weather affect accident occurences?
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/raining_vs_not_raining.png" width="200">
+  <img src="/assets/images/banners/road_crash/night_vs_day.png" width="300">
+  <em>Day or Night?</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/road_crash/raining_vs_not_raining.png" width="300">
   <em>Weather condition: Raining or not raining?</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/wet_vs_dry.png" width="200">
+  <img src="/assets/images/banners/road_crash/wet_vs_dry.png" width="300">
   <em>Road moisture: wet or dry?</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/night_vs_day.png" width="200">
-  <em>Day or Night?</em>
+  <img src="/assets/images/banners/road_crash/sealed_vs_unsealed.png" width="300">
+  <em>Road moisture: sealed or unsealed?</em>
 </p>
+
 
 All those weather-related features are conditions collected at the crash locations. It is interesting that most accidents happen in the clear weather condtions, unlike what people normally assume. In other words, weather play little influence to accident events.
 
@@ -206,22 +218,29 @@ All those weather-related features are conditions collected at the crash locatio
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/crash_map.png" width="600">
-  <em>Crash map (circle marker map)</em>
+  <em>Crash map (circle marker map) - python</em>
 </p>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/cluster_map2.png" width="600">
-  <em>Crash map (cluster map)</em>
+  <em>Crash map (cluster map) - python</em>
 </p>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/cluster_map.png" width="600">
-  <em>Crash map (cluster map - zoomed out)</em>
+  <em>Crash map (cluster map - zoomed out) - python</em>
 </p>
 
 There is indeed accident 'hotspot' where most accidents happen, which is clustered around Adelaide city center. From this point, a hypothesis could be then formulated: **The more complicated the road system (meaning many junctions, divided roads, etc. which represents downtown area), the higher the number of accidents will be.**
 
 By plotting each accident spots based on its longitude and latitude using folium, it can be shown where accidents cluster and its number. The accident scenes can be zoomed out until street level to so see at what kind of road system the accident happens.
+
+Below is map visualization I made in Tableau.
+
+<p align="center">
+  <img src="/assets/images/banners/road_crash/hotspot map_tableau.png" width="600">
+  <em>Crash map - tableau</em>
+</p>
 
 <p style="margin-top:30px"><b>Feature engineering for hypothesis testing - Distance to city center</b></p>
 
@@ -233,12 +252,12 @@ Latitude and longitude of city center Adelaide city were used to calculate the d
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/distance_by_severity.png" width="800">
+  <img src="/assets/images/banners/road_crash/distance_by_severity.png" width="400">
   <em>Crash distance distribution by severity</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/linear_regression.png" width="600">
+  <img src="/assets/images/banners/road_crash/linear_regression.png" width="400">
   <em>Linear regression: Distance to city center vs. Number of accidents</em>
 </p>
 
@@ -264,19 +283,19 @@ There are of course techniques to handle the imbalance dataset problem in classi
   <em>Severity classes as target (dependent) variable - Binary classification</em>
 </p>
 
-Classification models of logistic regression, decision tree and random forest were used and the results were compared. The best result was given by random forest classifier, giving accuracy of 74.3% compared to the logistics regression (66.8%) and decision tree (61.8%).
+Classification models of logistic regression, decision tree and random forest were used and the results were compared. The best result was given by random forest classifier, giving accuracy of 74.3%. While logistic regression gives 66.8% and decision tree 61.8%.
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/conf_mat.png" width="600">
+  <img src="/assets/images/banners/road_crash/conf_mat.png" width="400">
   <em>Confusion matrix - Random forest</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/feature_importance.png" width="700" height="350">
+  <img src="/assets/images/banners/road_crash/feature_importance.png" width="400">
   <em>Feature importance - Random forest</em>
 </p>
 
-Among top 20 important fetaures, distance to city center become to be the most influential factor, followed by age, vehicle year, time, location or area, drugs usage and sex. Other than that, crash location at T-Junction listed as an important factor strengthens the previous hyphothesis about complex road system of typical city center.
+Among top 20 important fetaures, distance to city center become to be the most influential factor, followed by age, vehicle year, time, location or area, drugs usage and sex. Other than that, crash location at T-Junction listed as an important factor strengthens the previous hyphothesis about complex road system.
 
 <p style="margin-top:-30px"></p>
 

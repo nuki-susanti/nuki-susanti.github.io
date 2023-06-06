@@ -3,7 +3,7 @@ layout: post
 title: Rockbuster - Movie Rental Analysis
 subtitle: Each post also has a subtitle
 categories: [database, SQL, exploratory data analysis]
-tags: [database, PostgreSQL, SQL, exploratory data analysis, EDA, visualization]
+tags: [database, PostgreSQL, SQL, exploratory data analysis, EDA, visualization, tableau]
 ---
 
 <p align="center">

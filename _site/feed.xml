@@ -1,13 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-25T21:47:19+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun learning journeys of data</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">Web Scraping Using Python Scrapy - indeed.com</title><link href="http://localhost:4000/web%20scraping/data%20acquisition/2023/02/24/web-scraping-using-python-scrapy.html" rel="alternate" type="text/html" title="Web Scraping Using Python Scrapy - indeed.com" /><published>2023-02-24T00:00:00+01:00</published><updated>2023-02-24T00:00:00+01:00</updated><id>http://localhost:4000/web%20scraping/data%20acquisition/2023/02/24/web-scraping-using-python%20scrapy</id><content type="html" xml:base="http://localhost:4000/web%20scraping/data%20acquisition/2023/02/24/web-scraping-using-python-scrapy.html"><![CDATA[<p align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-06T08:40:30+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Home</title><subtitle>A fun learning journeys of data</subtitle><author><name>Nuki Susanti</name></author><entry><title type="html">Crime Cases Analysis - Los Angeles, California</title><link href="http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2023/06/06/crime-cases-analysis.html" rel="alternate" type="text/html" title="Crime Cases Analysis - Los Angeles, California" /><published>2023-06-06T00:00:00+02:00</published><updated>2023-06-06T00:00:00+02:00</updated><id>http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2023/06/06/crime-cases-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2023/06/06/crime-cases-analysis.html"><![CDATA[<p align="center">
+  <img src="/assets/images/banners/crime/LA.jpeg" />
+  <em>Source: <a href="https://www.istockphoto.com/de/foto/skyline-von-los-angeles-skyline-architektur-urban-cityscape-gm478821794-68009845" target="_blank" rel="noopener noreferrer">iStock</a></em>
+</p>
+
+<h2 id="motivation"><strong>Motivation</strong></h2>
+
+<p>This project is part of my application process to The Data School - Germany. After reviewing one my portfolio <a href="https://nuki-susanti.github.io/data%20analysis/data%20science/machine%20learning/2023/01/10/road-crash-analysis.html" target="_blank" rel="noopener noreferrer">Road Crash Analysis</a>, they decided to proceed to the final step. They provided me an already cleaned data to work with and asked me to analyze and build a dashboard out of it using Tableau. No coding work is needed.</p>
+
+<p>To be honest, I was (always) a bit lost when deciding a layout or design of the dashboard. Then, it was out of nowhere that I came up with newspaper-looking dashboard. I did enjoy the analysis that occupied my whole weekend, however, I definitely have to work harder in the design!</p>
+<p style="margin-bottom:-30px"></p>
+
+<h2 id="delivery-package"><strong>Delivery Package</strong></h2>
+
+<ul>
+  <li>You can find the Tableau dashboard <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/CrimeCasesAnalysis-LosAngelesCA/CrimeAnalysis-LosAngelesCA" target="_blank" rel="noopener noreferrer">here</a>.</li>
+  <li>In addition to 5-min presentation of this dashboard, I also wrote the analysis in <a href="https://medium.com/@nukisusanti/crime-cases-analysis-los-angeles-california-e58d4740097f" target="_blank" rel="noopener noreferrer">Medium</a>.</li>
+</ul>
+
+<p style="margin-bottom:50px"></p>
+
+<p>Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_blank">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="data analysis" /><category term="exploratory data analysis" /><category term="exploratory data analysis" /><category term="EDA" /><category term="visualization" /><category term="tableau" /><summary type="html"><![CDATA[Source: iStock]]></summary></entry><entry><title type="html">Web Scraping Using Python Scrapy - indeed.com</title><link href="http://localhost:4000/web%20scraping/data%20acquisition/2023/02/24/web-scraping-using-python-scrapy.html" rel="alternate" type="text/html" title="Web Scraping Using Python Scrapy - indeed.com" /><published>2023-02-24T00:00:00+01:00</published><updated>2023-02-24T00:00:00+01:00</updated><id>http://localhost:4000/web%20scraping/data%20acquisition/2023/02/24/web-scraping-using-python%20scrapy</id><content type="html" xml:base="http://localhost:4000/web%20scraping/data%20acquisition/2023/02/24/web-scraping-using-python-scrapy.html"><![CDATA[<p align="center">
   <img src="https://i.ytimg.com/vi/ve_0h4Y8nuI/maxresdefault.jpg" />
   <em>Source: wikipedia</em>
 </p>
 
 <h2 id="motivation"><strong>Motivation</strong></h2>
 
-<p>As a (future) data analyst, data acquisition is one of the day-to-day work. It is quite convenient when data we need is already published somewhere on the internet as open source data. We can of course get right into analysis. However, as we know this world is not ideal. Sometimes, data analyst must go get their hand dirty by acquring data themselves, such as web scraping and web crawling. Altough web scraping and web crawling might be used interchangebly, however, they are very different process. This small project, however, is web scraping which is acquiring job data from job portal indeed.com.</p>
+<p>As a (future) data analyst, data acquisition is one of the day-to-day work. It is quite convenient when data we need is already published somewhere on the internet as open source data. We can of course get right into analysis. However, as we know that this world is not ideal. Sometimes, data analyst must go get their hand dirty by acquring data themselves, such as web scraping and web crawling. Altough web scraping and web crawling might be used interchangebly, however, they are actually very different process. This small project is web scraping which is acquiring job posting data from job portal indeed.com.</p>
 
-<p>Before scraping, I did quick research on the legality of web scraping. This topic remains gray area till date, however, we can relect on the linkedIn saga who sued hiQ Lab which I don’t want to go detail into. From my quick research, I may conclude that it should be fine to scrape “public data” which doesn’t include any authorization. Further, here, I don’t scrape any data containing PII. In addition, one should be more “ethical” since scraping may overload the web server.</p>
+<p>Before scraping, I did quick research on the legality of web scraping. To date, this topic remains gray area, however, we can reflect on the linkedIn saga who sued hiQ Lab which I don’t want to go detail into. From my quick research, it may be concluded that it should be fine to scrape “public data” which doesn’t include any authorization. Further, here, I don’t scrape any data containing PII. In addition, one should be more “ethical” since scraping may overload the web server.</p>
 <p style="margin-bottom:-30px"></p>
 
 <h2 id="overview---project-and-tools"><strong>Overview - Project and Tools</strong></h2>
@@ -18,10 +39,10 @@
 
 <ul>
   <li>Exercising web scraping skills and dataa acquisitions</li>
-  <li>Performing job posting analysis since I have been getting many rejections while applying data analyst position in Germany, haha.. I wonder what makes data analyst in Germany to be hired in terms of skills and qualifications. I wanted to prove my assumption through analysis whether a classical stereotype is true that formal degree in the relevant major is more important than skills, even in this digital era where everybody can learn almost everything.</li>
+  <li>Performing job posting analysis since I have been getting many rejections while applying data analyst position in Germany, haha.. I wonder what makes data analyst in Germany to be hired in terms of skills and qualifications. I wanted to prove my assumption through analysis whether a classical stereotype is true that formal degree in the relevant major is more important than skills, even in this digital era where everybody can learn almost anything.</li>
 </ul>
 
-<p>The job data analysis will be performed next and written in separate article.</p>
+<p>The job posting analysis will be performed next and written in a separate article.</p>
 
 <p><b>Tech Stack:</b></p>
 
@@ -44,7 +65,7 @@
 
 <h3 id="2-inspecting-indeedcom-page">2.	Inspecting indeed.com page</h3>
 
-<p>As mentioned, I will be interested in discovering data analyst job requirement in Germany. By inputing keyword “data analyst” and location “Germany”, indeed will give me this look.</p>
+<p>As mentioned, I will be interested in discovering data analyst job requirements in Germany. By inputing keyword “data analyst” and location “Germany”, indeed will give me this look.</p>
 
 <p align="center">
   <img src="/assets/images/banners/scrapy/indeed1.png" />
@@ -103,18 +124,18 @@
         <span class="p">}</span>
 </code></pre></div></div>
 
-<p>In order to finetune my selector, I used <code class="language-plaintext highlighter-rouge">scrapy shell</code>command.</p>
+<p>In order to finetune my selector, I really recommend using <code class="language-plaintext highlighter-rouge">scrapy shell</code>command.</p>
 
 <h3 id="3-setting-up-the-proxy">3.	Setting up the proxy</h3>
 
-<p>Website owners definitely will not let some random people just visit their websites, overloaded their server with requests and just “steal” data or information from them. And without a proxy which tunnel our scraping requests, scraper bot would be easily detected and blocked. Proxy tunnels request scraper bots and act as middleman (midlleware) handling our scraper bots request. In other words, our requests will not be sent directly to the web server keeping our identity hidden.</p>
+<p>Website owners definitely will not let some random people just visit their websites, overload the server with requests and just “steal” data or information from them. Without having a proxy that tunnels our scraping requests, scraper bot would be easily detected and blocked. Proxy tunnels request scraper bots and acts as middleman (midlleware) handling our scraper bot requests. In other words, our requests will not be sent directly to the web server, thus, keeping our identity hidden.</p>
 
 <p>To integrate the proxy easily into our scrapy project, I installed the ScrapeOps Scrapy proxy SDK a Downloader Middleware.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">scrapeops</span><span class="o">-</span><span class="n">scrapy</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">sdk</span>
 </code></pre></div></div>
 
-<p>Further, cloud service has anti-bot protection that will block our scraping activity. To avoid blocking, we need rotating proxy from proxy provider. <i>A rotating proxy is a proxy server that changes our internet-enabled device’s IP address for each HTTP request that our web browser makes. It generates new IPs from its vast pool of addresses, hiding our actual IP address to keep us anonymous online. <a href="https://firstsiteguide.com/what-is-rotating-proxy/">Source</a></i>. This will make website server thinks that all of scraper requests coming from the different sources/person. However, I would recommend a legitimate proxy provider for this purpose, unless you want your IP to get blocked. I used free plan from a professional <a href="https://scrapeops.io/" target="_blank">proxy provider</a> which gives me 1000 free API credits. Further, I also applied 3s time delay between request to be more “ethical”.</p>
+<p>Further, cloud service has anti-bot protection that will block our scraping activity. To avoid blocking, we need to rotate proxy provided by proxy provider. <i>A rotating proxy is a proxy server that changes our internet-enabled device’s IP address for each HTTP request that our web browser makes. It generates new IPs from its vast pool of addresses, hiding our actual IP address to keep us anonymous online. <a href="https://firstsiteguide.com/what-is-rotating-proxy/">Source</a></i>. This will make website server thinks that all of scraper requests coming from the different sources/person. However, I would recommend a legitimate proxy provider for this purpose, unless you want your IP to get blocked. I used free plan from a professional <a href="https://scrapeops.io/" target="_blank">proxy provider</a> which gives me 1000 free API credits. Further, I also applied 3s time delay between request to be more “ethical”.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File: settings.py
 </span><span class="n">BOT_NAME</span> <span class="o">=</span> <span class="s">'indeed_scraper_spider'</span>
@@ -165,11 +186,11 @@
   <em>Saving results as json file</em>
 </p>
 
-<p>With free plan proxy, I managed to scape 715 job postings or almost 30% of around 2,500 available job postings.</p>
+<p>With free plan proxy, I managed to scrape 715 job postings or almost 30% of around 2,500 available job postings.</p>
 
 <h2 id="conclusions"><strong>Conclusions</strong></h2>
 
-<p>This is of course a very simple scraping script, however, there are some takeaway points for me:</p>
+<p>This is indeed a very simple scraping script, however, there are some takeaway points for me:</p>
 
 <p style="margin-top:-10px"></p>
 
@@ -1181,13 +1202,19 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
   <em>Source: pixabay</em>
 </p>
 
+<p style="margin-top:50px"></p>
+
+<p><i style="font-size:18px">The dashboard for this analysis is built in Tableau, which can be found <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysisVer_2/Home" target="_blank">here</a>.</i></p>
+
+<p style="margin-bottom:-10px"></p>
+
 <h2 id="overview---business-problem"><strong>Overview - Business problem</strong></h2>
 <p>According to WHO, approximately 1.3 million people die each year as a result of road traffic crashes. Between 20 and 50 million more people suffer non-fatal injuries, with many incurring a disability as a result of their injury. In addition, road traffic crashes cost most countries 3% of their gross domestic product. This worldwide-phenomenon has been quite alarming as private transportation ownership increases, resulting in volume rise of vehicles on the road as well as traffic accidents. It is therefore critical to analyze and derive insights on what factors that could potentially influence the road accident events. These insights could be used for road accidents prevention measures.</p>
 
 <p style="margin-bottom:-30px"></p>
 
 <h2 id="goal"><strong>Goal</strong></h2>
-<p>The objective of this road safety analysis to help analyze the influential factors causing traffic accidents, locate accident hot-spots and perform classification supervised machine learning to predict accident severity. Python and Tableau are used for data visualization and analysis presentation. Personally, as a professional in HSE area (Health Safety Environment), I selected this analysis subject intentionally to add values and insights to my current knowledge.</p>
+<p>The objective of this road safety analysis to help analyze the influential factors causing traffic accidents, locate accident hot-spots and perform supervised machine learning for predicting accident severity. Python and Tableau are used for data visualization and analysis presentation. Personally, as a professional in HSE area (Health Safety Environment), I selected this analysis subject intentionally to add values and insights to my current knowledge.</p>
 
 <p style="margin-bottom:-30px"></p>
 
@@ -1203,11 +1230,11 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
 <h2 id="process"><strong>Process</strong></h2>
 <p>This analysis, therefore, could be divided into two parts:</p>
 <ol style="margin-top:-20px;">
-  <li>Part 1: Data mining</li>
-  <li>Part 2: Model building</li>
+  <li>Part 1: Exploration</li>
+  <li>Part 2: Modeling</li>
 </ol>
 
-<p>Data mining methodology called CRISP-DM(Cross Industry Standard Process for Data Mining, without deployment) is used to during this analysis process.</p>
+<p>The methodology for this purpose is called CRISP-DM(Cross Industry Standard Process for Data Mining, without deployment) is used to during this analysis process.</p>
 <p align="center">
   <img src="/assets/images/banners/road_crash/data_mining_steps.png" />
   <em>CRISP-DM Methodology. Source by author.</em>
@@ -1235,7 +1262,7 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
   <dd>- Spatial analysis</dd>
 </ol>
 
-<h2 id="part-1-data-mining">Part 1: Data mining</h2>
+<h2 id="part-1-data-exploration">Part 1: Data exploration</h2>
 
 <p style="margin-bottom:-30px"></p>
 
@@ -1256,36 +1283,36 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
 <h3 id="time-based-analysis-when-do-most-accident-happens-in-hourly-basis">Time-based analysis: When do most accident happens, in hourly basis?</h3>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_dist_by_hour.png" width="500" />
+  <img src="/assets/images/banners/road_crash/accident_dist_by_hour.png" width="400" />
   <em>Accident distribution by hour</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_number_by_hour.png" width="800" height="300" />
+  <img src="/assets/images/banners/road_crash/accident_number_by_hour.png" height="400" />
   <em>Percentage of number of accidents by hour</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/avg_cas_by_hour.png" width="800" height="200" />
+  <img src="/assets/images/banners/road_crash/avg_cas_by_hour.png" height="300" />
   <em>Average total casualty by hour</em>
 </p>
 
-<p>In general, accidents occurrence starts to rise in the morning rush-hour, at 08:00 and reaches its peak during afternoon rush-hour, from 15:00 to 17:00. It is the decreasing afterwards. However, a little bit different patterns is shown by fatality category. Fatality cases are shown to be high since midnight at 02:00 and steadily increases during morning rush-hour until reaches its peaks in the mid-day at 12:00 and in the afternoon rush-hour. While it decreases after afternoon rush-hour, it climbs again at 21:00. From this pattern, fatality cases mostly happen in these two time frames: least crowded time and crowded time. In terms of average casualty of fatality accidents, there seems to be an hourly pattern that shows peak at 5, 12, 18 and 22.</p>
+<p>In general, accidents occurrence starts to rise in the morning rush-hour, at 07:00 and reaches its peak during afternoon rush-hour, from 15:00 to 17:00. It is the decreasing afterwards. However, a little bit different patterns is shown by fatality category. Fatality cases are shown to be high since midnight at 02:00 and steadily increases during morning rush-hour until reaches its peaks in the mid-day at 12:00 and in the afternoon rush-hour. While it decreases after afternoon rush-hour, it climbs again at 21:00. From this pattern, fatality cases mostly happen in these two time frames: least crowded time and crowded time. In terms of average casualty of fatality accidents, there seems to be an hourly pattern that shows peak at 5, 12, 18 and 22.</p>
 
 <h3 id="time-based-analysis-when-do-most-accident-happens-in-daily-basis">Time-based analysis: When do most accident happens, in daily basis?</h3>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_dist_by_day.png" width="500" />
+  <img src="/assets/images/banners/road_crash/accident_dist_by_day.png" width="400" />
   <em>Accident distribution by day</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_number_by_day.png" width="800" height="300" />
+  <img src="/assets/images/banners/road_crash/accident_number_by_day.png" height="400" />
   <em>Percentage of number of accidents by day</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/avg_cas_by_day.png" width="800" height="200" />
+  <img src="/assets/images/banners/road_crash/avg_cas_by_day.png" height="200" />
   <em>Average total casualty by day</em>
 </p>
 
@@ -1296,17 +1323,17 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
 <h3 id="time-based-analysis-when-do-most-accident-happens-in-monthly-basis">Time-based analysis: When do most accident happens, in monthly basis?</h3>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_dist_by_month.png" width="500" />
+  <img src="/assets/images/banners/road_crash/accident_dist_by_month.png" width="400" />
   <em>Accident distribution by month</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_number_by_month.png" width="800" height="300" />
+  <img src="/assets/images/banners/road_crash/accident_number_by_month.png" height="400" />
   <em>Percentage of number of accidents by month</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/avg_cas_by_month.png" width="800" height="200" />
+  <img src="/assets/images/banners/road_crash/avg_cas_by_month.png" height="300" />
   <em>Average total casualty by month</em>
 </p>
 
@@ -1317,36 +1344,37 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
 <h3 id="people-based-analysis-who-are-at-risk---sex-alcohol-and-drugs-involvement">People-based analysis: Who are at risk? - Sex, alcohol and drugs involvement</h3>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_dist_by_sex.png" width="300" />
-  <em>Accident distribution by sex</em>
+  <img src="/assets/images/banners/road_crash/accident_dist_by_sex_age.png" width="500" />
+  <em>Accident distribution by sex and age</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/avg_cas_by_sex.png" width="300" height="450" />
+  <img src="/assets/images/banners/road_crash/avg_cas_by_sex.png" width="300" />
   <em>Average total casualty by sex</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/drugs_alcohol_by_sex.png" width="800" height="300" />
+  <img src="/assets/images/banners/road_crash/alcohol_involvement.png" width="300" />
+  <img src="/assets/images/banners/road_crash/drugs_involvement.png" width="300" />
   <em>Accident distribution by drugs and alcohol involvement</em>
 </p>
 
-<p>Ca. 60% of the accidents happens to be male and 40% is female. However, in average, death or fatality in female (2.24) is higher compared to that in male (1.83). Surprisingly, in South Australia, involvement of alcohol and drugs play little role in the number of accidents. It might be related to the measures taken by local authority or law enforcement in controlling alcohol and drugs circulation.</p>
+<p>Ca. 60% of the accidents happens to be male and 40% is female. Both male and female is domintaed by young people from 20-25 years of age. However, in average, death or fatality in female (2.2) is higher compared to that in male (1.8). Surprisingly, in South Australia, involvement of alcohol and drugs play little role in the number of accidents. It might be related to the measures taken by local authority or law enforcement in controlling alcohol and drugs circulation. However, alcohol and drugs involvement increased accident severities of injuries and death (fatality). With alochol involved, number of accidents with fatality increases drastically from 0.5% to 3.7%. While, with drugs involvement, it increases from 0.5% to 4.4%. The similar increase trends are also observed from serious injury and minor injury. In conclusion, alcohol and drugs involvement could contribute to the increase of accidents severity.</p>
 
 <h3 id="people-based-analysis-who-are-at-risk---age">People-based analysis: Who are at risk? - Age</h3>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_dist_by_age.png" width="500" />
+  <img src="/assets/images/banners/road_crash/accident_dist_by_age.png" width="400" />
   <em>Accident distribution by age</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/accident_number_by_age.png" width="800" height="300" />
+  <img src="/assets/images/banners/road_crash/accident_number_by_age.png" height="300" />
   <em>Percentage of number of accidents by age</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/avg_cas_by_age.png" width="800" height="200" />
+  <img src="/assets/images/banners/road_crash/avg_cas_by_age.png" height="300" />
   <em>Average total casualty by age</em>
 </p>
 
@@ -1357,18 +1385,23 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
 <h3 id="weather-based-analysis---how-does-weather-affect-accident-occurences">Weather-based analysis - How does weather affect accident occurences?</h3>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/raining_vs_not_raining.png" width="200" />
+  <img src="/assets/images/banners/road_crash/night_vs_day.png" width="300" />
+  <em>Day or Night?</em>
+</p>
+
+<p align="center">
+  <img src="/assets/images/banners/road_crash/raining_vs_not_raining.png" width="300" />
   <em>Weather condition: Raining or not raining?</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/wet_vs_dry.png" width="200" />
+  <img src="/assets/images/banners/road_crash/wet_vs_dry.png" width="300" />
   <em>Road moisture: wet or dry?</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/night_vs_day.png" width="200" />
-  <em>Day or Night?</em>
+  <img src="/assets/images/banners/road_crash/sealed_vs_unsealed.png" width="300" />
+  <em>Road moisture: sealed or unsealed?</em>
 </p>
 
 <p>All those weather-related features are conditions collected at the crash locations. It is interesting that most accidents happen in the clear weather condtions, unlike what people normally assume. In other words, weather play little influence to accident events.</p>
@@ -1377,22 +1410,29 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/crash_map.png" width="600" />
-  <em>Crash map (circle marker map)</em>
+  <em>Crash map (circle marker map) - python</em>
 </p>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/cluster_map2.png" width="600" />
-  <em>Crash map (cluster map)</em>
+  <em>Crash map (cluster map) - python</em>
 </p>
 
 <p align="center">
   <img src="/assets/images/banners/road_crash/cluster_map.png" width="600" />
-  <em>Crash map (cluster map - zoomed out)</em>
+  <em>Crash map (cluster map - zoomed out) - python</em>
 </p>
 
 <p>There is indeed accident ‘hotspot’ where most accidents happen, which is clustered around Adelaide city center. From this point, a hypothesis could be then formulated: <strong>The more complicated the road system (meaning many junctions, divided roads, etc. which represents downtown area), the higher the number of accidents will be.</strong></p>
 
 <p>By plotting each accident spots based on its longitude and latitude using folium, it can be shown where accidents cluster and its number. The accident scenes can be zoomed out until street level to so see at what kind of road system the accident happens.</p>
+
+<p>Below is map visualization I made in Tableau.</p>
+
+<p align="center">
+  <img src="/assets/images/banners/road_crash/hotspot map_tableau.png" width="600" />
+  <em>Crash map - tableau</em>
+</p>
 
 <p style="margin-top:30px"><b>Feature engineering for hypothesis testing - Distance to city center</b></p>
 
@@ -1404,12 +1444,12 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/distance_by_severity.png" width="800" />
+  <img src="/assets/images/banners/road_crash/distance_by_severity.png" width="400" />
   <em>Crash distance distribution by severity</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/linear_regression.png" width="600" />
+  <img src="/assets/images/banners/road_crash/linear_regression.png" width="400" />
   <em>Linear regression: Distance to city center vs. Number of accidents</em>
 </p>
 
@@ -1417,7 +1457,7 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
 
 <p>Interestingly, most fatalities incidents happened to be in close to the city center area. In other other words, not only does the complex road system corresponds postively to the number of accidents, but also to the accident severity.</p>
 
-<h2 id="part-2-model-building---severity-prediction-using-supervised-machine-learning">Part 2: Model building - Severity prediction using supervised machine learning</h2>
+<h2 id="part-2-data-modeling---supervised-machine-learning-for-predicting-accident-severity">Part 2: Data modeling - Supervised machine learning for predicting accident severity</h2>
 
 <p>All previously analyzed factors (time, age, sex, road system and distance to city center) seem to be influential to the accident severity. However, it is not clear  to what extent those factors would impact severity. In other words, the order of importance is analyzed using classification model.</p>
 
@@ -1435,19 +1475,19 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
   <em>Severity classes as target (dependent) variable - Binary classification</em>
 </p>
 
-<p>Classification models of logistic regression, decision tree and random forest were used and the results were compared. The best result was given by random forest classifier, giving accuracy of 74.3% compared to the logistics regression (66.8%) and decision tree (61.8%).</p>
+<p>Classification models of logistic regression, decision tree and random forest were used and the results were compared. The best result was given by random forest classifier, giving accuracy of 74.3%. While logistic regression gives 66.8% and decision tree 61.8%.</p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/conf_mat.png" width="600" />
+  <img src="/assets/images/banners/road_crash/conf_mat.png" width="400" />
   <em>Confusion matrix - Random forest</em>
 </p>
 
 <p align="center">
-  <img src="/assets/images/banners/road_crash/feature_importance.png" width="700" height="350" />
+  <img src="/assets/images/banners/road_crash/feature_importance.png" width="400" />
   <em>Feature importance - Random forest</em>
 </p>
 
-<p>Among top 20 important fetaures, distance to city center become to be the most influential factor, followed by age, vehicle year, time, location or area, drugs usage and sex. Other than that, crash location at T-Junction listed as an important factor strengthens the previous hyphothesis about complex road system of typical city center.</p>
+<p>Among top 20 important fetaures, distance to city center become to be the most influential factor, followed by age, vehicle year, time, location or area, drugs usage and sex. Other than that, crash location at T-Junction listed as an important factor strengthens the previous hyphothesis about complex road system.</p>
 
 <p style="margin-top:-30px"></p>
 
@@ -1464,7 +1504,7 @@ Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_bl
 
 <h2 id="further-analysis"><strong>Further Analysis</strong></h2>
 
-<p>The effect of safety equipment used by the victims or people involved on the traffic accidents should be analyzed and included in the model prediction.</p>
+<p>The effect of safety equipment used by the victims or people involved on the traffic accidents should be analyzed and included in the model.</p>
 
 <p style="margin-top:-30px"></p>
 
@@ -1482,8 +1522,8 @@ For instance:</p>
 <p>Finally, those insights could help creating safer environment and less financial loss due to property damage.</p>
 
 <p>Find the code for this analysis <a href="https://github.com/nuki-susanti/Road-Crash-Analysis" target="_blank">Github</a><br />
-Find tableau presentation <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysis_16687247255900/RoadCrashAnalysis" target="_blank">Tableau</a><br />
-Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_blank">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="data analysis" /><category term="data science" /><category term="machine learning" /><category term="data mining" /><category term="classification" /><category term="supervised machine learning" /><summary type="html"><![CDATA[Source: pixabay]]></summary></entry><entry><title type="html">Building Snake Game Using Python Turtle</title><link href="http://localhost:4000/coding/game/2023/01/06/snake-game-using-python-turtle.html" rel="alternate" type="text/html" title="Building Snake Game Using Python Turtle" /><published>2023-01-06T00:00:00+01:00</published><updated>2023-01-06T00:00:00+01:00</updated><id>http://localhost:4000/coding/game/2023/01/06/snake-game-using-python%20turtle</id><content type="html" xml:base="http://localhost:4000/coding/game/2023/01/06/snake-game-using-python-turtle.html"><![CDATA[<p align="center">
+Find tableau presentation <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysisVer_2/Dashboard1?publish=yes" target="_blank">Tableau</a><br />
+Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_blank">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="data analysis" /><category term="data science" /><category term="machine learning" /><category term="data mining" /><category term="classification" /><category term="supervised machine learning" /><category term="python" /><category term="visualization" /><category term="tableau" /><summary type="html"><![CDATA[Source: pixabay]]></summary></entry><entry><title type="html">Building Snake Game Using Python Turtle</title><link href="http://localhost:4000/coding/game/2023/01/06/snake-game-using-python-turtle.html" rel="alternate" type="text/html" title="Building Snake Game Using Python Turtle" /><published>2023-01-06T00:00:00+01:00</published><updated>2023-01-06T00:00:00+01:00</updated><id>http://localhost:4000/coding/game/2023/01/06/snake-game-using-python%20turtle</id><content type="html" xml:base="http://localhost:4000/coding/game/2023/01/06/snake-game-using-python-turtle.html"><![CDATA[<p align="center">
  <img src="/assets/images/banners/snake_game/cover_game.jpg" width="600" />
  Source: <a href="https://www.emulatorpc.com/snake-game//">emulatorpc.com</a>
 </p>
@@ -1812,7 +1852,7 @@ G - General Audiences, All Ages Admitted. <br /></p>
 
 <p>Find the code for this analysis <a href="https://github.com/nuki-susanti/Rockbuster-Analysis" target="_blank">Github</a><br />
 Find visualization in <a href="https://public.tableau.com/app/profile/nuki.susanti/viz/RockbusterStealthDataAnalysis_16618096649900/RockbusterAnalysis?publish=yes" target="_blank">Tableau</a><br />
-Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_blank">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="database" /><category term="SQL" /><category term="exploratory data analysis" /><category term="database" /><category term="PostgreSQL" /><category term="SQL" /><category term="exploratory data analysis" /><category term="EDA" /><category term="visualization" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Instacart - Online Grocery Analysis</title><link href="http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html" rel="alternate" type="text/html" title="Instacart - Online Grocery Analysis" /><published>2022-12-18T00:00:00+01:00</published><updated>2022-12-18T00:00:00+01:00</updated><id>http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html"><![CDATA[<p align="center">
+Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_blank">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="database" /><category term="SQL" /><category term="exploratory data analysis" /><category term="database" /><category term="PostgreSQL" /><category term="SQL" /><category term="exploratory data analysis" /><category term="EDA" /><category term="visualization" /><category term="tableau" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Instacart - Online Grocery Analysis</title><link href="http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html" rel="alternate" type="text/html" title="Instacart - Online Grocery Analysis" /><published>2022-12-18T00:00:00+01:00</published><updated>2022-12-18T00:00:00+01:00</updated><id>http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis</id><content type="html" xml:base="http://localhost:4000/data%20analysis/exploratory%20data%20analysis/2022/12/18/instacart-online-grocery-analysis.html"><![CDATA[<p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Instacart_logo_and_wordmark.svg" width="500" />
   <em>Source: upload.wikimedia.org</em>
 </p>
@@ -2120,4 +2160,4 @@ As there is no connection between family status and income in terms of ordering 
 <p>As previously mentioned that age, income and family status in general do not make huge difference in terms of ordering habit. It is, thus, interesting to analyze deeper on what factor mainly triggers different ordering habit. For this purpose, more data might be required such as data from customized customer surveys.</p>
 
 <p>Find the code for this analysis <a href="https://github.com/nuki-susanti/Instacart-Analysis" target="_blank">Github</a><br />
-Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_blank">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="data analysis" /><category term="exploratory data analysis" /><category term="exploratory data analysis" /><category term="EDA" /><category term="visualization" /><summary type="html"><![CDATA[Source: upload.wikimedia.org]]></summary></entry></feed>
+Connect with me! <a href="https://www.linkedin.com/in/nukilsusanti/" target="_blank">Linkedin</a></p>]]></content><author><name>Nuki Susanti</name></author><category term="data analysis" /><category term="exploratory data analysis" /><category term="exploratory data analysis" /><category term="EDA" /><category term="visualization" /><category term="tableau" /><summary type="html"><![CDATA[Source: upload.wikimedia.org]]></summary></entry></feed>

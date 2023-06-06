@@ -3,7 +3,7 @@ layout: post
 title: Instacart - Online Grocery Analysis
 subtitle: Each post also has a subtitle
 categories: [data analysis, exploratory data analysis]
-tags: [exploratory data analysis, EDA, visualization]
+tags: [exploratory data analysis, EDA, visualization, tableau]
 ---
 
 <p align="center">

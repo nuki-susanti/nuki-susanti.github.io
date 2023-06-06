@@ -16,7 +16,7 @@ tags: [web scraping, data acquisition, scrapy, python]
 
 As a (future) data analyst, data acquisition is one of the day-to-day work. It is quite convenient when data we need is already published somewhere on the internet as open source data. We can of course get right into analysis. However, as we know that this world is not ideal. Sometimes, data analyst must go get their hand dirty by acquring data themselves, such as web scraping and web crawling. Altough web scraping and web crawling might be used interchangebly, however, they are actually very different process. This small project is web scraping which is acquiring job posting data from job portal indeed.com.
 
-Before scraping, I did quick research on the legality of web scraping. This topic remains gray area till date, however, we can reflect on the linkedIn saga who sued hiQ Lab which I don't want to go detail into. From my quick research, it may be concluded that it should be fine to scrape "public data" which doesn't include any authorization. Further, here, I don't scrape any data containing PII. In addition, one should be more "ethical" since scraping may overload the web server.
+Before scraping, I did quick research on the legality of web scraping. To date, this topic remains gray area, however, we can reflect on the linkedIn saga who sued hiQ Lab which I don't want to go detail into. From my quick research, it may be concluded that it should be fine to scrape "public data" which doesn't include any authorization. Further, here, I don't scrape any data containing PII. In addition, one should be more "ethical" since scraping may overload the web server.
 <p style="margin-bottom:-30px"></p>
 
 ## **Overview - Project and Tools**
