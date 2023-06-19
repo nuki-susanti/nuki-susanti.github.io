@@ -328,5 +328,5 @@ For instance:
 Finally, those insights could help creating safer environment and less financial loss due to property damage.
 
 Find the code for this analysis [Github](https://github.com/nuki-susanti/Road-Crash-Analysis){:target="_blank"}\
-Find tableau presentation [Tableau](https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysisVer_2/Dashboard1?publish=yes){:target="_blank"}\
+Find tableau presentation [Tableau](https://public.tableau.com/app/profile/nuki.susanti/viz/RoadCrashAnalysisVer_2/Home){:target="_blank"}\
 Connect with me! [Linkedin](https://www.linkedin.com/in/nukilsusanti/){:target="_blank"}
